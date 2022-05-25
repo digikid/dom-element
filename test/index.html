@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        .block {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .list {
+            padding: 100px 0;
+            border: 1px solid #eee;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            margin: 25px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="empty"></div>
+        <div class="circle"></div>
+        <div class="styled"
+             style="display: block; background-color: green; margin-top: 25px; margin-bottom: 25px;"></div>
+        <p class="paragraph">Text paragraph.</p>
+        <div class="flex"
+             style="display: none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit ipsa optio quas.
+            Aliquam,
+            architecto cum dicta dolore doloribus facilis, illo inventore libero minima, nesciunt nisi quos suscipit vel
+            vero voluptatum.
+        </div>
+        <div class="block"
+             style="display: none">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consectetur culpa est fugit, illo incidunt quo
+            recusandae repellat tenetur? Accusantium exercitationem illum modi praesentium. Accusantium explicabo
+            laboriosam magni natus sunt!
+        </div>
+        <div class="hidden">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid cum deserunt dolor dolorem eaque
+            earum ex, illo impedit magnam maxime nam nesciunt, nostrum porro provident quo sed veritatis. Excepturi?
+        </div>
+        <ul class="list">
+            <li class="list-item list-item-1">List item #1</li>
+            <li class="list-item list-item-2">List item #2</li>
+            <li class="list-item list-item-3">List item #3</li>
+            <li class="list-item list-item-4">List item #4</li>
+            <li class="list-item list-item-5">List item #5</li>
+        </ul>
+        <div class="links">
+            <a href="https://google.com/"
+               class="links-item links-item-1">google.com</a>
+            <a href="https://apple.com/"
+               class="links-item links-item-2">apple.com</a>
+            <a href="https://github.com/"
+               class="links-item links-item-3">github.com</a>
+        </div>
+        <form class="form">
+            <select class="select">
+                <option value="option-1"
+                        selected>Option-1
+                </option>
+                <option value="option-2">Option-2</option>
+                <option value="option-3">Option-3</option>
+                <option value="option-4">Option-4</option>
+                <option value="option-5">Option-5</option>
+            </select>
+            <select class="select-multi"
+                    multiple>
+                <option value="option-1"
+                        selected>Option-1
+                </option>
+                <option value="option-2"
+                        selected>Option-2
+                </option>
+                <option value="option-3">Option-3</option>
+                <option value="option-4">Option-4</option>
+                <option value="option-5">Option-5</option>
+            </select>
+            <input type="text"
+                   class="input"
+                   placeholder="Type some text here..."
+                   value="Your name">
+            <input type="text"
+                   disabled
+                   class="disabled-input"
+                   placeholder="Type some text here...">
+            <textarea name="textarea"
+                      id="textarea"
+                      placeholder="Type some text here..."></textarea>
+            <div class="checkboxes">
+                <input type="checkbox"
+                       class="checkbox"
+                       id="checkbox-1"
+                       value="checkbox-1">
+                <label class="label-checkbox-1"
+                       for="checkbox-1">Checkbox #1</label>
+                <input type="checkbox"
+                       class="checkbox"
+                       id="checkbox-2"
+                       value="checkbox-1">
+                <label class="label-checkbox-2"
+                       for="checkbox-1">Checkbox #2</label>
+                <input type="checkbox"
+                       class="checkbox"
+                       id="checkbox-3"
+                       value="checkbox-1">
+                <label class="label-checkbox-3"
+                       for="checkbox-1">Checkbox #3</label>
+            </div>
+            <div class="radio-buttons">
+                <input type="radio"
+                       name="radio"
+                       class="radio"
+                       id="radio-1"
+                       value="radio-1">
+                <label class="label-radio-1"
+                       for="radio-1">Radio #1</label>
+                <input type="radio"
+                       name="radio"
+                       class="radio"
+                       id="radio-2"
+                       value="radio-2">
+                <label class="label-radio-2"
+                       for="radio-2">Radio #2</label>
+                <input type="radio"
+                       name="radio"
+                       class="radio"
+                       id="radio-3"
+                       value="radio-3">
+                <label class="label-radio-3"
+                       for="radio-3">Radio #3</label>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

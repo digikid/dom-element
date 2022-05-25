@@ -1,0 +1,50 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.test.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@src/*": [
+        "*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@polyfills/*": [
+        "polyfills/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@validator/*": [
+        "validator/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
+  }
+}

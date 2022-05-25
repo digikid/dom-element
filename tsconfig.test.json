@@ -1,0 +1,29 @@
+{
+  "include": [
+    "./test/**/*"
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "@src/*": [
+        "*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@polyfills/*": [
+        "polyfills/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@validator/*": [
+        "validator/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    }
+  }
+}
