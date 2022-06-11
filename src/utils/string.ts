@@ -7,6 +7,8 @@ export const toDashCase = (str: string): string => str.replace(
 
 export const toCamelCase = (str: string): string => str.replace(/-./g, (m) => m[1].toUpperCase());
 
+export const fromCamelCaseToArray = (str: string): string[] => str.split(/(?=[A-Z])/).map((str) => str.toLowerCase());
+
 export const trimSpaces = (str: string): string => str.replace(/[\n\r]+|\s{2,}/g, ' ').trim();
 
 export const parseToCssObject = (

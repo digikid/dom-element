@@ -18,6 +18,9 @@ import each, { DomEachMethod } from '@core/methods/each';
 import empty, { DomEmptyMethod } from '@core/methods/empty';
 import eq, { DomEqMethod } from '@core/methods/eq';
 import exists, { DomExistsMethod } from '@core/methods/exists';
+import fadeIn, { DomFadeInMethod } from '@core/methods/fadeIn';
+import fadeOut, { DomFadeOutMethod } from '@core/methods/fadeOut';
+import fadeToggle, { DomFadeToggleMethod } from '@core/methods/fadeToggle';
 import filter, { DomFilterMethod } from '@core/methods/filter';
 import find, { DomFindMethod } from '@core/methods/find';
 import first, { DomFirstMethod } from '@core/methods/first';
@@ -61,6 +64,9 @@ import resize, { DomResizeMethod } from '@core/methods/resize';
 import scroll, { DomScrollMethod } from '@core/methods/scroll';
 import show, { DomShowMethod } from '@core/methods/show';
 import siblings, { DomSiblingsMethod } from '@core/methods/siblings';
+import slideDown, { DomSlideDownMethod } from '@core/methods/slideDown';
+import slideToggle, { DomSlideToggleMethod } from '@core/methods/slideToggle';
+import slideUp, { DomSlideUpMethod } from '@core/methods/slideUp';
 import style, { DomStyleMethod } from '@core/methods/style';
 import submit, { DomSubmitMethod } from '@core/methods/submit';
 import text, { DomTextMethod } from '@core/methods/text';
@@ -93,6 +99,9 @@ export interface IDomMethods {
   readonly empty: DomEmptyMethod;
   readonly eq: DomEqMethod;
   readonly exists: DomExistsMethod;
+  readonly fadeIn: DomFadeInMethod;
+  readonly fadeOut: DomFadeOutMethod;
+  readonly fadeToggle: DomFadeToggleMethod;
   readonly filter: DomFilterMethod;
   readonly find: DomFindMethod;
   readonly first: DomFirstMethod;
@@ -134,6 +143,9 @@ export interface IDomMethods {
   readonly scroll: DomScrollMethod;
   readonly show: DomShowMethod;
   readonly siblings: DomSiblingsMethod;
+  readonly slideDown: DomSlideDownMethod;
+  readonly slideToggle: DomSlideToggleMethod;
+  readonly slideUp: DomSlideUpMethod;
   readonly style: DomStyleMethod;
   readonly submit: DomSubmitMethod;
   readonly text: DomTextMethod;
@@ -167,6 +179,9 @@ export {
   empty,
   eq,
   exists,
+  fadeIn,
+  fadeOut,
+  fadeToggle,
   filter,
   find,
   first,
@@ -208,6 +223,9 @@ export {
   scroll,
   show,
   siblings,
+  slideDown,
+  slideToggle,
+  slideUp,
   style,
   submit,
   text,

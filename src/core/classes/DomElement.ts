@@ -27,8 +27,7 @@ export class DomElement implements IDomElement {
 
   constructor(public selector: DomSelector) {
     if (!store.get('initialized')) {
-      Object.values(polyfills)
-        .forEach((polyfill) => polyfill());
+      Object.values(polyfills).forEach((polyfill) => polyfill());
 
       store.set('initialized', true);
     }
@@ -98,6 +97,12 @@ export class DomElement implements IDomElement {
   public readonly exists = methods.exists;
 
   public readonly filter = methods.filter;
+
+  public readonly fadeIn = methods.fadeIn;
+
+  public readonly fadeOut = methods.fadeOut;
+
+  public readonly fadeToggle = methods.fadeToggle;
 
   public readonly find = methods.find;
 
@@ -178,6 +183,12 @@ export class DomElement implements IDomElement {
   public readonly show = methods.show;
 
   public readonly siblings = methods.siblings;
+
+  public readonly slideDown = methods.slideDown;
+
+  public readonly slideToggle = methods.slideToggle;
+
+  public readonly slideUp = methods.slideUp;
 
   public readonly style = methods.style;
 

@@ -1,8 +1,13 @@
 import { readFileSync } from 'fs';
-import $ from '@src/index';
+import $, { IDomConstructor } from '@src/index';
 import * as utils from './utils';
 
-const html = readFileSync('test/index.html', 'utf8');
+declare global {
+  declare let template: string;
+  declare let $: IDomConstructor;
+}
+
+const template = readFileSync('test/index.html', 'utf8').toString();
 
 jest.dontMock('fs');
 
@@ -29,14 +34,15 @@ Object.defineProperties(window.HTMLElement.prototype, {
   },
 });
 
-(global as any).$ = $;
+global.$ = $;
+global.template = template;
 
 Object.entries(utils).forEach(([id, fn]) => {
   global[id] = fn;
 });
 
 beforeEach(() => {
-  document.documentElement.innerHTML = html.toString();
+  document.documentElement.innerHTML = template;
 });
 
 afterEach(() => {

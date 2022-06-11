@@ -1,4 +1,4 @@
-import { DomElement } from '@core/classes/DomElement';
+import { IDomElement, DomElement } from '@core/classes/DomElement';
 
 import fn from '@core/fn';
 
@@ -8,10 +8,12 @@ declare global {
   }
 }
 
-const $ = function (selector: any) {
-  return new DomElement(selector);
-};
+export interface IDomConstructor {
+  (selector: any): IDomElement;
 
-$.fn = fn;
+  fn: Record<string, Function>;
+}
 
-export default $;
+export default Object.assign((selector: any) => new DomElement(selector), {
+  fn,
+}) as IDomConstructor;

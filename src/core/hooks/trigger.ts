@@ -1,52 +1,54 @@
 import { IDomElement } from '@core/classes/DomElement';
 import { some, validate } from '@src/validator';
 
-const triggerEvent = (
+export type DomTriggerAction = (
   el: HTMLElement | Window | Document,
-  eventName: string,
-  eventData?: any,
-): void => {
-  let e;
+  names: string,
+  data?: any
+) => void;
 
-  if (validate<Object>(eventData, 'object')) {
-    if (
-      validate(window.CustomEvent)
-      && validate<Function>(window.CustomEvent, 'function')
-    ) {
-      e = new CustomEvent(eventName, { detail: eventData });
+const triggerEvent: DomTriggerAction = (el, names, data?) => {
+  names.split(' ').forEach((name) => {
+    let e;
+
+    if (validate<Object>(data, 'object')) {
+      if (
+        validate(window.CustomEvent)
+        && validate<Function>(window.CustomEvent, 'function')
+      ) {
+        e = new CustomEvent(name, { detail: data });
+      } else {
+        e = document.createEvent('CustomEvent');
+
+        e.initCustomEvent(name, true, true, data);
+      }
     } else {
-      e = document.createEvent('CustomEvent');
+      e = document.createEvent('HTMLEvents');
 
-      e.initCustomEvent(eventName, true, true, eventData);
+      e.initEvent(name, true, false);
     }
-  } else {
-    e = document.createEvent('HTMLEvents');
 
-    e.initEvent(eventName, true, false);
-  }
-
-  el.dispatchEvent(e);
+    el.dispatchEvent(e);
+  });
 };
 
 export type DomTriggerHook = (
-  eventName: string,
+  name: string,
   callback?: Function,
-  eventData?: any
+  data?: any
 ) => IDomElement;
 
-export default (function (this: IDomElement, eventName, callback?, eventData?) {
-  if (validate<string>(eventName, 'string', 'truthy')) {
+export default (function (this: IDomElement, name, callback?, data?) {
+  if (validate<string>(name, 'string', 'truthy')) {
     if (validate<Function>(callback, 'function')) {
-      return this.on(eventName, callback);
+      return this.on(name, callback);
     }
 
     if (some<Window | Document>(this.selector, 'window', 'document')) {
-      triggerEvent(this.selector, eventName, eventData);
-
-      return this;
+      triggerEvent(this.selector, name, data);
+    } else {
+      this.each((el) => triggerEvent(el, name, data));
     }
-
-    return this.each((el) => triggerEvent(el, eventName, eventData));
   }
 
   return this;
