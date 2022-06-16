@@ -32,9 +32,6 @@
       ],
       "@validator/*": [
         "validator/*"
-      ],
-      "@utils/*": [
-        "utils/*"
       ]
     },
     "plugins": [

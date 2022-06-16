@@ -28,3 +28,13 @@ export default (
     }, (duration ?? 400) + 50);
   });
 };
+
+declare global {
+  function checkEffect(
+    name: string,
+    selector: string,
+    start: () => void,
+    duration?: number,
+    cb?: Function
+  ): Promise<string>;
+}

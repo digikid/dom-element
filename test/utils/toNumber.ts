@@ -3,3 +3,7 @@ export default (str: string, units = ['px']): number | null => {
 
   return Number.isNaN(+value) ? null : +value;
 };
+
+declare global {
+  function toNumber(str: string, units?: string[]): number | null;
+}

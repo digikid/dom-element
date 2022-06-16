@@ -10,7 +10,7 @@ describe('add', () => {
     expect($add).toHaveLength(6);
 
     expect(
-      $add.get().every((el, i) => el.isEqualNode(elements[i])),
+      ($add.get() as HTMLElement[]).every((el, i) => el.isEqualNode(elements[i])),
     ).toBeTruthy();
   });
 });

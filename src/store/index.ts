@@ -1,12 +1,14 @@
 import { DomStore } from '@store/classes/DomStore';
 
 export type DomListeners = Record<string, Record<string, EventListener[]>>;
+export type DomThrottledEvents = Record<string, string[]>;
 
 export interface IDomStorage {
   initialized: boolean;
   data: Record<string, any>;
   listeners: DomListeners;
   delegatedListeners: DomListeners;
+  throttledEvents: DomThrottledEvents;
   fn: Record<string, Function>;
 }
 

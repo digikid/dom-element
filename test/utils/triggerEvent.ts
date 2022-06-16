@@ -5,3 +5,7 @@ export default (el: HTMLElement | Window, event: string): void => {
     el.dispatchEvent(e);
   });
 };
+
+declare global {
+  function triggerEvent(el: HTMLElement | Window, event: string): void;
+}

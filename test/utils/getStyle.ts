@@ -12,3 +12,10 @@ export default (
 
   return property ? computedStyle.getPropertyValue(property) : computedStyle;
 };
+
+declare global {
+  function getStyle(
+    selector: string,
+    property?: string
+  ): null | string | CSSStyleDeclaration;
+}

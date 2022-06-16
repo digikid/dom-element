@@ -6,7 +6,7 @@ describe('clone', () => {
     expect($cloned).toHaveLength(5);
 
     expect(
-      $cloned.get().every((el, i) => el.isEqualNode(target[i])),
+      ($cloned.get() as HTMLElement[]).every((el, i) => el.isEqualNode(target[i])),
     ).toBeTruthy();
   });
 });

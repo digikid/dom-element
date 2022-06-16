@@ -1,5 +1,5 @@
 import { IDomStore } from '@store/classes/DomStore';
-import { getData } from '@store/hooks';
+import { getData } from '@store/helpers';
 
 export type DomStoreSetDataMethod = (
   idOrElement: string | HTMLElement,

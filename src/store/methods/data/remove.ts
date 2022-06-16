@@ -1,6 +1,6 @@
 import { IDomStore } from '@store/classes/DomStore';
 import { validate } from '@src/validator';
-import { getData } from '@store/hooks';
+import { getData } from '@store/helpers';
 
 export type DomStoreRemoveDataMethod = (
   idOrElement: string | HTMLElement,

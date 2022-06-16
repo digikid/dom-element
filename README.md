@@ -69,87 +69,126 @@ $(document)
 
 Все методы работают по аналогии с методами jQuery.
 
-В ряде случаев для оптимизации производительности опущены редко
-используемые типы входящих параметров (как правило, коллбэк-функции).
+В ряде случаев для оптимизации производительности опущены редко используемые типы входящих параметров (как правило,
+коллбэк-функции).
 
 Также добавлено несколько методов, не имеющих аналогов в jQuery. Они отмечены значком :white_check_mark:.
 
-- [add](https://github.com/digikid/dom-element/blob/main/METHODS.md#add)
-- [addClass](https://github.com/digikid/dom-element/blob/main/METHODS.md#addClass)
-- [after](https://github.com/digikid/dom-element/blob/main/METHODS.md#after)
-- [append](https://github.com/digikid/dom-element/blob/main/METHODS.md#append)
-- [appendTo](https://github.com/digikid/dom-element/blob/main/METHODS.md#appendTo)
-- [attr](https://github.com/digikid/dom-element/blob/main/METHODS.md#attr)
-- [before](https://github.com/digikid/dom-element/blob/main/METHODS.md#before)
-- [blur](https://github.com/digikid/dom-element/blob/main/METHODS.md#blur)
-- [change](https://github.com/digikid/dom-element/blob/main/METHODS.md#change)
-- [children](https://github.com/digikid/dom-element/blob/main/METHODS.md#children)
-- [clear](https://github.com/digikid/dom-element/blob/main/METHODS.md#clear) :white_check_mark:
-- [click](https://github.com/digikid/dom-element/blob/main/METHODS.md#click)
-- [clone](https://github.com/digikid/dom-element/blob/main/METHODS.md#clone)
-- [closest](https://github.com/digikid/dom-element/blob/main/METHODS.md#closest)
-- [css](https://github.com/digikid/dom-element/blob/main/METHODS.md#css)
-- [data](https://github.com/digikid/dom-element/blob/main/METHODS.md#data)
-- [each](https://github.com/digikid/dom-element/blob/main/METHODS.md#each)
-- [empty](https://github.com/digikid/dom-element/blob/main/METHODS.md#empty)
-- [eq](https://github.com/digikid/dom-element/blob/main/METHODS.md#eq)
-- [exists](https://github.com/digikid/dom-element/blob/main/METHODS.md#exists) :white_check_mark:
-- [fadeIn](https://github.com/digikid/dom-element/blob/main/METHODS.md#fadeIn)
-- [fadeOut](https://github.com/digikid/dom-element/blob/main/METHODS.md#fadeOut)
-- [fadeToggle](https://github.com/digikid/dom-element/blob/main/METHODS.md#fadeToggle)
-- [filter](https://github.com/digikid/dom-element/blob/main/METHODS.md#filter)
-- [find](https://github.com/digikid/dom-element/blob/main/METHODS.md#find)
-- [first](https://github.com/digikid/dom-element/blob/main/METHODS.md#first)
-- [focus](https://github.com/digikid/dom-element/blob/main/METHODS.md#focus)
-- [get](https://github.com/digikid/dom-element/blob/main/METHODS.md#get)
-- [has](https://github.com/digikid/dom-element/blob/main/METHODS.md#has)
-- [hasClass](https://github.com/digikid/dom-element/blob/main/METHODS.md#hasClass)
-- [height](https://github.com/digikid/dom-element/blob/main/METHODS.md#height)
-- [hide](https://github.com/digikid/dom-element/blob/main/METHODS.md#hide)
-- [html](https://github.com/digikid/dom-element/blob/main/METHODS.md#html)
-- [index](https://github.com/digikid/dom-element/blob/main/METHODS.md#index)
-- [insertAfter](https://github.com/digikid/dom-element/blob/main/METHODS.md#insertAfter)
-- [insertBefore](https://github.com/digikid/dom-element/blob/main/METHODS.md#insertBefore)
-- [is](https://github.com/digikid/dom-element/blob/main/METHODS.md#is)
-- [last](https://github.com/digikid/dom-element/blob/main/METHODS.md#last)
-- [next](https://github.com/digikid/dom-element/blob/main/METHODS.md#next)
-- [not](https://github.com/digikid/dom-element/blob/main/METHODS.md#not)
-- [off](https://github.com/digikid/dom-element/blob/main/METHODS.md#off)
-- [offset](https://github.com/digikid/dom-element/blob/main/METHODS.md#offset)
-- [on](https://github.com/digikid/dom-element/blob/main/METHODS.md#on)
-- [outerHeight](https://github.com/digikid/dom-element/blob/main/METHODS.md#outerHeight)
-- [outerHtml](https://github.com/digikid/dom-element/blob/main/METHODS.md#outerHtml) :white_check_mark:
-- [outerWidth](https://github.com/digikid/dom-element/blob/main/METHODS.md#outerWidth)
-- [parent](https://github.com/digikid/dom-element/blob/main/METHODS.md#parent)
-- [position](https://github.com/digikid/dom-element/blob/main/METHODS.md#position)
-- [prepend](https://github.com/digikid/dom-element/blob/main/METHODS.md#prepend)
-- [prependTo](https://github.com/digikid/dom-element/blob/main/METHODS.md#prependTo)
-- [prev](https://github.com/digikid/dom-element/blob/main/METHODS.md#prev)
-- [prop](https://github.com/digikid/dom-element/blob/main/METHODS.md#prop)
-- [raw](https://github.com/digikid/dom-element/blob/main/METHODS.md#raw) :white_check_mark:
-- [ready](https://github.com/digikid/dom-element/blob/main/METHODS.md#ready)
-- [rect](https://github.com/digikid/dom-element/blob/main/METHODS.md#rect) :white_check_mark:
-- [remove](https://github.com/digikid/dom-element/blob/main/METHODS.md#remove)
-- [removeAttr](https://github.com/digikid/dom-element/blob/main/METHODS.md#removeAttr)
-- [removeProp](https://github.com/digikid/dom-element/blob/main/METHODS.md#removeProp)
-- [replaceWith](https://github.com/digikid/dom-element/blob/main/METHODS.md#replaceWith)
-- [resize](https://github.com/digikid/dom-element/blob/main/METHODS.md#resize)
-- [scroll](https://github.com/digikid/dom-element/blob/main/METHODS.md#scroll)
-- [show](https://github.com/digikid/dom-element/blob/main/METHODS.md#show)
-- [siblings](https://github.com/digikid/dom-element/blob/main/METHODS.md#siblings)
-- [slideDown](https://github.com/digikid/dom-element/blob/main/METHODS.md#slideDown)
-- [slideToggle](https://github.com/digikid/dom-element/blob/main/METHODS.md#slideToggle)
-- [slideUp](https://github.com/digikid/dom-element/blob/main/METHODS.md#slideUp)
-- [style](https://github.com/digikid/dom-element/blob/main/METHODS.md#style) :white_check_mark:
-- [submit](https://github.com/digikid/dom-element/blob/main/METHODS.md#submit)
-- [text](https://github.com/digikid/dom-element/blob/main/METHODS.md#text)
-- [toggleClass](https://github.com/digikid/dom-element/blob/main/METHODS.md#toggleClass)
-- [trigger](https://github.com/digikid/dom-element/blob/main/METHODS.md#trigger)
-- [unwrap](https://github.com/digikid/dom-element/blob/main/METHODS.md#unwrap)
-- [val](https://github.com/digikid/dom-element/blob/main/METHODS.md#val)
-- [width](https://github.com/digikid/dom-element/blob/main/METHODS.md#width)
-- [wrap](https://github.com/digikid/dom-element/blob/main/METHODS.md#wrap)
-- [wrapInner](https://github.com/digikid/dom-element/blob/main/METHODS.md#wrapInner)
+#### Перемещение по DOM-дереву
+
+- [add](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#add)
+- [children](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#children)
+- [closest](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#closest)
+- [eq](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#eq)
+- [even](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#even)
+- [filter](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#filter)
+- [find](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#find)
+- [first](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#first)
+- [has](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#has)
+- [last](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#last)
+- [next](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#next)
+- [not](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#not)
+- [odd](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#odd)
+- [parent](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#parent)
+- [prev](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#prev)
+- [siblings](https://github.com/digikid/dom-element/blob/main/docs/TRAVERSING.md#siblings)
+
+#### Манипуляции с элементами
+
+- [addClass](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#addClass)
+- [after](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#after)
+- [append](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#append)
+- [appendTo](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#appendTo)
+- [attr](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#attr)
+- [before](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#before)
+- [clear](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#clear) :white_check_mark:
+- [clone](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#clone)
+- [each](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#each)
+- [empty](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#empty)
+- [html](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#html)
+- [insertAfter](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#insertAfter)
+- [insertBefore](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#insertBefore)
+- [outerHtml](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#outerHtml) :white_check_mark:
+- [prepend](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#prepend)
+- [prependTo](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#prependTo)
+- [prop](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#prop)
+- [remove](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#remove)
+- [removeAttr](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#removeAttr)
+- [removeProp](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#removeProp)
+- [replaceWith](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#replaceWith)
+- [text](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#text)
+- [toggleClass](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#toggleClass)
+- [unwrap](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#unwrap)
+- [val](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#val)
+- [wrap](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#wrap)
+- [wrapInner](https://github.com/digikid/dom-element/blob/main/docs/MANIPULATION.md#wrapInner)
+
+#### Стили и отображение
+
+- [css](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#css)
+- [height](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#height)
+- [hide](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#hide)
+- [offset](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#offset)
+- [outerHeight](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#outerHeight)
+- [outerWidth](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#outerWidth)
+- [position](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#position)
+- [rect](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#rect) :white_check_mark:
+- [show](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#show)
+- [style](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#style) :white_check_mark:
+- [width](https://github.com/digikid/dom-element/blob/main/docs/CSS.md#width)
+
+#### Обработка событий
+
+- [blur](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [change](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [click](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [contextmenu](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [dblclick](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [focus](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [focusin](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [focusout](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [hover](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [keydown](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [keypress](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [keyup](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mousedown](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mouseenter](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mouseleave](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mousemove](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mouseout](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mouseover](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [mouseup](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [off](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#off)
+- [on](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#on)
+- [select](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [ready](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#ready)
+- [resize](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [scroll](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [submit](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [trigger](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#trigger)
+- [triggerHandler](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#triggerHandler)
+
+#### Эффекты
+
+- [fadeIn](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#fadeIn)
+- [fadeOut](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#fadeOut)
+- [fadeToggle](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#fadeToggle)
+- [slideDown](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#slideDown)
+- [slideToggle](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#slideToggle)
+- [slideUp](https://github.com/digikid/dom-element/blob/main/docs/EFFECTS.md#slideUp)
+
+#### Геттеры
+
+- [exists](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#exists) :white_check_mark:
+- [get](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#get)
+- [hasClass](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#hasClass)
+- [index](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#index)
+- [is](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#is)
+- [raw](https://github.com/digikid/dom-element/blob/main/docs/GETTERS.md#raw) :white_check_mark:
+
+#### Работа с данными
+
+- [data](https://github.com/digikid/dom-element/blob/main/docs/DATA.md#data)
 
 ### Создание функций
 

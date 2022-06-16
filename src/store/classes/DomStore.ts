@@ -20,6 +20,7 @@ export class DomStore implements IDomStore {
           fn: {},
           listeners: {},
           delegatedListeners: {},
+          throttledEvents: {},
         };
       }
     }
@@ -38,12 +39,6 @@ export class DomStore implements IDomStore {
   public readonly setData = methods.setData;
 
   public readonly removeData = methods.removeData;
-
-  public readonly getFn = methods.getFn;
-
-  public readonly setFn = methods.setFn;
-
-  public readonly removeFn = methods.removeFn;
 
   public readonly getListener = methods.getListener;
 

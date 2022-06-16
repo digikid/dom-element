@@ -5,7 +5,7 @@ describe('next', () => {
     expect($next).toHaveLength(1);
 
     expect(
-      $next.get().every((el) => el.isEqualNode(getElement('.list-item-2'))),
+      ($next.get() as HTMLElement[]).every((el) => el.isEqualNode(getElement('.list-item-2'))),
     ).toBeTruthy();
   });
 

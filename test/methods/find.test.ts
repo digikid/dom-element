@@ -7,7 +7,7 @@ describe('find', () => {
     expect($result).toHaveLength(2);
 
     expect(
-      $result.get().every((el, i) => el.isEqualNode(selects[i])),
+      ($result.get() as HTMLElement[]).every((el, i) => el.isEqualNode(selects[i])),
     ).toBeTruthy();
   });
 

@@ -1,5 +1,7 @@
 import $ from '../../src/index.ts';
 
+window.$ = $;
+
 const failed = [];
 
 let check = true;

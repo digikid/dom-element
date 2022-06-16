@@ -1,34 +1,27 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { map } from '@core/hooks';
-import { validate } from '@src/validator';
-import { toCamelCase, toDashCase } from '@utils/string';
+import css, { DomCssMethod } from '@core/methods/css/css';
+import hide, { DomHideMethod } from '@core/methods/css/hide';
+import offset, { DomOffsetMethod } from '@core/methods/css/offset';
+import position, { DomPositionMethod } from '@core/methods/css/position';
+import rect, { DomRectMethod } from '@core/methods/css/rect';
+import show, { DomShowMethod } from '@core/methods/css/show';
+import style, { DomStyleMethod } from '@core/methods/css/style';
 
-export type DomCssMethod = (
-  name: string | Record<string, string> | null,
-  value?: string
-) => IDomElement | string;
+export interface IDomCssMethods {
+  readonly css: DomCssMethod;
+  readonly hide: DomHideMethod;
+  readonly offset: DomOffsetMethod;
+  readonly position: DomPositionMethod;
+  readonly rect: DomRectMethod;
+  readonly show: DomShowMethod;
+  readonly style: DomStyleMethod;
+}
 
-export default (function (this: IDomElement, name, value?) {
-  return map.call(
-    this,
-    name,
-    value,
-    (el, name) => {
-      const style = getComputedStyle(el, null);
-      const prop = toDashCase(name);
-
-      return style.getPropertyValue(prop);
-    },
-    (el, name, value) => {
-      const prop = toCamelCase(name);
-
-      (el.style as { [index: string]: any })[prop] = value;
-    },
-    undefined,
-    (el, name) => {
-      if (validate<null>(name, 'null')) {
-        el.removeAttribute('style');
-      }
-    },
-  );
-} as DomCssMethod);
+export default {
+  css,
+  hide,
+  offset,
+  position,
+  rect,
+  show,
+  style,
+} as IDomCssMethods;

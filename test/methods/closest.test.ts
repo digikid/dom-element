@@ -3,6 +3,8 @@ describe('closest', () => {
     const $closest = $('.paragraph').closest('#app');
 
     expect($closest).toHaveLength(1);
-    expect($closest.get(0).isEqualNode(getElement('#app'))).toBeTruthy();
+    expect(
+      ($closest.get(0) as HTMLElement).isEqualNode(getElement('#app')),
+    ).toBeTruthy();
   });
 });

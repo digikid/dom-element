@@ -1,7 +1,7 @@
 describe('style', () => {
   test('return element style', () => {
-    expect($('.styled').style().marginTop).toBe('25px');
-    expect($('.styled').style(true).marginTop).toBe(25);
+    expect(($('.styled').style() as any).marginTop).toBe('25px');
+    expect(($('.styled').style(true) as any).marginTop).toBe(25);
     expect($('.styled').style('background-color')).toBe('green');
     expect($('.styled').style('margin-top', true)).toBe(25);
   });

@@ -1,6 +1,6 @@
 {
   "name": "dom-element",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A set of methods for convenient manipulation of DOM elements",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

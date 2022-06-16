@@ -5,12 +5,14 @@ describe('filter', () => {
     expect($result).toHaveLength(1);
 
     expect(
-      $result.get().every((el) => el.isEqualNode(getElement('.list-item-1'))),
+      ($result.get() as HTMLElement[]).every((el) => el.isEqualNode(getElement('.list-item-1'))),
     ).toBeTruthy();
   });
 
   test('filter elements by callback', () => {
-    expect($('option').filter((el) => el.value === 'option-2')).toHaveLength(2);
+    expect(
+      $('option').filter((el) => (el as HTMLOptionElement).value === 'option-2'),
+    ).toHaveLength(2);
   });
 
   test('filter non-existent elements', () => {

@@ -1,10 +1,9 @@
-import { parse } from '@core/hooks';
+import { parse } from '@core/helpers/selector';
 import { validate } from '@src/validator';
 import { store } from '@src/store';
-import { IDomMethods } from '@core/methods';
 
 import * as polyfills from '@core/polyfills';
-import * as methods from '@core/methods';
+import methods, { IDomMethods } from '@core/methods';
 
 export type DomCollection = HTMLElement[];
 export type DomSelector = any;
@@ -84,15 +83,21 @@ export class DomElement implements IDomElement {
 
   public readonly closest = methods.closest;
 
+  public readonly contextmenu = methods.contextmenu;
+
   public readonly css = methods.css;
 
   public readonly data = methods.data;
+
+  public readonly dblclick = methods.dblclick;
 
   public readonly each = methods.each;
 
   public readonly empty = methods.empty;
 
   public readonly eq = methods.eq;
+
+  public readonly even = methods.even;
 
   public readonly exists = methods.exists;
 
@@ -110,6 +115,10 @@ export class DomElement implements IDomElement {
 
   public readonly focus = methods.focus;
 
+  public readonly focusin = methods.focusin;
+
+  public readonly focusout = methods.focusout;
+
   public readonly get = methods.get;
 
   public readonly has = methods.has;
@@ -119,6 +128,8 @@ export class DomElement implements IDomElement {
   public readonly height = methods.height;
 
   public readonly hide = methods.hide;
+
+  public readonly hover = methods.hover;
 
   public readonly html = methods.html;
 
@@ -130,11 +141,33 @@ export class DomElement implements IDomElement {
 
   public readonly is = methods.is;
 
+  public readonly keydown = methods.keydown;
+
+  public readonly keypress = methods.keypress;
+
+  public readonly keyup = methods.keyup;
+
   public readonly last = methods.last;
+
+  public readonly mousedown = methods.mousedown;
+
+  public readonly mouseenter = methods.mouseenter;
+
+  public readonly mouseleave = methods.mouseleave;
+
+  public readonly mousemove = methods.mousemove;
+
+  public readonly mouseout = methods.mouseout;
+
+  public readonly mouseover = methods.mouseover;
+
+  public readonly mouseup = methods.mouseup;
 
   public readonly next = methods.next;
 
   public readonly not = methods.not;
+
+  public readonly odd = methods.odd;
 
   public readonly off = methods.off;
 
@@ -180,6 +213,8 @@ export class DomElement implements IDomElement {
 
   public readonly scroll = methods.scroll;
 
+  public readonly select = methods.select;
+
   public readonly show = methods.show;
 
   public readonly siblings = methods.siblings;
@@ -199,6 +234,8 @@ export class DomElement implements IDomElement {
   public readonly toggleClass = methods.toggleClass;
 
   public readonly trigger = methods.trigger;
+
+  public readonly triggerHandler = methods.triggerHandler;
 
   public readonly unwrap = methods.unwrap;
 

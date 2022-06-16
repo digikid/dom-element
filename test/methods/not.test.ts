@@ -11,12 +11,14 @@ describe('not', () => {
     expect($result).toHaveLength(4);
 
     expect(
-      $result.get().every((el, i) => el.isEqualNode(result[i])),
+      ($result.get() as HTMLElement[]).every((el, i) => el.isEqualNode(result[i])),
     ).toBeTruthy();
   });
 
   test('not elements by callback', () => {
-    expect($('option').not((el) => el.value === 'option-2')).toHaveLength(8);
+    expect(
+      $('option').not((el) => (el as HTMLOptionElement).value === 'option-2'),
+    ).toHaveLength(8);
   });
 
   test('not non-existent elements', () => {

@@ -1,6 +1,6 @@
 import { IDomStore } from '@store/classes/DomStore';
 
-import { getListener } from '@store/hooks';
+import { getListeners } from '@store/helpers';
 
 export type DomStoreSetListenerMethod = (
   idOrElement: string | HTMLElement,
@@ -9,7 +9,7 @@ export type DomStoreSetListenerMethod = (
 ) => void;
 
 export default (function (this: IDomStore, idOrElement, name, listener) {
-  const { listeners } = getListener.apply(this, [idOrElement, name]);
+  const { listeners } = getListeners(idOrElement, name);
 
   if (typeof listener === 'function') {
     listeners.push(listener);

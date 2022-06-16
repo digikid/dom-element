@@ -5,7 +5,7 @@ describe('has', () => {
     expect($links).toHaveLength(1);
 
     expect(
-      $links.get().every((el) => el.isEqualNode(getElement('.links'))),
+      ($links.get() as HTMLElement[]).every((el) => el.isEqualNode(getElement('.links'))),
     ).toBeTruthy();
   });
 

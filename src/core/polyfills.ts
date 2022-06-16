@@ -1,4 +1,4 @@
-import match from '@polyfills/matches';
-import closest from '@polyfills/closest';
+import match from '@core/polyfills/matches';
+import closest from '@core/polyfills/closest';
 
 export { match, closest };

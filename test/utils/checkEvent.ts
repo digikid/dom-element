@@ -15,3 +15,11 @@ export default (
 
   return context.check;
 };
+
+declare global {
+  function checkEvent(
+    element: string | Window,
+    event: string,
+    cb: () => void
+  ): boolean;
+}

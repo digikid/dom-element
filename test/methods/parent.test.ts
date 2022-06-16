@@ -5,7 +5,7 @@ describe('parent', () => {
     expect($parent).toHaveLength(1);
 
     expect(
-      $parent.get().every((el) => el.isEqualNode(getElement('.wrapper'))),
+      ($parent.get() as HTMLElement[]).every((el) => el.isEqualNode(getElement('.wrapper'))),
     ).toBeTruthy();
   });
 
@@ -15,7 +15,7 @@ describe('parent', () => {
     expect($parent).toHaveLength(1);
 
     expect(
-      $parent.get().every((el) => el.isEqualNode(getElement('.select-multi'))),
+      ($parent.get() as HTMLElement[]).every((el) => el.isEqualNode(getElement('.select-multi'))),
     ).toBeTruthy();
   });
 

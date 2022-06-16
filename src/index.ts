@@ -1,6 +1,5 @@
 import { IDomElement, DomElement } from '@core/classes/DomElement';
-
-import fn from '@core/fn';
+import { store } from '@src/store';
 
 declare global {
   interface Element {
@@ -14,6 +13,8 @@ export interface IDomConstructor {
   fn: Record<string, Function>;
 }
 
-export default Object.assign((selector: any) => new DomElement(selector), {
-  fn,
-}) as IDomConstructor;
+const $ = Object.assign((selector: any) => new DomElement(selector), {
+  fn: store.get('fn'),
+});
+
+export default $ as IDomConstructor;

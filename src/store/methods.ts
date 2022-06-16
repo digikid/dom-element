@@ -6,9 +6,6 @@ import setData, { DomStoreSetDataMethod } from '@store/methods/data/set';
 import removeData, {
   DomStoreRemoveDataMethod,
 } from '@store/methods/data/remove';
-import getFn, { DomStoreGetFnMethod } from '@store/methods/fn/get';
-import setFn, { DomStoreSetFnMethod } from '@store/methods/fn/set';
-import removeFn, { DomStoreRemoveFnMethod } from '@store/methods/fn/remove';
 import getListener, {
   DomStoreGetListenerMethod,
 } from '@store/methods/listeners/get';
@@ -29,9 +26,6 @@ export interface IDomStoreMethods {
   getData: DomStoreGetDataMethod;
   setData: DomStoreSetDataMethod;
   removeData: DomStoreRemoveDataMethod;
-  getFn: DomStoreGetFnMethod;
-  setFn: DomStoreSetFnMethod;
-  removeFn: DomStoreRemoveFnMethod;
   getListener: DomStoreGetListenerMethod;
   setListener: DomStoreSetListenerMethod;
   delegateListener: DomStoreDelegateListenerMethod;
@@ -45,9 +39,6 @@ export {
   getData,
   setData,
   removeData,
-  getFn,
-  setFn,
-  removeFn,
   getListener,
   setListener,
   delegateListener,

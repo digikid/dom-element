@@ -1,4 +1,3 @@
-import isAlias from '@validator/checkers/alias';
 import isArray from '@validator/checkers/array';
 import isBoolean from '@validator/checkers/boolean';
 import isCheckboxElement from '@validator/checkers/checkboxElement';
@@ -25,7 +24,6 @@ import isTruthy from '@validator/checkers/truthy';
 import isWindow from '@validator/checkers/window';
 
 export {
-  isAlias,
   isArray,
   isBoolean,
   isCheckboxElement,

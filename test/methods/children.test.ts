@@ -5,9 +5,7 @@ describe('children', () => {
     expect($children).toHaveLength(5);
 
     expect(
-      $children
-        .get()
-        .every((el, i) => el.isEqualNode(getElement(`.list-item-${i + 1}`))),
+      ($children.get() as HTMLElement[]).every((el, i) => el.isEqualNode(getElement(`.list-item-${i + 1}`))),
     ).toBeTruthy();
   });
 });
