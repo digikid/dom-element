@@ -1,7 +1,7 @@
-import { createMethods } from '@core/helpers/constructors';
-import { IDomElement } from '@core/classes/DomElement';
 import { DomEventData } from '@core/types';
-import { some, validate } from '@src/validator';
+import { IDomElement } from '@core/classes/DomElement';
+import { createMethods } from '@core/helpers/constructors';
+import { validate } from '@src/validator';
 import { trigger } from '@core/helpers/events';
 
 export type IDomTriggerMethods = {
@@ -21,8 +21,8 @@ export default createMethods<DomTriggerMethod, keyof IDomTriggerMethods>(
   },
   (name, onlyHandlers = false) => function (this: IDomElement, eventName, eventData?) {
     if (validate<string>(eventName, 'string', 'truthy')) {
-      if (some<Window | Document>(this.selector, 'window', 'document')) {
-        trigger(this.selector, eventName, eventData, onlyHandlers);
+      if (validate(eventName, 'windowEvent')) {
+        trigger(window, eventName, eventData, onlyHandlers);
 
         return this;
       }

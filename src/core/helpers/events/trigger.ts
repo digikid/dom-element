@@ -1,14 +1,18 @@
+import { DomEventTarget, DomEventData } from '@core/types';
 import { some, validate } from '@src/validator';
 import { store } from '@src/store';
-import { getStoreId } from '@core/helpers/store';
-import { DomEventData } from '@core/types';
 
 export default (
-  el: HTMLElement | Window | Document,
+  el: DomEventTarget,
   event: string,
   data?: DomEventData,
   handlersOnly = false,
 ): void => {
+  const params = {
+    bubbles: true,
+    cancelable: true,
+  } as const;
+
   event.split(' ').forEach((event) => {
     let e: Event | CustomEvent;
 
@@ -19,24 +23,28 @@ export default (
         validate(window.CustomEvent)
         && validate<Function>(window.CustomEvent, 'function')
       ) {
-        e = new CustomEvent(event, { detail: data });
+        e = new CustomEvent(event, {
+          detail: data,
+          ...params,
+        });
       } else {
         e = document.createEvent('CustomEvent');
 
-        (e as CustomEvent).initCustomEvent(event, true, true, data);
+        (e as CustomEvent).initCustomEvent(
+          event,
+          params.bubbles,
+          params.cancelable,
+          data,
+        );
       }
     } else {
       e = document.createEvent('HTMLEvents');
 
-      e.initEvent(event, true, false);
+      e.initEvent(event, params.bubbles, params.cancelable);
     }
 
     if (handlersOnly) {
-      const storeId = getStoreId(el);
-      const listeners = store.getListener(storeId, event);
-      const delegatedListeners = store.getListener(storeId, event, true);
-
-      [...listeners, ...delegatedListeners].forEach((listener) => listener.call(el, e));
+      store.getHandlers(el, event).forEach((handler) => handler.call(el, e));
     } else {
       el.dispatchEvent(e);
     }

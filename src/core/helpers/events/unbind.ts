@@ -1,16 +1,22 @@
+import { DomEventTarget } from '@core/types';
 import { store } from '@src/store';
-import { getStoreId } from '@core/helpers/store';
+import { validate } from '@src/validator';
 
-export default (el: HTMLElement | Window | Document, event: string) => {
+export default (el: DomEventTarget, event: string): void => {
   event.split(' ').forEach((event) => {
-    const id = getStoreId(el);
-    const listeners = store.getListener(id, event);
-    const delegatedListeners = store.getListener(id, event, true);
+    store.removeHandlers(el, event);
 
-    listeners.forEach((listener) => el.removeEventListener(event, listener));
-    delegatedListeners.forEach((listener) => document.removeEventListener(event, listener));
+    const handlers = store.getAllHandlers(event);
+    const listeners = store.getAllListeners(event);
 
-    store.removeListener(id, event);
-    store.removeListener(id, event, true);
+    if (!handlers.length) {
+      const target = validate<Window>(el, 'window') ? window : document;
+
+      listeners.forEach((listener) => {
+        target.removeEventListener(event, listener as EventListener);
+
+        store.removeListeners(target, event);
+      });
+    }
   });
 };

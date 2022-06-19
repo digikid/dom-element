@@ -15,17 +15,11 @@
       "@core/*": [
         "core/*"
       ],
-      "@polyfills/*": [
-        "polyfills/*"
-      ],
       "@store/*": [
         "store/*"
       ],
       "@validator/*": [
         "validator/*"
-      ],
-      "@utils/*": [
-        "utils/*"
       ]
     }
   }

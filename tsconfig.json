@@ -24,9 +24,6 @@
       "@core/*": [
         "core/*"
       ],
-      "@polyfills/*": [
-        "polyfills/*"
-      ],
       "@store/*": [
         "store/*"
       ],

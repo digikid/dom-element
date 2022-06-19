@@ -1,5 +1,6 @@
-import { createMethods } from '@core/helpers/constructors';
+import { DomCallback } from '@core/types';
 import { IDomElement } from '@core/classes/DomElement';
+import { createMethods } from '@core/helpers/constructors';
 import { bind } from '@core/helpers/effects';
 
 export interface IDomEffectMethods {
@@ -13,7 +14,7 @@ export interface IDomEffectMethods {
 
 export type DomEffectMethod = (
   duration?: number | string | Function,
-  callback?: Function
+  callback?: DomCallback
 ) => IDomElement;
 
 export default createMethods<DomEffectMethod, keyof IDomEffectMethods>(

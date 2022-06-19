@@ -1,5 +1,4 @@
 import { IDomStore } from '@store/classes/DomStore';
-import { getData } from '@store/helpers';
 
 export type DomStoreSetDataMethod = (
   idOrElement: string | HTMLElement,
@@ -8,7 +7,7 @@ export type DomStoreSetDataMethod = (
 ) => void;
 
 export default (function (this: IDomStore, idOrElement, key, value) {
-  const data = getData(idOrElement);
+  const data = this.setupData(idOrElement);
 
   data[key] = value;
 } as DomStoreSetDataMethod);

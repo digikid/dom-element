@@ -1,8 +1,8 @@
-import { IDomElement, DomSelector } from '@core/classes/DomElement';
+import { IDomElement } from '@core/classes/DomElement';
 import { parse } from '@core/helpers/selector';
 import { validate } from '@src/validator';
 
-export type DomAddMethod = (selector: DomSelector) => IDomElement;
+export type DomAddMethod = (selector: any) => IDomElement;
 
 export default (function (this: IDomElement, selector) {
   if (validate(selector)) {

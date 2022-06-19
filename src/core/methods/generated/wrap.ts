@@ -1,5 +1,5 @@
-import { createMethods } from '@core/helpers/constructors';
 import { IDomElement } from '@core/classes/DomElement';
+import { createMethods } from '@core/helpers/constructors';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 

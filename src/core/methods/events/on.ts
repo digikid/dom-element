@@ -1,17 +1,18 @@
+import { DomCallback } from '@core/types';
 import { IDomElement } from '@core/classes/DomElement';
 import { bind } from '@core/helpers/events';
-import { some, validate } from '@src/validator';
+import { validate } from '@src/validator';
 
-export type DomOnMethodObject = Record<string, Function>;
+export type DomOnMethodObject = Record<string, DomCallback>;
 
 export type DomOnMethod = (
   eventName: string | DomOnMethodObject,
   selector?: string | Function,
-  callback?: Function
+  callback?: DomCallback
 ) => IDomElement;
 
 export default (function (this: IDomElement, eventName, selector?, callback?) {
-  const cb = [selector, callback].find((param): param is Function => validate<Function>(param, 'function'));
+  const cb = [selector, callback].find((param): param is DomCallback => validate<DomCallback>(param, 'function'));
 
   if (cb) {
     const events = validate<DomOnMethodObject>(eventName, 'object')
@@ -21,13 +22,10 @@ export default (function (this: IDomElement, eventName, selector?, callback?) {
       };
 
     Object.entries(events).forEach(([event, callback]) => {
-      if (
-        validate<HTMLElement>(this.selector, 'document')
-        && validate<string>(selector, 'selectorString')
-      ) {
-        bind(this.selector, event, callback, selector);
-      } else if (some<Window | Document>(this.selector, 'window', 'document')) {
-        bind(this.selector, event, callback);
+      if (validate<string>(selector, 'selectorString')) {
+        bind(document, event, callback, selector);
+      } else if (validate(event, 'windowEvent')) {
+        bind(window, event, callback);
       } else {
         this.each((el) => bind(el, event, callback));
       }

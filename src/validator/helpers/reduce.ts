@@ -1,6 +1,6 @@
 import { capitalize } from '@core/utils/string';
 
-import * as checkers from '@validator/checkers';
+import checkers from '@validator/checkers';
 
 export type DomValidatorReduceCallback = (
   acc: boolean,

@@ -1,5 +1,5 @@
-import { createMethods } from '@core/helpers/constructors';
 import { IDomElement } from '@core/classes/DomElement';
+import { createMethods } from '@core/helpers/constructors';
 import { reduce } from '@core/hooks';
 import { toNumber } from '@core/utils/string';
 import { getComputedValue } from '@core/helpers/css';

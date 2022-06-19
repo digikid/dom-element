@@ -1,3 +1,4 @@
+import { DomCallback } from '@core/types';
 import { validate } from '@src/validator';
 import { DomAnimateProps } from '@core/helpers/effects/bind';
 import { getComputedValue, getDisplayValue, isPx } from '@core/helpers/css';
@@ -6,7 +7,7 @@ export default (
   props: DomAnimateProps,
   el: HTMLElement,
   duration: number,
-  callback: Function | undefined,
+  callback: DomCallback | undefined,
   inverse = false,
 ) => {
   const display = getComputedValue(el, 'display', true);

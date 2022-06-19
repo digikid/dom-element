@@ -1,15 +1,19 @@
 import { DomStore } from '@store/classes/DomStore';
 
-export type DomListeners = Record<string, Record<string, EventListener[]>>;
-export type DomThrottledEvents = Record<string, string[]>;
+export type DomStoreId = string | HTMLElement | Window | Document | EventTarget;
+export type DomStoreHandlers = 'handlers' | 'listeners';
+export type DomStoreHandlersSetup = 'setupHandlers' | 'setupListeners';
+
+export type DomStoreDataObject = Record<string, any>;
+export type DomStoreFnObject = Record<string, any>;
+export type DomStoreHandlersObject<T> = Record<string, Record<string, T[]>>;
 
 export interface IDomStorage {
   initialized: boolean;
-  data: Record<string, any>;
-  listeners: DomListeners;
-  delegatedListeners: DomListeners;
-  throttledEvents: DomThrottledEvents;
-  fn: Record<string, Function>;
+  data: DomStoreDataObject;
+  handlers: DomStoreHandlersObject<Function>;
+  listeners: DomStoreHandlersObject<EventListener>;
+  fn: DomStoreFnObject;
 }
 
 declare global {

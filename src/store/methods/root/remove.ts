@@ -1,5 +1,5 @@
 import { IDomStore } from '@store/classes/DomStore';
-import { IDomStorage } from '@store/index';
+import { IDomStorage } from '@src/store';
 
 export type DomStoreRemoveMethod = <T extends keyof IDomStorage>(id: T) => void;
 

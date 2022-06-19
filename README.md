@@ -67,10 +67,8 @@ $(document)
 
 ### Методы
 
-Все методы работают по аналогии с методами jQuery.
-
-В ряде случаев для оптимизации производительности опущены редко используемые типы входящих параметров (как правило,
-коллбэк-функции).
+Все методы работают по аналогии с методами jQuery, если в описании не указано обратное. В ряде случаев для уменьшения
+веса библиотеки опущены редко используемые типы входящих параметров.
 
 Также добавлено несколько методов, не имеющих аналогов в jQuery. Они отмечены значком :white_check_mark:.
 
@@ -163,7 +161,11 @@ $(document)
 - [select](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
 - [ready](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#ready)
 - [resize](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [resizeDebounce](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#debounce) :white_check_mark:
+- [resizeThrottle](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#throttle) :white_check_mark:
 - [scroll](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
+- [scrollDebounce](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#debounce) :white_check_mark:
+- [scrollThrottle](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#throttle) :white_check_mark:
 - [submit](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#event)
 - [trigger](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#trigger)
 - [triggerHandler](https://github.com/digikid/dom-element/blob/main/docs/EVENTS.md#triggerHandler)

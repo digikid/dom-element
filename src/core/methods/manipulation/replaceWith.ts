@@ -1,12 +1,16 @@
-import { IDomElement, DomSelector } from '@core/classes/DomElement';
+import { IDomElement } from '@core/classes/DomElement';
 import { parse } from '@core/helpers/selector';
 
-export type DomReplaceWithMethod = (content: DomSelector) => IDomElement;
+export type DomReplaceWithMethod = (content: any) => IDomElement;
 
 export default (function (this: IDomElement, content) {
-  return this.each((el) => {
-    const replace = parse(content);
+  const parsed = parse(content);
 
-    el.replaceWith(...replace);
+  this.each((el) => {
+    el.replaceWith(...parsed);
   });
+
+  this.items = parsed;
+
+  return this;
 } as DomReplaceWithMethod);

@@ -1,6 +1,4 @@
-import * as methods from '@store/methods';
-
-import { IDomStoreMethods } from '@store/methods';
+import methods, { IDomStoreMethods } from '@store/methods';
 
 export interface IDomStore extends IDomStoreMethods {}
 
@@ -18,9 +16,8 @@ export class DomStore implements IDomStore {
           initialized: false,
           data: {},
           fn: {},
+          handlers: {},
           listeners: {},
-          delegatedListeners: {},
-          throttledEvents: {},
         };
       }
     }
@@ -34,17 +31,33 @@ export class DomStore implements IDomStore {
 
   public readonly remove = methods.remove;
 
+  public readonly getElementId = methods.getElementId;
+
   public readonly getData = methods.getData;
 
   public readonly setData = methods.setData;
 
+  public readonly setupData = methods.setupData;
+
   public readonly removeData = methods.removeData;
 
-  public readonly getListener = methods.getListener;
+  public readonly getHandlers = methods.getHandlers;
 
-  public readonly setListener = methods.setListener;
+  public readonly getAllHandlers = methods.getAllHandlers;
 
-  public readonly delegateListener = methods.delegateListener;
+  public readonly setHandlers = methods.setHandlers;
 
-  public readonly removeListener = methods.removeListener;
+  public readonly setupHandlers = methods.setupHandlers;
+
+  public readonly removeHandlers = methods.removeHandlers;
+
+  public readonly getListeners = methods.getListeners;
+
+  public readonly getAllListeners = methods.getAllListeners;
+
+  public readonly setListeners = methods.setListeners;
+
+  public readonly setupListeners = methods.setupListeners;
+
+  public readonly removeListeners = methods.removeListeners;
 }

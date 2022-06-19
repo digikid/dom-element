@@ -1,6 +1,7 @@
-import { createMethods } from '@core/helpers/constructors';
+import { DomCallback } from '@core/types';
 import { IDomElement } from '@core/classes/DomElement';
-import { some } from '@src/validator';
+import { createMethods } from '@core/helpers/constructors';
+import { validate } from '@src/validator';
 import { handle } from '@core/helpers/events';
 
 export interface IDomEventMethods {
@@ -29,7 +30,7 @@ export interface IDomEventMethods {
   readonly submit: DomEventMethod;
 }
 
-export type DomEventMethod = (callback?: Function) => IDomElement;
+export type DomEventMethod = (callback?: DomCallback) => IDomElement;
 
 export default createMethods<DomEventMethod, keyof IDomEventMethods>(
   {
@@ -58,8 +59,8 @@ export default createMethods<DomEventMethod, keyof IDomEventMethods>(
     submit: [],
   },
   (name) => function (this: IDomElement, callback?) {
-    if (some<Window | Document>(this.selector, 'window', 'document')) {
-      handle(this.selector, name, callback);
+    if (validate(name, 'windowEvent')) {
+      handle(window, name, callback);
 
       return this;
     }

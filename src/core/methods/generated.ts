@@ -3,6 +3,9 @@ import dimension, {
 } from '@core/methods/generated/dimension';
 import effects, { IDomEffectMethods } from '@core/methods/generated/effect';
 import event, { IDomEventMethods } from '@core/methods/generated/event';
+import eventThrottle, {
+  IDomEventDeferMethods,
+} from '@core/methods/generated/eventDelayed';
 import filter, { IDomFilterMethods } from '@core/methods/generated/filter';
 import move, { IDomMoveMethods } from '@core/methods/generated/move';
 import ordering, {
@@ -18,6 +21,7 @@ export interface IDomGeneratedMethods
   extends IDomDimensionMethods,
   IDomEffectMethods,
   IDomEventMethods,
+  IDomEventDeferMethods,
   IDomFilterMethods,
   IDomMoveMethods,
   IDomOrderingMethods,
@@ -29,6 +33,7 @@ export default {
   ...dimension,
   ...effects,
   ...event,
+  ...eventThrottle,
   ...filter,
   ...move,
   ...ordering,

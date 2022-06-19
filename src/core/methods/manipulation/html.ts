@@ -1,8 +1,7 @@
-// noinspection SpellCheckingInspection
-
 import { IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { reduce } from '@core/hooks';
+import { parse } from '@core/helpers/selector';
 
 export type DomHtmlMethod = (
   value?: string | boolean,
@@ -11,18 +10,25 @@ export type DomHtmlMethod = (
 
 export default (function (this: IDomElement, value, replace?) {
   if (validate<string>(value, 'string')) {
-    return this.each((el) => {
-      if (validate<boolean>(replace, 'truthy')) {
-        const parent = el.parentNode;
+    const parsed: HTMLElement[] = [];
 
-        if (validate<HTMLElement>(parent, 'htmlElement')) {
-          el.insertAdjacentHTML('afterend', value);
-          parent.removeChild(el);
-        }
+    this.each((el) => {
+      if (validate<boolean>(replace, 'truthy')) {
+        const content = parse(value);
+
+        el.replaceWith(...content);
+
+        parsed.push(...content);
       } else {
         el.innerHTML = value;
       }
     });
+
+    if (validate<boolean>(replace, 'truthy')) {
+      this.items = parsed;
+    }
+
+    return this;
   }
 
   return reduce.call(this, (el) => {

@@ -1,3 +1,4 @@
+import { DomCollection } from '@core/types';
 import { parse } from '@core/helpers/selector';
 import { validate } from '@src/validator';
 import { store } from '@src/store';
@@ -5,11 +6,8 @@ import { store } from '@src/store';
 import * as polyfills from '@core/polyfills';
 import methods, { IDomMethods } from '@core/methods';
 
-export type DomCollection = HTMLElement[];
-export type DomSelector = any;
-
 export interface IDomElement extends IDomMethods {
-  selector: DomSelector;
+  selector: any;
   collection: DomCollection;
 
   get length(): number;
@@ -24,7 +22,7 @@ export class DomElement implements IDomElement {
 
   public static fn: Record<string, Function> = {};
 
-  constructor(public selector: DomSelector) {
+  constructor(public selector: any) {
     if (!store.get('initialized')) {
       Object.values(polyfills).forEach((polyfill) => polyfill());
 
@@ -211,7 +209,15 @@ export class DomElement implements IDomElement {
 
   public readonly resize = methods.resize;
 
+  public readonly resizeDebounce = methods.resizeDebounce;
+
+  public readonly resizeThrottle = methods.resizeThrottle;
+
   public readonly scroll = methods.scroll;
+
+  public readonly scrollDebounce = methods.scrollDebounce;
+
+  public readonly scrollThrottle = methods.scrollThrottle;
 
   public readonly select = methods.select;
 

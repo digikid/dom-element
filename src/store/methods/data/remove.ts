@@ -1,6 +1,5 @@
 import { IDomStore } from '@store/classes/DomStore';
 import { validate } from '@src/validator';
-import { getData } from '@store/helpers';
 
 export type DomStoreRemoveDataMethod = (
   idOrElement: string | HTMLElement,
@@ -8,7 +7,7 @@ export type DomStoreRemoveDataMethod = (
 ) => void;
 
 export default (function (this: IDomStore, idOrElement, key?) {
-  const data = getData(idOrElement);
+  const data = this.setupData(idOrElement);
 
   if (validate<string>(key, 'string', 'truthy') && key in data) {
     delete data[key];

@@ -1,3 +1,4 @@
+import { DomCallback } from '@core/types';
 import { validate } from '@src/validator';
 import { trigger } from '@core/helpers/effects';
 import { getComputedValue, getDisplayValue } from '@core/helpers/css';
@@ -29,7 +30,7 @@ export type DomAnimateHook = (
   el: HTMLElement,
   effect: string,
   duration: number | string | Function | undefined,
-  callback: Function | undefined
+  callback: DomCallback | undefined
 ) => void;
 
 export default (function (el: HTMLElement, effect, duration, callback) {
@@ -48,7 +49,7 @@ export default (function (el: HTMLElement, effect, duration, callback) {
   }
 
   const inverse = getComputedValue(el, 'display') === 'none';
-  const cb = validate<Function>(duration, 'function') ? duration : callback;
+  const cb = validate<DomCallback>(duration, 'function') ? duration : callback;
   const display = getDisplayValue(el);
 
   if (inverse) {

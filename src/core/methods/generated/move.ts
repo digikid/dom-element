@@ -1,7 +1,7 @@
 // noinspection SpellCheckingInspection
 
+import { IDomElement } from '@core/classes/DomElement';
 import { createMethods } from '@core/helpers/constructors';
-import { DomSelector, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 
@@ -18,7 +18,7 @@ export interface IDomMoveMethods {
   readonly prependTo: DomMoveMethod;
 }
 
-export type DomMoveMethod = (selector: DomSelector) => IDomElement;
+export type DomMoveMethod = (selector: any) => IDomElement;
 
 export default createMethods<DomMoveMethod, keyof IDomMoveMethods>(
   {

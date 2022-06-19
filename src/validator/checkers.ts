@@ -3,6 +3,7 @@ import isBoolean from '@validator/checkers/boolean';
 import isCheckboxElement from '@validator/checkers/checkboxElement';
 import isDefined from '@validator/checkers/defined';
 import isDocument from '@validator/checkers/document';
+import isDocumentElement from '@validator/checkers/documentElement';
 import isDomElement from '@validator/checkers/domElement';
 import isFalsy from '@validator/checkers/falsy';
 import isFunction from '@validator/checkers/function';
@@ -22,13 +23,15 @@ import isSelectorString from '@validator/checkers/selectorString';
 import isString from '@validator/checkers/string';
 import isTruthy from '@validator/checkers/truthy';
 import isWindow from '@validator/checkers/window';
+import isWindowEvent from '@validator/checkers/windowEvent';
 
-export {
+export default {
   isArray,
   isBoolean,
   isCheckboxElement,
   isDefined,
   isDocument,
+  isDocumentElement,
   isDomElement,
   isFalsy,
   isFunction,
@@ -48,4 +51,5 @@ export {
   isString,
   isTruthy,
   isWindow,
+  isWindowEvent,
 };
