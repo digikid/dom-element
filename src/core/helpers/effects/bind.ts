@@ -58,13 +58,7 @@ export default (function (el: HTMLElement, effect, duration, callback) {
 
   const props = config[name].props.reduce(
     (acc, prop: string) => {
-      const rawValue = getComputedValue(
-        el,
-        prop,
-        ['width', 'height'].includes(prop),
-      );
-
-      const value = parseFloat(rawValue);
+      const value = parseFloat(getComputedValue(el, prop));
 
       if (!Number.isNaN(value)) {
         acc.el[toCamelCase(prop)] = value;

@@ -2,6 +2,14 @@
 
 Все заметные изменения задокументированы в этом файле.
 
+[1.3.1]: https://github.com/digikid/dom-element/releases/tag/1.3.1
+
+## [1.3.1] - 2022-06-20
+
+### Исправлено
+
+- Исправлена ошибка в методах `slideDown`, `slideToggle` и `slideUp`, приводящая к неверному отображению эффекта
+
 [1.3.0]: https://github.com/digikid/dom-element/releases/tag/1.3.0
 
 ## [1.3.0] - 2022-06-19
