@@ -1,6 +1,6 @@
 import { DomCallback } from '@core/types';
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { handle } from '@core/helpers/events';
 
@@ -14,6 +14,7 @@ export interface IDomEventMethods {
   readonly focusin: DomEventMethod;
   readonly focusout: DomEventMethod;
   readonly hover: DomEventMethod;
+  readonly input: DomEventMethod;
   readonly keydown: DomEventMethod;
   readonly keypress: DomEventMethod;
   readonly keyup: DomEventMethod;
@@ -30,9 +31,9 @@ export interface IDomEventMethods {
   readonly submit: DomEventMethod;
 }
 
-export type DomEventMethod = (callback?: DomCallback) => IDomElement;
+export type DomEventMethod = (callback?: DomCallback) => DomElement;
 
-export default createMethods<DomEventMethod, keyof IDomEventMethods>(
+export default create<DomEventMethod, keyof IDomEventMethods>(
   {
     blur: [],
     change: [],
@@ -43,6 +44,7 @@ export default createMethods<DomEventMethod, keyof IDomEventMethods>(
     focusin: [],
     focusout: [],
     hover: [],
+    input: [],
     keydown: [],
     keypress: [],
     keyup: [],
@@ -61,10 +63,10 @@ export default createMethods<DomEventMethod, keyof IDomEventMethods>(
   (name) => function (this: IDomElement, callback?) {
     if (validate(name, 'windowEvent')) {
       handle(window, name, callback);
-
-      return this;
+    } else {
+      this.collection.forEach((el) => handle(el, name, callback));
     }
 
-    return this.each((el) => handle(el, name, callback));
+    return new DomElement(this);
   },
 ) as IDomEventMethods;

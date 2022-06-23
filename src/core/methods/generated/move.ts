@@ -1,7 +1,7 @@
 // noinspection SpellCheckingInspection
 
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 
@@ -18,9 +18,9 @@ export interface IDomMoveMethods {
   readonly prependTo: DomMoveMethod;
 }
 
-export type DomMoveMethod = (selector: any) => IDomElement;
+export type DomMoveMethod = (selector: any) => DomElement;
 
-export default createMethods<DomMoveMethod, keyof IDomMoveMethods>(
+export default create<DomMoveMethod, keyof IDomMoveMethods>(
   {
     after: ['after'],
     append: ['append'],
@@ -39,9 +39,9 @@ export default createMethods<DomMoveMethod, keyof IDomMoveMethods>(
       const reversed = ['prepend', 'after'].includes(position);
 
       const parsed = parse(selector);
-      const parents = inverse ? parsed : this.items;
+      const parents = inverse ? parsed : this.collection;
 
-      let children = inverse ? this.items : parsed;
+      let children = inverse ? this.collection : parsed;
 
       parents.forEach((parent, i) => {
         if (parents.length !== children.length && i) {
@@ -70,6 +70,6 @@ export default createMethods<DomMoveMethod, keyof IDomMoveMethods>(
       });
     }
 
-    return this;
+    return new DomElement(this);
   },
 ) as IDomMoveMethods;

@@ -1,6 +1,6 @@
 import { DomCallback } from '@core/types';
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { bind } from '@core/helpers/effects';
 
 export interface IDomEffectMethods {
@@ -15,9 +15,9 @@ export interface IDomEffectMethods {
 export type DomEffectMethod = (
   duration?: number | string | Function,
   callback?: DomCallback
-) => IDomElement;
+) => DomElement;
 
-export default createMethods<DomEffectMethod, keyof IDomEffectMethods>(
+export default create<DomEffectMethod, keyof IDomEffectMethods>(
   {
     fadeIn: [],
     fadeOut: [],
@@ -27,6 +27,8 @@ export default createMethods<DomEffectMethod, keyof IDomEffectMethods>(
     slideToggle: [],
   },
   (name) => function (this: IDomElement, duration?, callback?) {
-    return this.each((el) => bind(el, name, duration, callback));
+    this.collection.forEach((el) => bind(el, name, duration, callback));
+
+    return new DomElement(this);
   },
 ) as IDomEffectMethods;

@@ -1,6 +1,7 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { getIndex } from '@core/helpers/element';
+import { map } from '@core/hooks';
 
 export interface IDomOrderingMethods {
   readonly even: DomOrderingMethod;
@@ -9,9 +10,9 @@ export interface IDomOrderingMethods {
   readonly odd: DomOrderingMethod;
 }
 
-export type DomOrderingMethod = () => IDomElement;
+export type DomOrderingMethod = () => DomElement;
 
-export default createMethods<DomOrderingMethod, keyof IDomOrderingMethods>(
+export default create<DomOrderingMethod, keyof IDomOrderingMethods>(
   {
     even: [],
     first: [],
@@ -19,7 +20,7 @@ export default createMethods<DomOrderingMethod, keyof IDomOrderingMethods>(
     odd: [],
   },
   (name) => function (this: IDomElement) {
-    return this.filter((el) => {
+    return map.call(this, () => this.collection.filter((el) => {
       const index = getIndex(el);
 
       if (name === 'even') {
@@ -45,6 +46,6 @@ export default createMethods<DomOrderingMethod, keyof IDomOrderingMethods>(
       }
 
       return false;
-    });
+    }));
   },
 );

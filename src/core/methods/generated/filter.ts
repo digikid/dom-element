@@ -1,7 +1,8 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { some, validate } from '@src/validator';
 import { isMatches } from '@core/helpers/element';
+import { map } from '@core/hooks';
 
 export interface IDomFilterMethods {
   readonly filter: DomFilterMethod;
@@ -13,30 +14,32 @@ export type DomFilterCallback = (el: HTMLElement, i: number) => any;
 export type DomFilterMethod = (
   selector: DomFilterCallback | string | undefined,
   inverse?: boolean
-) => IDomElement;
+) => DomElement;
 
-export default createMethods<DomFilterMethod, keyof IDomFilterMethods>(
+export default create<DomFilterMethod, keyof IDomFilterMethods, [boolean]>(
   {
-    filter: [],
+    filter: [false],
     not: [true],
   },
   (name, inverse = false) => function (this: IDomElement, selector) {
-    if (some<string | Function>(selector, 'function', 'selectorString')) {
-      this.items = this.items.filter((el, i) => {
-        let check = true;
+    return map.call(this, () => {
+      if (some<string | Function>(selector, 'function', 'selectorString')) {
+        return this.collection.filter((el, i) => {
+          let check = true;
 
-        if (validate<Function>(selector, 'function')) {
-          check = selector.apply(el, [el, i]);
-        }
+          if (validate<Function>(selector, 'function')) {
+            check = selector.apply(el, [el, i]);
+          }
 
-        if (validate<string>(selector, 'selectorString')) {
-          check = isMatches(el, selector);
-        }
+          if (validate<string>(selector, 'selectorString')) {
+            check = isMatches(el, selector);
+          }
 
-        return inverse ? !check : check;
-      });
-    }
+          return inverse ? !check : check;
+        });
+      }
 
-    return this;
+      return inverse ? this : [];
+    });
   },
 ) as IDomFilterMethods;

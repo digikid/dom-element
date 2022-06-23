@@ -1,17 +1,20 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { map } from '@core/hooks';
 
-export type DomNextMethod = (selector?: string) => IDomElement;
+export type DomNextMethod = (selector?: string) => DomElement;
 
 export default (function (this: IDomElement, selector?) {
-  this.items = this.items.reduce((acc: HTMLElement[], el: HTMLElement) => {
-    const nextSibling = <HTMLElement>el.nextElementSibling;
+  return map.call(
+    this,
+    () => this.collection.reduce((acc, el) => {
+      const nextSibling = <HTMLElement>el.nextElementSibling;
 
-    if (nextSibling) {
-      acc.push(nextSibling);
-    }
+      if (nextSibling) {
+        acc.push(nextSibling);
+      }
 
-    return acc;
-  }, []);
-
-  return this.filter(selector);
+      return acc;
+    }, [] as HTMLElement[]),
+    selector,
+  );
 } as DomNextMethod);

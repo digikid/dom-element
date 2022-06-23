@@ -1,11 +1,12 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { isMatches } from '@core/helpers/element';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
+import { isMatches } from '@core/helpers/element';
+import { map } from '@core/hooks';
 
-export type DomUnwrapMethod = (selector?: string) => IDomElement;
+export type DomUnwrapMethod = (selector?: string) => DomElement;
 
 export default (function (this: IDomElement, selector?) {
-  this.items = this.items.reduce((acc: HTMLElement[], el: HTMLElement) => {
+  return map.call(this, () => this.collection.reduce((acc, el) => {
     const parent = el.parentElement;
 
     if (parent) {
@@ -14,8 +15,8 @@ export default (function (this: IDomElement, selector?) {
 
       if (
         !validate(selector)
-        || (validate<string>(selector, 'selectorString')
-          && isMatches(parent, selector))
+          || (validate<string>(selector, 'selectorString')
+            && isMatches(parent, selector))
       ) {
         parent.replaceWith(...childNodes);
 
@@ -28,7 +29,5 @@ export default (function (this: IDomElement, selector?) {
     }
 
     return acc;
-  }, []);
-
-  return this;
+  }, [] as HTMLElement[]));
 } as DomUnwrapMethod);

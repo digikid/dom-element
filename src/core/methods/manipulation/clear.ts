@@ -1,7 +1,9 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 
-export type DomClearMethod = () => IDomElement;
+export type DomClearMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
-  return this.html('');
+  this.html('');
+
+  return new DomElement(this);
 } as DomClearMethod);

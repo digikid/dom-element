@@ -12,7 +12,8 @@ export default (
 ) => {
   const display = getComputedValue(el, 'display', true);
   const isHidden = getDisplayValue(el) === 'none';
-  const hasOverflow = Object.keys(props.el).some((prop) => isPx(prop));
+  const hasOverflow = Object.keys(props.el)
+    .some((prop) => isPx(prop));
 
   if ((inverse && !isHidden) || (!inverse && isHidden)) {
     return;
@@ -21,11 +22,13 @@ export default (
   let start: undefined | number;
 
   if (hasOverflow) {
-    el.style.overflow = 'hidden';
+    el.style.setProperty('overflow', 'hidden');
   }
 
   if (inverse) {
-    el.style.display = display === 'none' ? 'block' : display;
+    const displayValue = display === 'none' ? 'block' : display;
+
+    el.style.setProperty('display', displayValue);
   }
 
   function step(timestamp: number) {
@@ -33,23 +36,26 @@ export default (
 
     const elapsed = timestamp - start;
 
-    Object.entries(props.step).forEach(([prop, v]) => {
-      const value = inverse ? v * elapsed : props.el[prop] - v * elapsed;
+    Object.entries(props.step)
+      .forEach(([prop, v]) => {
+        const value = inverse ? v * elapsed : props.el[prop] - v * elapsed;
+        const stringValue = isPx(prop) ? `${value}px` : value.toString();
 
-      el.style[prop as any] = isPx(prop) ? `${value}px` : value.toString();
-    });
-
-    if (elapsed >= duration) {
-      Object.keys(props.step).forEach((prop) => {
-        el.style[prop as any] = '';
+        el.style.setProperty(prop, stringValue);
       });
 
+    if (elapsed >= duration) {
+      Object.keys(props.step)
+        .forEach((prop) => {
+          el.style.setProperty(prop, null);
+        });
+
       if (hasOverflow) {
-        el.style.overflow = '';
+        el.style.setProperty('overflow', null);
       }
 
       if (!inverse) {
-        el.style.display = 'none';
+        el.style.setProperty('display', 'none');
       }
 
       if (validate<Function>(callback, 'function')) {

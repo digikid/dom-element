@@ -1,56 +1,32 @@
 import { DomCollection } from '@core/types';
 import { parse } from '@core/helpers/selector';
-import { validate } from '@src/validator';
 import { store } from '@src/store';
 
-import * as polyfills from '@core/polyfills';
+import polyfills from '@core/polyfills';
 import methods, { IDomMethods } from '@core/methods';
 
 export interface IDomElement extends IDomMethods {
-  selector: any;
   collection: DomCollection;
 
   get length(): number;
-
-  get items(): DomCollection;
-
-  set items(collection: DomCollection);
 }
 
 export class DomElement implements IDomElement {
   public collection: DomCollection = [];
 
-  public static fn: Record<string, Function> = {};
-
-  constructor(public selector: any) {
+  constructor(selector: any) {
     if (!store.get('initialized')) {
-      Object.values(polyfills).forEach((polyfill) => polyfill());
+      Object.values(polyfills)
+        .forEach((polyfill) => polyfill());
 
       store.set('initialized', true);
     }
 
-    this.items = parse(selector);
+    this.collection = parse(selector);
   }
 
   get length() {
     return this.collection.length;
-  }
-
-  get items() {
-    return this.collection;
-  }
-
-  set items(collection: DomCollection) {
-    this.collection = collection.reduce(
-      (acc: DomCollection, el: HTMLElement) => {
-        if (!acc.includes(el) && validate<HTMLElement>(el, 'htmlElement')) {
-          acc.push(el);
-        }
-
-        return acc;
-      },
-      [],
-    );
   }
 
   public readonly add = methods.add;
@@ -133,6 +109,8 @@ export class DomElement implements IDomElement {
 
   public readonly index = methods.index;
 
+  public readonly input = methods.input;
+
   public readonly insertAfter = methods.insertAfter;
 
   public readonly insertBefore = methods.insertBefore;
@@ -146,6 +124,8 @@ export class DomElement implements IDomElement {
   public readonly keyup = methods.keyup;
 
   public readonly last = methods.last;
+
+  public readonly map = methods.map;
 
   public readonly mousedown = methods.mousedown;
 

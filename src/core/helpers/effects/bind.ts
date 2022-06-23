@@ -4,6 +4,8 @@ import { trigger } from '@core/helpers/effects';
 import { getComputedValue, getDisplayValue } from '@core/helpers/css';
 import { toCamelCase, fromCamelCaseToArray } from '@core/utils/string';
 
+import defaults from '@core/defaults';
+
 const config = {
   fade: {
     directions: ['in', 'out', 'toggle'],
@@ -39,7 +41,9 @@ export default (function (el: HTMLElement, effect, duration, callback) {
     typeof directions[number],
   ];
 
-  let parsedDuration = validate<number>(duration, 'number') ? duration : 400;
+  let parsedDuration = validate<number>(duration, 'number')
+    ? duration
+    : defaults.effects.duration;
 
   if (
     validate<string>(duration, 'string')
@@ -50,10 +54,11 @@ export default (function (el: HTMLElement, effect, duration, callback) {
 
   const inverse = getComputedValue(el, 'display') === 'none';
   const cb = validate<DomCallback>(duration, 'function') ? duration : callback;
-  const display = getDisplayValue(el);
+  const initialDisplay = getDisplayValue(el);
+  const currentDisplay = initialDisplay === 'none' ? 'block' : initialDisplay;
 
   if (inverse) {
-    el.style.display = display === 'none' ? 'block' : display;
+    el.style.setProperty('display', currentDisplay);
   }
 
   const props = config[name].props.reduce(
@@ -74,7 +79,7 @@ export default (function (el: HTMLElement, effect, duration, callback) {
   );
 
   if (inverse) {
-    el.style.display = display;
+    el.style.setProperty('display', initialDisplay);
   }
 
   if (direction === 'up' || direction === 'out') {

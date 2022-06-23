@@ -1,5 +1,5 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 
@@ -8,16 +8,16 @@ export type IDomWrapMethods = {
   readonly wrapInner: DomWrapMethod;
 };
 
-export type DomWrapMethod = (htmlString: string) => IDomElement;
+export type DomWrapMethod = (htmlString: string) => DomElement;
 
-export default createMethods<DomWrapMethod, keyof IDomWrapMethods>(
+export default create<DomWrapMethod, keyof IDomWrapMethods, [boolean]>(
   {
-    wrap: [],
+    wrap: [false],
     wrapInner: [true],
   },
   (name, inner = false) => function (this: IDomElement, htmlString) {
     if (validate<string>(htmlString, 'htmlString')) {
-      this.each((el) => {
+      this.collection.forEach((el) => {
         const wrapper = parse.call(this, htmlString)[0];
 
         if (wrapper) {
@@ -39,6 +39,6 @@ export default createMethods<DomWrapMethod, keyof IDomWrapMethods>(
       });
     }
 
-    return this;
+    return new DomElement(this);
   },
 ) as IDomWrapMethods;

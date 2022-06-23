@@ -1,5 +1,5 @@
 import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { create } from '@core/helpers/methods';
 import { reduce } from '@core/hooks';
 import { toNumber } from '@core/utils/string';
 import { getComputedValue } from '@core/helpers/css';
@@ -11,10 +11,7 @@ export interface IDomOuterDimensionMethods {
   readonly outerWidth: DomOuterDimensionMethod;
 }
 
-export default createMethods<
-DomOuterDimensionMethod,
-keyof IDomOuterDimensionMethods
->(
+export default create<DomOuterDimensionMethod, keyof IDomOuterDimensionMethods>(
   {
     outerHeight: [],
     outerWidth: [],

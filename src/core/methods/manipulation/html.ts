@@ -1,18 +1,18 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
-import { reduce } from '@core/hooks';
+import { reduce, map } from '@core/hooks';
 import { parse } from '@core/helpers/selector';
 
 export type DomHtmlMethod = (
   value?: string | boolean,
   replace?: boolean
-) => IDomElement | string;
+) => DomElement | string;
 
 export default (function (this: IDomElement, value, replace?) {
   if (validate<string>(value, 'string')) {
     const parsed: HTMLElement[] = [];
 
-    this.each((el) => {
+    this.collection.forEach((el) => {
       if (validate<boolean>(replace, 'truthy')) {
         const content = parse(value);
 
@@ -24,11 +24,7 @@ export default (function (this: IDomElement, value, replace?) {
       }
     });
 
-    if (validate<boolean>(replace, 'truthy')) {
-      this.items = parsed;
-    }
-
-    return this;
+    return map.call(this, () => (validate<boolean>(replace, 'truthy') ? parsed : this));
   }
 
   return reduce.call(this, (el) => {

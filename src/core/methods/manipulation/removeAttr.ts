@@ -1,13 +1,12 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomRemoveAttrId = string;
-export type DomRemoveAttrMethod = (id: DomRemoveAttrId) => IDomElement;
+export type DomRemoveAttrMethod = (name: string) => DomElement;
 
-export default (function (this: IDomElement, id) {
-  if (validate<DomRemoveAttrId>(id, 'string', 'truthy')) {
-    return this.attr(id, null);
+export default (function (this: IDomElement, name) {
+  if (validate<string>(name, 'string', 'truthy')) {
+    this.collection.forEach((el) => el.removeAttribute(name));
   }
 
-  return this;
+  return new DomElement(this);
 } as DomRemoveAttrMethod);

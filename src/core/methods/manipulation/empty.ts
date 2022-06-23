@@ -1,11 +1,13 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 
-export type DomEmptyMethod = () => IDomElement;
+export type DomEmptyMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
-  return this.each((el) => {
+  this.collection.forEach((el) => {
     while (el.firstChild) {
       el.removeChild(el.firstChild);
     }
   });
+
+  return new DomElement(this);
 } as DomEmptyMethod);

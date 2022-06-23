@@ -1,6 +1,6 @@
 import { DomEventData } from '@core/types';
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { trigger } from '@core/helpers/events';
 
@@ -12,9 +12,9 @@ export type IDomTriggerMethods = {
 export type DomTriggerMethod = (
   eventName: string,
   eventData?: DomEventData
-) => IDomElement;
+) => DomElement;
 
-export default createMethods<DomTriggerMethod, keyof IDomTriggerMethods>(
+export default create<DomTriggerMethod, keyof IDomTriggerMethods>(
   {
     trigger: [],
     triggerHandler: [true],
@@ -23,13 +23,11 @@ export default createMethods<DomTriggerMethod, keyof IDomTriggerMethods>(
     if (validate<string>(eventName, 'string', 'truthy')) {
       if (validate(eventName, 'windowEvent')) {
         trigger(window, eventName, eventData, onlyHandlers);
-
-        return this;
+      } else {
+        this.collection.forEach((el) => trigger(el, eventName, eventData, onlyHandlers));
       }
-
-      return this.each((el) => trigger(el, eventName, eventData, onlyHandlers));
     }
 
-    return this;
+    return new DomElement(this);
   },
 ) as IDomTriggerMethods;

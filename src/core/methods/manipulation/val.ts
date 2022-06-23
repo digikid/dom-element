@@ -1,15 +1,15 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { reduce } from '@core/hooks';
 import { some, validate } from '@src/validator';
 
 export type DomValMethodValue = null | string | number | string[];
 export type DomValMethod = (
   value?: DomValMethodValue
-) => IDomElement | string | null;
+) => DomElement | string | null;
 
 export default (function (this: IDomElement, value?) {
   if (some<DomValMethodValue>(value, 'null', 'string', 'number', 'array')) {
-    return this.each((el) => {
+    this.collection.forEach((el) => {
       if ('value' in el) {
         if (validate<string[]>(value, 'array')) {
           if (some<HTMLInputElement>(el, 'radioElement', 'checkboxElement')) {
@@ -46,6 +46,8 @@ export default (function (this: IDomElement, value?) {
         }
       }
     });
+
+    return new DomElement(this);
   }
 
   return reduce.call(this, (el) => {

@@ -1,10 +1,12 @@
 import { DomCallback } from '@core/types';
-import { IDomElement } from '@core/classes/DomElement';
-import { createMethods } from '@core/helpers/constructors';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { bind } from '@core/helpers/events';
 import { fromCamelCaseToArray } from '@core/utils/string';
 import { debounce, throttle } from '@core/utils/performance';
+
+import defaults from '@core/defaults';
 
 export interface IDomEventDeferMethods {
   readonly resizeDebounce: DomEventDeferMethod;
@@ -16,14 +18,18 @@ export interface IDomEventDeferMethods {
 export type DomEventDeferMethod = (
   callback: DomCallback,
   delay?: number
-) => IDomElement;
+) => DomElement;
 
-export default createMethods<DomEventDeferMethod, keyof IDomEventDeferMethods>(
+export default create<
+DomEventDeferMethod,
+keyof IDomEventDeferMethods,
+[typeof debounce | typeof throttle, number]
+>(
   {
-    resizeDebounce: [debounce, 200],
-    scrollDebounce: [debounce, 200],
-    resizeThrottle: [throttle, 66],
-    scrollThrottle: [throttle, 66],
+    resizeDebounce: [debounce, defaults.delay.debounce],
+    scrollDebounce: [debounce, defaults.delay.debounce],
+    resizeThrottle: [throttle, defaults.delay.throttle],
+    scrollThrottle: [throttle, defaults.delay.throttle],
   },
   (name, wrapper, defaultDelay) => {
     const [eventName] = fromCamelCaseToArray(name);
@@ -33,11 +39,11 @@ export default createMethods<DomEventDeferMethod, keyof IDomEventDeferMethods>(
 
       if (validate(eventName, 'windowEvent')) {
         bind(window, eventName, cb);
-
-        return this;
+      } else {
+        this.collection.forEach((el) => bind(el, eventName, cb));
       }
 
-      return this.each((el) => bind(el, eventName, cb));
+      return new DomElement(this);
     };
   },
 ) as IDomEventDeferMethods;

@@ -1,14 +1,14 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomRemoveClassMethod = (...classNames: string[]) => IDomElement;
+export type DomRemoveClassMethod = (...classNames: string[]) => DomElement;
 
 export default (function (this: IDomElement, ...classNames) {
   if (classNames.every((className) => validate<string>(className, 'string'))) {
-    return this.each((el) => {
+    this.collection.forEach((el) => {
       el.classList.remove(...classNames);
     });
   }
 
-  return this;
+  return new DomElement(this);
 } as DomRemoveClassMethod);

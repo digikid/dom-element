@@ -50,6 +50,34 @@ $('.element-1, .element-2, .element-3')
   .click(handler);
 ```
 
+<a name="event-propagation"></a>
+
+## Использование e.stopPropagation
+
+Ввиду делегирования событий, использование `e.stopPropagation` в привычном виде становится невозможным.
+
+Чтобы отменить вызов обработчика для конкретного элемента, нужно явно сравнить его с `e.target`.
+
+### Пример работы в jQuery
+
+```js
+$('.parent')
+  .click(handler);
+$('.children')
+  .click(e => e.stopPropagation());
+```
+
+### Пример работы в dom-element
+
+```js
+$('.parent')
+  .click(e => {
+    if (!e.target.classList.contains('children')) {
+      handler();
+    }
+  });
+```
+
 <a name="event"></a>
 
 ## [eventName]
@@ -69,6 +97,7 @@ $('.element-1, .element-2, .element-3')
 - `focusin` (работает аналогично [jQuery.focusin](https://api.jquery.com/focusin/))
 - `focusout` (работает аналогично [jQuery.focusout](https://api.jquery.com/focusout/))
 - `hover` (работает аналогично [jQuery.hover](https://api.jquery.com/hover/))
+- `input` (работает аналогично [jQuery.input](https://api.jquery.com/input/))
 - `keydown` (работает аналогично [jQuery.keydown](https://api.jquery.com/keydown/))
 - `keypress` (работает аналогично [jQuery.keypress](https://api.jquery.com/keypress/))
 - `keyup` (работает аналогично [jQuery.keyup](https://api.jquery.com/keyup/))

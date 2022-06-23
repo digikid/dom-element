@@ -1,19 +1,17 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { unbind } from '@core/helpers/events';
 
-export type DomOffMethod = (eventName: string) => IDomElement;
+export type DomOffMethod = (eventName: string) => DomElement;
 
 export default (function (this: IDomElement, eventName) {
   if (validate<string>(eventName, 'string', 'truthy')) {
     if (validate(eventName, 'windowEvent')) {
       unbind(window, eventName);
-
-      return this;
+    } else {
+      this.collection.forEach((el) => unbind(el, eventName));
     }
-
-    return this.each((el) => unbind(el, eventName));
   }
 
-  return this;
+  return new DomElement(this);
 } as DomOffMethod);

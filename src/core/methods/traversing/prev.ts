@@ -1,17 +1,20 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { map } from '@core/hooks';
 
-export type DomPrevMethod = (selector?: string) => IDomElement;
+export type DomPrevMethod = (selector?: string) => DomElement;
 
 export default (function (this: IDomElement, selector?) {
-  this.items = this.items.reduce((acc: HTMLElement[], el: HTMLElement) => {
-    const previousSibling = <HTMLElement>el.previousElementSibling;
+  return map.call(
+    this,
+    () => this.collection.reduce((acc, el) => {
+      const previousSibling = <HTMLElement>el.previousElementSibling;
 
-    if (previousSibling) {
-      acc.push(previousSibling);
-    }
+      if (previousSibling) {
+        acc.push(previousSibling);
+      }
 
-    return acc;
-  }, []);
-
-  return this.filter(selector);
+      return acc;
+    }, [] as HTMLElement[]),
+    selector,
+  );
 } as DomPrevMethod);

@@ -1,5 +1,5 @@
 import { DomCallback } from '@core/types';
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { bind } from '@core/helpers/events';
 import { validate } from '@src/validator';
 
@@ -9,7 +9,7 @@ export type DomOnMethod = (
   eventName: string | DomOnMethodObject,
   selector?: string | Function,
   callback?: DomCallback
-) => IDomElement;
+) => DomElement;
 
 export default (function (this: IDomElement, eventName, selector?, callback?) {
   const cb = [selector, callback].find((param): param is DomCallback => validate<DomCallback>(param, 'function'));
@@ -27,10 +27,10 @@ export default (function (this: IDomElement, eventName, selector?, callback?) {
       } else if (validate(event, 'windowEvent')) {
         bind(window, event, callback);
       } else {
-        this.each((el) => bind(el, event, callback));
+        this.collection.forEach((el) => bind(el, event, callback));
       }
     });
   }
 
-  return this;
+  return new DomElement(this);
 } as DomOnMethod);

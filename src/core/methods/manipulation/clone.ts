@@ -1,15 +1,14 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { map } from '@core/hooks';
 
-export type DomCloneMethod = () => IDomElement;
+export type DomCloneMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
-  this.items = this.items.reduce((acc: HTMLElement[], el: HTMLElement) => {
+  return map.call(this, () => this.collection.reduce((acc, el) => {
     const clone = <HTMLElement>el.cloneNode(true);
 
     acc.push(clone);
 
     return acc;
-  }, []);
-
-  return this;
+  }, [] as HTMLElement[]));
 } as DomCloneMethod);

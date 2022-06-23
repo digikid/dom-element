@@ -5,7 +5,7 @@ import effects, { IDomEffectMethods } from '@core/methods/generated/effect';
 import event, { IDomEventMethods } from '@core/methods/generated/event';
 import eventThrottle, {
   IDomEventDeferMethods,
-} from '@core/methods/generated/eventDelayed';
+} from '@core/methods/generated/eventDefer';
 import filter, { IDomFilterMethods } from '@core/methods/generated/filter';
 import move, { IDomMoveMethods } from '@core/methods/generated/move';
 import ordering, {

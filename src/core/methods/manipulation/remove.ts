@@ -1,16 +1,18 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomRemoveMethod = () => IDomElement;
+export type DomRemoveMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
-  return this.each((el, i) => {
+  this.collection.forEach((el, i) => {
     const parent = el.parentNode;
 
     if (validate<HTMLElement>(parent, 'htmlElement')) {
       parent.removeChild(el);
 
-      this.items.splice(i, 1);
+      this.collection.splice(i, 1);
     }
   });
+
+  return new DomElement(this);
 } as DomRemoveMethod);

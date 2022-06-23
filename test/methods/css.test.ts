@@ -6,47 +6,22 @@ describe('css', () => {
   };
 
   test('return css value', () => {
-    expect($('.list')
-      .css('padding'))
-      .toBe(getStyle('.list', 'padding'));
+    expect($('.list').css('padding')).toBe(getStyle('.list', 'padding'));
   });
 
   test('set css value by name', () => {
-    $('.paragraph')
-      .css('font-size', '18px');
+    $('.paragraph').css('font-size', '18px');
 
-    expect(getStyle('.paragraph', 'font-size'))
-      .toBe('18px');
+    expect(getStyle('.paragraph', 'font-size')).toBe('18px');
   });
 
   test('set css values by object', () => {
-    $('.paragraph')
-      .css(values);
+    $('.paragraph').css(values);
 
     expect(
-      Object.entries(values)
-        .every(
-          ([name, value]) => getStyle('.paragraph', toDashCase(name)) === value,
-        ),
-    )
-      .toBeTruthy();
-  });
-
-  test('remove inline styles by null value', () => {
-    const paragraph = getElement('.paragraph') as HTMLElement;
-
-    Object.entries(values)
-      .forEach(([name, value]) => {
-        paragraph.style[name] = value;
-      });
-
-    $('.paragraph')
-      .css(null);
-
-    expect(
-      getElement('.paragraph')
-        .getAttribute('style'),
-    )
-      .toBeFalsy();
+      Object.entries(values).every(
+        ([name, value]) => getStyle('.paragraph', toDashCase(name)) === value,
+      ),
+    ).toBeTruthy();
   });
 });

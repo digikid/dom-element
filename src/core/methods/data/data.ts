@@ -1,19 +1,13 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement } from '@core/classes/DomElement';
 import { store } from '@src/store';
-import { map } from '@core/hooks';
+import { resolve } from '@core/helpers/methods';
 
 export type DomDataMethod = (
   key?: string | Record<string, any>,
   value?: any
-) => any;
+) => DomElement | any;
 
-export default (function (this: IDomElement, key?, value?) {
-  return map.call(
-    this,
-    key,
-    value,
-    (el, key) => store.getData(el, key),
-    (el, key, value) => store.setData(el, key, value),
-    (el) => store.getData(el),
-  );
-} as DomDataMethod);
+export default resolve<any>(
+  (el, name) => store.getData(el, name),
+  (el, name, value) => store.setData(el, name, value),
+) as DomDataMethod;

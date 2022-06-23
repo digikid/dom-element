@@ -1,10 +1,10 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { parseToCssObject } from '@core/utils/string';
 
-export type DomShowMethod = (displayValue?: string) => IDomElement;
+export type DomShowMethod = (displayValue?: string) => DomElement;
 
 export default (function (this: IDomElement, displayValue = 'block') {
-  return this.each((el) => {
+  this.collection.forEach((el) => {
     const inlineStyle = el.getAttribute('style');
     const cssObject = parseToCssObject(inlineStyle);
 
@@ -15,7 +15,9 @@ export default (function (this: IDomElement, displayValue = 'block') {
     const style = getComputedStyle(el, null);
 
     if (style.getPropertyValue('display') === 'none') {
-      el.style.display = displayValue;
+      el.style.setProperty('display', displayValue);
     }
   });
+
+  return new DomElement(this);
 } as DomShowMethod);

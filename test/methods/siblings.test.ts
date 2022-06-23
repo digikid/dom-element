@@ -5,9 +5,7 @@ describe('siblings', () => {
     expect($siblings).toHaveLength(4);
 
     expect(
-      $siblings
-        .get()
-        .every((el, i) => el.isEqualNode(getElement(`.list-item-${i + 2}`))),
+      ($siblings.get() as HTMLElement[]).every((el, i) => el.isEqualNode(getElement(`.list-item-${i + 2}`))),
     ).toBeTruthy();
   });
 

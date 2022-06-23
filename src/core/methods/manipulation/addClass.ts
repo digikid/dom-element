@@ -1,14 +1,14 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomAddClassMethod = (...classNames: string[]) => IDomElement;
+export type DomAddClassMethod = (...classNames: string[]) => DomElement;
 
 export default (function (this: IDomElement, ...classNames) {
   if (classNames.every((className) => validate<string>(className, 'string'))) {
-    return this.each((el) => {
+    this.collection.forEach((el) => {
       el.classList.add(...classNames);
     });
   }
 
-  return this;
+  return new DomElement(this);
 } as DomAddClassMethod);

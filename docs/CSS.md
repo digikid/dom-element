@@ -13,9 +13,6 @@
 | value       | {string: string} &#124; null | DomElement            |
 | name, value | string, string               | DomElement            |
 
-:warning: **Обратите внимание**  
-Чтобы удалить все инлайн-стили, передайте в качестве параметра `null`.
-
 ### Использование
 
 ```js
@@ -33,10 +30,6 @@ $('.element')
     marginTop: '50px',
     color: 'green'
   });
-
-// Удалить инлайн-стили элемента
-$('.element')
-  .css(null)
 ```
 
 ## height

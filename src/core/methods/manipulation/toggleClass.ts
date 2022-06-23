@@ -1,11 +1,11 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomToggleClassMethod = (className: string) => IDomElement;
+export type DomToggleClassMethod = (className: string) => DomElement;
 
 export default (function (this: IDomElement, className) {
   if (validate<string>(className, 'string', 'truthy')) {
-    return this.each((el) => {
+    this.collection.forEach((el) => {
       const classes = className.split(' ');
 
       classes.forEach((className) => {
@@ -18,5 +18,5 @@ export default (function (this: IDomElement, className) {
     });
   }
 
-  return this;
+  return new DomElement(this);
 } as DomToggleClassMethod);

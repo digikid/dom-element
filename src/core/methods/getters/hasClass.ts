@@ -9,5 +9,5 @@ export default (function (this: IDomElement, className) {
     return reduce.call(this, (el) => el.classList.contains(className));
   }
 
-  return this;
+  return false;
 } as DomHasClassMethod);

@@ -1,4 +1,4 @@
-import { IDomElement, DomElement } from '@core/classes/DomElement';
+import { DomElement } from '@core/classes/DomElement';
 import { store } from '@src/store';
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
 }
 
 export interface IDomConstructor {
-  (selector: any): IDomElement;
+  (selector: any): DomElement;
 
   fn: Record<string, Function>;
 }

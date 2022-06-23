@@ -1,30 +1,19 @@
-import { IDomElement } from '@core/classes/DomElement';
-import { map } from '@core/hooks';
+import { DomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
-import { toCamelCase } from '@core/utils/string';
+import { resolve } from '@core/helpers/methods';
 import { getComputedValue } from '@core/helpers/css';
+import { toDashCase } from '@core/utils/string';
 
 export type DomCssMethod = (
-  name: string | Record<string, string> | null,
+  name: string | Record<string, string>,
   value?: string
-) => IDomElement | string;
+) => DomElement | string;
 
-export default (function (this: IDomElement, name, value?) {
-  return map.call(
-    this,
-    name,
-    value,
-    (el, name) => getComputedValue(el, name),
-    (el, name, value) => {
-      const prop = toCamelCase(name);
-
-      el.style[prop as any] = value;
-    },
-    undefined,
-    (el, name) => {
-      if (validate<null>(name, 'null')) {
-        el.removeAttribute('style');
-      }
-    },
-  );
-} as DomCssMethod);
+export default resolve<string | null>(
+  (el, name) => (name ? getComputedValue(el, name) : null),
+  (el, name, value) => {
+    if (validate<string | null>(value)) {
+      el.style.setProperty(toDashCase(name), value);
+    }
+  },
+) as DomCssMethod;

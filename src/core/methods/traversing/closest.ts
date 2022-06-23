@@ -1,11 +1,12 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
+import { map } from '@core/hooks';
 
-export type DomClosestMethod = (selector: string) => IDomElement;
+export type DomClosestMethod = (selector: string) => DomElement;
 
-export default (function (this: IDomElement, selector) {
-  if (validate<string>(selector, 'selectorString')) {
-    this.items = this.items.reduce((acc: HTMLElement[], el: HTMLElement) => {
+export default (function (this: IDomElement, selector: string): DomElement {
+  return map.call(this, () => (validate<string>(selector, 'selectorString')
+    ? this.collection.reduce((acc, el) => {
       const closest = <HTMLElement>el.closest(selector);
 
       if (closest) {
@@ -13,10 +14,6 @@ export default (function (this: IDomElement, selector) {
       }
 
       return acc;
-    }, []);
-  } else {
-    this.items = [];
-  }
-
-  return this;
+    }, [] as HTMLElement[])
+    : []));
 } as DomClosestMethod);
