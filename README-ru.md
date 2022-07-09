@@ -1,9 +1,9 @@
 <div align="center">
-  <img alt="DomElement" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
+  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
 </div>
 
 <div align="center">
-  <h1>DomElement</h1>
+  <h1>DOM Element</h1>
   <p>Набор методов для удобной работы с DOM-элементами.<br>Легковесная альтернатива jQuery с аналогичными названиями методов.</p>
   <img src="https://img.shields.io/github/release/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="Release version">
   <img src="https://img.shields.io/github/languages/top/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="TypeScript">
@@ -14,8 +14,8 @@
 
 ## Преимущества
 
-- Малый вес за счет отсутствия поддержки устаревших браузеров (IE10+)
-- Реализованы только самые необходимые методы, используемые в большинстве случаев
+- Содержит только самые необходимые методы, используемые в большинстве случаев
+- Малый вес и высокая производительность за счет отсутствия поддержки устаревших браузеров (IE10+)
 - Отсутствуют дополнительные зависимости
 - Библиотека написана на TypeScript
 
@@ -60,7 +60,7 @@ $(document)
 - **HTMLElement**
 - **Document**
 - **Window** (обработка событий)
-- **Экземпляр DomElement**
+- **Экземпляр DOM Element**
 
 :warning: **Обратите внимание**  
 Эта библиотека не поддерживает Sizzle селекторы (`:checked`, `:hover` и т.п).

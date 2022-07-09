@@ -1,9 +1,9 @@
 <div align="center">
-  <img alt="DomElement" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
+  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
 </div>
 
 <div align="center">
-  <h1>DomElement</h1>
+  <h1>DOM Element</h1>
   <p>A set of methods for convenient manipulation of DOM elements.<br>Lightweight alternative to jQuery with similar method names.</p>
   <img src="https://img.shields.io/github/release/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="Release version">
   <img src="https://img.shields.io/github/languages/top/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="TypeScript">
@@ -14,8 +14,8 @@
 
 ## Why
 
-- Lightweight due to lack of support for legacy browsers (IE10+)
-- Implemented only the most necessary methods used in most cases
+- Minimalistic set of commonly used methods for DOM manipulating
+- Lightweight and highly performant through the give up of legacy browsers support (IE10+)
 - No additional dependencies
 - Written in TypeScript
 
@@ -60,7 +60,7 @@ The following types of selectors are supported:
 - **HTMLElement**
 - **Document**
 - **Window** (event handling)
-- **DomElement Instance**
+- **DOM Element Instance**
 
 :warning: **Important note**  
 This library does not support Sizzle selectors (`:checked`, `:hover` etc).
