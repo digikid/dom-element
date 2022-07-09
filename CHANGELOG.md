@@ -1,105 +1,110 @@
-# История версий
+# Release Notes
 
-Все заметные изменения задокументированы в этом файле.
+[1.4.1]: https://github.com/digikid/dom-element/releases/tag/1.4.1
+
+## [1.4.1] - 2022-07-09
+
+### Updates
+
+- All documentation translated into English
 
 [1.4.0]: https://github.com/digikid/dom-element/releases/tag/1.4.0
 
 ## [1.4.0] - 2022-06-23
 
-### Добавлено
+### Features
 
-- Метод для получения массива данных `map`
-- Метод для работы с событием `input`
+- `map` method for getting data array
+- `input` method for working with DOM event
 
-### Исправлено
+### Bug Fixes
 
-- Исправлена ошибка, приводящая к мутации исходной коллекции при сохранении экземпляра в переменную с последующим
-  вызовом
-  методов
-- Улучшено отображение типов в IDE
-- Рефакторинг кода, исправление мелких ошибок
+- Fixed a bug that caused the source collection to mutate when saving an instance to a variable and then
+  calling methods
+- Improved display of types in IDE
+- Code refactoring, minor bug fixes
 
-### Обновлено
+### Updates
 
-- Обновлена документация, добавлено описание новых методов
+- Documentation updated, added description of new methods
 
 [1.3.2]: https://github.com/digikid/dom-element/releases/tag/1.3.2
 
 ## [1.3.2] - 2022-06-21
 
-### Исправлено
+### Bug Fixes
 
-- Исправлена ошибка в методе `val`, приводящая к игнорированию всех элементов `textarea`
+- Fixed bug in `val` method causing all elements of `textarea` to be ignored
 
 [1.3.1]: https://github.com/digikid/dom-element/releases/tag/1.3.1
 
 ## [1.3.1] - 2022-06-20
 
-### Исправлено
+### Bug Fixes
 
-- Исправлена ошибка в методах `slideDown`, `slideToggle` и `slideUp`, приводящая к неверному отображению эффекта
+- Fixed a bug in the `slideDown`, `slideToggle` and `slideUp` methods, causing incorrect display of the effect
 
 [1.3.0]: https://github.com/digikid/dom-element/releases/tag/1.3.0
 
 ## [1.3.0] - 2022-06-19
 
-### Добавлено
+### Features
 
-- Методы для работы с событиями: `resizeDebounce`, `scrollDebounce`, `resizeThrottle`, `scrollThrottle`
+- Methods for performant event handling: `resizeDebounce`, `scrollDebounce`, `resizeThrottle`, `scrollThrottle`
 
-### Исправлено
+### Bug Fixes
 
-- Исправлена ошибка в методе `trigger` при вызове с параметром `eventData`
-- Исправлены ошибки в методах `outerHtml` и `replaceWith`, теперь методы возвращают коллекцию из обновленных элементов
-- Рефакторинг кода, исправление мелких ошибок
+- Fixed bug in `trigger` method when called with `eventData` parameter
+- Fixed bugs in the `outerHtml` and `replaceWith` methods, now the methods return a collection of updated elements
+- Code refactoring, minor bug fixes
 
-### Обновлено
+### Updates
 
-- Улучшен алгоритм добавления обработчиков событий за счет делегирования
-- Обновлена документация, добавлено описание новых методов
+- Improved algorithm for adding event handlers through delegation
+- Updated documentation, added description of new methods
 
 [1.2.0]: https://github.com/digikid/dom-element/releases/tag/1.2.0
 
 ## [1.2.0] - 2022-06-16
 
-### Добавлено
+### Features
 
-- Методы для получения четных и нечетных элементов: `odd` и `even`
-- Методы для работы с событиями: `contextmenu`, `dblclick`, `focusin`, `focusout`, `hover`, `keydown`, `keypress`
+- Methods for getting even and odd elements: `odd` and `even`
+- Methods for working with events: `contextmenu`, `dblclick`, `focusin`, `focusout`, `hover`, `keydown`, `keypress`
   , `keyup`, `mousedown`, `mouseenter`, `mouseleave`, `mousemove`, `mouseout`, `mouseover`, `mouseup`, `select`
   , `triggerHandler`
 
-### Исправлено
+### Bug Fixes
 
-- Исправлена логика работы методов `prev` и `last`
-- Рефакторинг кода, исправление мелких ошибок
+- Fixed logic of `prev` and `last` methods
+- Code refactoring, minor bug fixes
 
-### Обновлено
+### Updates
 
-- Улучшена производительность методов `scroll` и `resize` за счет использования `requestAnimationFrame`
-- Переработан алгоритм добавления пользовательских функций
-- Документация полностью обновлена, все методы разбиты по категориям
+- Improved performance of `scroll` and `resize` methods by using `requestAnimationFrame`
+- Redesigned algorithm for adding custom functions
+- Documentation is completely updated, all methods are categorized
 
 [1.1.0]: https://github.com/digikid/dom-element/releases/tag/1.1.0
 
 ## [1.1.0] - 2022-06-11
 
-### Добавлено
+### Features
 
-- Эффекты `fadeIn`, `fadeOut`, `fadeToggle`, `slideIn`, `slideOut`, `slideToggle`
-- Добавление обработчиков для нескольких событий в методах `on` и `trigger`
-- Множественное удаление обработчиков событий в методе `off`
+- Effects `fadeIn`, `fadeOut`, `fadeToggle`, `slideIn`, `slideOut`, `slideToggle`
+- Adding handlers for multiple events in `on` and `trigger` methods
+- Multiple removal of event handlers in the `off` method
 
-### Исправлено
+### Bug Fixes
 
-- Исправление мелких ошибок, рефакторинг кода
+- Minor bug fixes, code refactoring
 
-### Обновлено
+### Updates
 
-- В документацию добавлено описание новых методов
+- Description of new methods added to documentation
 
 [1.0.0]: https://github.com/digikid/dom-element/releases/tag/1.0.0
 
 ## [1.0.0] - 2022-05-25
 
-Первый публичный релиз
+Initial release

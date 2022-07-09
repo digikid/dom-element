@@ -4,22 +4,22 @@
 
 <div align="center">
   <h1>DomElement</h1>
-  <p>Набор методов для удобной работы с DOM-элементами.<br>Легковесная альтернатива jQuery с аналогичными названиями методов.</p>
+  <p>A set of methods for convenient manipulation of DOM elements.<br>Lightweight alternative to jQuery with similar method names.</p>
   <img src="https://img.shields.io/github/release/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="Release version">
   <img src="https://img.shields.io/github/languages/top/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="TypeScript">
   <img src="https://img.shields.io/github/license/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="MIT License">
-  <br>
-  <br>
+  <p>
+    <a href="https://github.com/digikid/dom-element/blob/main/README.md">en</a> | <a href="https://github.com/digikid/dom-element/blob/main/README-ru.md">ru</a></p>
 </div>
 
-## Преимущества
+## Why
 
-- Малый вес за счет отсутствия поддержки устаревших браузеров (IE10+)
-- Реализованы только самые необходимые методы, используемые в большинстве случаев
-- Библиотека написана на TypeScript
-- Отсутствуют дополнительные зависимости
+- Lightweight due to lack of support for legacy browsers (IE10+)
+- Implemented only the most necessary methods used in most cases
+- No additional dependencies
+- Written in TypeScript
 
-## Установка
+## Install
 
 ```shell
 npm i digikid/dom-element
@@ -27,9 +27,9 @@ npm i digikid/dom-element
 
 ## API
 
-### Инициализация
+### Initialization
 
-Для работы с библиотекой импортируйте её в проект и передайте селектор элемента:
+Import library and pass element selector as a parameter:
 
 ```js
 import $ from 'dom-element';
@@ -43,43 +43,43 @@ $(document)
 
 <a name="selectors"></a>
 
-### Селекторы
+### Selectors
 
-Поддерживаются следующие типы селекторов:
+The following types of selectors are supported:
 
-- **String** (строки)
-    - СSS-селекторы (например, `.element`, `#app` и т.п)
-    - HTML-строки (например, `<div class="element"></div>` и т.п)
-    - Строка 'html' (псевдоним для `document.documentElement`)
-- **HTMLCollection** | **NodeList** (коллекция HTML-элементов)
+- **String**
+    - CSS selectors (e.g. `.element`, `#app` etc)
+    - HTML strings `<div class="element"></div>` etc)
+    - The string 'html' (alias for `document.documentElement`)
+- **HTMLCollection** | **NodeList** (collection of HTML elements)
     - `document.querySelector`
     - `document.querySelectorAll`
     - `document.getElementById`
     - `document.getElementsByClassName`
-- **HTMLElement[]** (массив HTML-элементов)
+- **HTMLElement[]** (array of HTML elements)
 - **HTMLElement**
 - **Document**
-- **Window** (обработка событий)
-- **Экземпляр DomElement**
+- **Window** (event handling)
+- **DomElement Instance**
 
-:warning: **Обратите внимание**  
-Эта библиотека не поддерживает Sizzle селекторы (`:checked`, `:hover` и т.п).
+:warning: **Important note**  
+This library does not support Sizzle selectors (`:checked`, `:hover` etc).
 
-### Методы
+### Methods
 
-- [Перемещение по DOM-дереву](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#traversing)
-- [Манипуляции с элементами](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#manipulation)
-- [Стили и отображение](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#css)
-- [Обработка событий](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#events)
-- [Эффекты](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#effects)
-- [Геттеры](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#getters)
-- [Управление данными](https://github.com/digikid/dom-element/blob/main/docs/METHODS.md#data)
+- [Traversing](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#traversing)
+- [Manipulations](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#manipulation)
+- [Styles](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#css)
+- [Events](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#events)
+- [Effects](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#effects)
+- [Getters](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#getters)
+- [Data management](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#data)
 
-### Создание функций
+### Functions store
 
-Поддерживается создание пользовательских функций, которые доступны глобально.
+This library supports creation of custom functions that are stored globally.
 
-Функции, созданные через `$.fn`, хранятся в отдельном объекте и не загрязняют глобальную область видимости.
+Functions created via `$.fn` are stored in a separate object and do not pollute the global scope.
 
 ```js
 $.fn.sum = (a, b) => a + b;
@@ -87,11 +87,11 @@ $.fn.sum = (a, b) => a + b;
 const sum = $.fn.sum(1, 2);
 ```
 
-## Благодарности
+## Reference
 
 - [You might not need jQuery](https://youmightnotneedjquery.com)
 - [Cheat sheet for moving from jQuery to vanilla JavaScript](https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/)
 
-## Лицензия
+## License
 
 [The MIT License (MIT)](LICENSE)
