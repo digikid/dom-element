@@ -2,7 +2,7 @@ import { DomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { resolve } from '@core/helpers/methods';
 
-export type DomPropMethod = (
+export type PropMethod = (
   name: string | Record<string, any>,
   value?: any
 ) => DomElement | any;
@@ -24,4 +24,4 @@ export default resolve<any>(
       (el as any)[name] = value;
     }
   },
-) as DomPropMethod;
+) as PropMethod;

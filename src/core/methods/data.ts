@@ -1,9 +1,9 @@
-import data, { DomDataMethod } from '@core/methods/data/data';
+import data, { type DataMethod } from '@core/methods/data/data';
 
-export interface IDomDataMethods {
-  readonly data: DomDataMethod;
+export interface IDataMethods {
+  readonly data: DataMethod;
 }
 
 export default {
   data,
-} as IDomDataMethods;
+} as IDataMethods;

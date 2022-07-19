@@ -1,12 +1,12 @@
-import { IDomStore } from '@store/classes/DomStore';
-import { IDomStorage } from '@src/store';
+import { type IStore } from '@store/classes/Store';
+import { type IStorage } from '@src/store';
 
-export type DomStoreRemoveMethod = <T extends keyof IDomStorage>(id: T) => void;
+export type StoreRemoveMethod = <T extends keyof IStorage>(id: T) => void;
 
-export default (function (this: IDomStore, id) {
+export default (function (this: IStore, id) {
   if (!(id in window._domElementStore)) {
     return;
   }
 
   delete window._domElementStore[id];
-} as DomStoreRemoveMethod);
+} as StoreRemoveMethod);

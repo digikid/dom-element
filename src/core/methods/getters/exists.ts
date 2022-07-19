@@ -1,7 +1,7 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { type IDomElement } from '@core/classes/DomElement';
 
-export type DomExistsMethod = () => boolean;
+export type ExistsMethod = () => boolean;
 
 export default (function (this: IDomElement) {
-  return this.collection.length > 0;
-} as DomExistsMethod);
+  return this.length > 0;
+} as ExistsMethod);

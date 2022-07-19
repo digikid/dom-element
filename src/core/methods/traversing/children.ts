@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { map } from '@core/hooks';
 
-export type DomChildrenMethod = (selector?: string) => DomElement;
+export type ChildrenMethod = (selector?: string) => DomElement;
 
 export default (function (this: IDomElement, selector?) {
   return map.call(
@@ -19,4 +19,4 @@ export default (function (this: IDomElement, selector?) {
     }, [] as HTMLElement[]),
     selector,
   );
-} as DomChildrenMethod);
+} as ChildrenMethod);

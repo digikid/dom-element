@@ -9,6 +9,7 @@ module.exports = {
     '^@core(.*)$': '<rootDir>/src/core$1',
     '^@store(.*)$': '<rootDir>/src/store$1',
     '^@validator(.*)$': '<rootDir>/src/validator$1',
+    '^@utils(.*)$': '<rootDir>/src/utils$1',
   },
   extensionsToTreatAsEsm: ['.ts'],
   globals: {

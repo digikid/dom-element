@@ -2,7 +2,7 @@ import { IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { reduce } from '@core/hooks';
 
-export type DomHasClassMethod = (className: string) => boolean;
+export type HasClassMethod = (className: string) => boolean;
 
 export default (function (this: IDomElement, className) {
   if (validate<string>(className, 'string', 'truthy')) {
@@ -10,4 +10,4 @@ export default (function (this: IDomElement, className) {
   }
 
   return false;
-} as DomHasClassMethod);
+} as HasClassMethod);

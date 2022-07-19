@@ -1,8 +1,8 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { map } from '@core/hooks';
 
-export type DomEqMethod = (index: number) => DomElement;
+export type EqMethod = (index: number) => DomElement;
 
 export default (function (this: IDomElement, index) {
   return map.call(this, () => {
@@ -14,4 +14,4 @@ export default (function (this: IDomElement, index) {
 
     return [];
   });
-} as DomEqMethod);
+} as EqMethod);

@@ -1,8 +1,8 @@
-import { DomCallback } from '@core/types';
+import { MethodCallback } from '@core/types';
 import { validate } from '@src/validator';
 import { trigger } from '@core/helpers/effects';
 import { getComputedValue, getDisplayValue } from '@core/helpers/css';
-import { toCamelCase, fromCamelCaseToArray } from '@core/utils/string';
+import { toCamelCase, fromCamelCaseToArray } from '@utils/string';
 
 import defaults from '@core/defaults';
 
@@ -26,13 +26,13 @@ const config = {
 const types = ['fade', 'slide'] as const;
 const directions = ['in', 'out', 'up', 'down', 'toggle'] as const;
 
-export type DomAnimateProps = Record<'el' | 'step', Record<string, number>>;
+export type AnimateProps = Record<'el' | 'step', Record<string, number>>;
 
-export type DomAnimateHook = (
+export type AnimateHook = (
   el: HTMLElement,
   effect: string,
   duration: number | string | Function | undefined,
-  callback: DomCallback | undefined
+  callback: MethodCallback | undefined
 ) => void;
 
 export default (function (el: HTMLElement, effect, duration, callback) {
@@ -53,7 +53,9 @@ export default (function (el: HTMLElement, effect, duration, callback) {
   }
 
   const inverse = getComputedValue(el, 'display') === 'none';
-  const cb = validate<DomCallback>(duration, 'function') ? duration : callback;
+  const cb = validate<MethodCallback>(duration, 'function')
+    ? duration
+    : callback;
   const initialDisplay = getDisplayValue(el);
   const currentDisplay = initialDisplay === 'none' ? 'block' : initialDisplay;
 
@@ -75,7 +77,7 @@ export default (function (el: HTMLElement, effect, duration, callback) {
     {
       el: {},
       step: {},
-    } as DomAnimateProps,
+    } as AnimateProps,
   );
 
   if (inverse) {
@@ -93,4 +95,4 @@ export default (function (el: HTMLElement, effect, duration, callback) {
   if (direction === 'toggle') {
     trigger(props, el, parsedDuration, cb, inverse);
   }
-} as DomAnimateHook);
+} as AnimateHook);

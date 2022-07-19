@@ -1,9 +1,9 @@
 import { IDomElement } from '@core/classes/DomElement';
 import { reduce } from '@core/hooks';
-import { toNumber } from '@core/utils/string';
+import { toNumber } from '@utils/string';
 
-export type DomPositionKeys = 'top' | 'left';
-export type DomPositionMethod = () => Record<DomPositionKeys, number>;
+export type PositionKeys = 'top' | 'left';
+export type PositionMethod = () => Record<PositionKeys, number>;
 
 export default (function (this: IDomElement) {
   return reduce.call(
@@ -23,4 +23,4 @@ export default (function (this: IDomElement) {
       left: null,
     },
   );
-} as DomPositionMethod);
+} as PositionMethod);

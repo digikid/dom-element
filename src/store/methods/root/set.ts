@@ -1,11 +1,11 @@
-import { IDomStore } from '@store/classes/DomStore';
-import { IDomStorage } from '@src/store';
+import { type IStore } from '@store/classes/Store';
+import { type IStorage } from '@src/store';
 
-export type DomStoreSetMethod = <T extends keyof IDomStorage>(
+export type StoreSetMethod = <T extends keyof IStorage>(
   id: T,
-  value: IDomStorage[T]
+  value: IStorage[T]
 ) => void;
 
-export default (function (this: IDomStore, id, value) {
+export default (function (this: IStore, id, value) {
   window._domElementStore[id] = value;
-} as DomStoreSetMethod);
+} as StoreSetMethod);

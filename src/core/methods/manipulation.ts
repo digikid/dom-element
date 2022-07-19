@@ -1,55 +1,55 @@
 import addClass, {
-  DomAddClassMethod,
+  type AddClassMethod,
 } from '@core/methods/manipulation/addClass';
-import attr, { DomAttrMethod } from '@core/methods/manipulation/attr';
-import clear, { DomClearMethod } from '@core/methods/manipulation/clear';
-import clone, { DomCloneMethod } from '@core/methods/manipulation/clone';
-import each, { DomEachMethod } from '@core/methods/manipulation/each';
-import empty, { DomEmptyMethod } from '@core/methods/manipulation/empty';
-import html, { DomHtmlMethod } from '@core/methods/manipulation/html';
+import attr, { type AttrMethod } from '@core/methods/manipulation/attr';
+import clear, { type ClearMethod } from '@core/methods/manipulation/clear';
+import clone, { type CloneMethod } from '@core/methods/manipulation/clone';
+import each, { type EachMethod } from '@core/methods/manipulation/each';
+import empty, { type EmptyMethod } from '@core/methods/manipulation/empty';
+import html, { type HtmlMethod } from '@core/methods/manipulation/html';
 import outerHtml, {
-  DomOuterHtmlMethod,
+  type OuterHtmlMethod,
 } from '@core/methods/manipulation/outerHtml';
-import prop, { DomPropMethod } from '@core/methods/manipulation/prop';
-import remove, { DomRemoveMethod } from '@core/methods/manipulation/remove';
+import prop, { type PropMethod } from '@core/methods/manipulation/prop';
+import remove, { type RemoveMethod } from '@core/methods/manipulation/remove';
 import removeAttr, {
-  DomRemoveAttrMethod,
+  type RemoveAttrMethod,
 } from '@core/methods/manipulation/removeAttr';
 import removeClass, {
-  DomRemoveClassMethod,
+  type RemoveClassMethod,
 } from '@core/methods/manipulation/removeClass';
 import removeProp, {
-  DomRemovePropMethod,
+  type RemovePropMethod,
 } from '@core/methods/manipulation/removeProp';
 import replaceWith, {
-  DomReplaceWithMethod,
+  type ReplaceWithMethod,
 } from '@core/methods/manipulation/replaceWith';
-import text, { DomTextMethod } from '@core/methods/manipulation/text';
+import text, { type TextMethod } from '@core/methods/manipulation/text';
 import toggleClass, {
-  DomToggleClassMethod,
+  type ToggleClassMethod,
 } from '@core/methods/manipulation/toggleClass';
-import unwrap, { DomUnwrapMethod } from '@core/methods/manipulation/unwrap';
-import val, { DomValMethod } from '@core/methods/manipulation/val';
+import unwrap, { type UnwrapMethod } from '@core/methods/manipulation/unwrap';
+import val, { type ValMethod } from '@core/methods/manipulation/val';
 
-export interface IDomManipulationMethods {
-  readonly addClass: DomAddClassMethod;
-  readonly attr: DomAttrMethod;
-  readonly clear: DomClearMethod;
-  readonly clone: DomCloneMethod;
-  readonly each: DomEachMethod;
-  readonly empty: DomEmptyMethod;
-  readonly html: DomHtmlMethod;
-  readonly outerHtml: DomOuterHtmlMethod;
-  readonly prop: DomPropMethod;
-  readonly remove: DomRemoveMethod;
-  readonly removeAttr: DomRemoveAttrMethod;
-  readonly removeClass: DomRemoveClassMethod;
-  readonly removeProp: DomRemovePropMethod;
-  readonly replaceWith: DomReplaceWithMethod;
-  readonly text: DomTextMethod;
-  readonly toggleClass: DomToggleClassMethod;
-  readonly unwrap: DomUnwrapMethod;
-  readonly val: DomValMethod;
+export interface IManipulationMethods {
+  readonly addClass: AddClassMethod;
+  readonly attr: AttrMethod;
+  readonly clear: ClearMethod;
+  readonly clone: CloneMethod;
+  readonly each: EachMethod;
+  readonly empty: EmptyMethod;
+  readonly html: HtmlMethod;
+  readonly outerHtml: OuterHtmlMethod;
+  readonly prop: PropMethod;
+  readonly remove: RemoveMethod;
+  readonly removeAttr: RemoveAttrMethod;
+  readonly removeClass: RemoveClassMethod;
+  readonly removeProp: RemovePropMethod;
+  readonly replaceWith: ReplaceWithMethod;
+  readonly text: TextMethod;
+  readonly toggleClass: ToggleClassMethod;
+  readonly unwrap: UnwrapMethod;
+  readonly val: ValMethod;
 }
 
 export default {
@@ -71,4 +71,4 @@ export default {
   toggleClass,
   unwrap,
   val,
-} as IDomManipulationMethods;
+} as IManipulationMethods;

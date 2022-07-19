@@ -1,22 +1,22 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { some, validate } from '@src/validator';
 import { isMatches } from '@core/helpers/element';
 import { map } from '@core/hooks';
 
-export interface IDomFilterMethods {
-  readonly filter: DomFilterMethod;
-  readonly not: DomFilterMethod;
-}
+export type FilterCallback = (el: HTMLElement, i: number) => any;
 
-export type DomFilterCallback = (el: HTMLElement, i: number) => any;
-
-export type DomFilterMethod = (
-  selector: DomFilterCallback | string | undefined,
+export type FilterMethod = (
+  selector: FilterCallback | string | undefined,
   inverse?: boolean
 ) => DomElement;
 
-export default create<DomFilterMethod, keyof IDomFilterMethods, [boolean]>(
+export interface IFilterMethods {
+  readonly filter: FilterMethod;
+  readonly not: FilterMethod;
+}
+
+export default create<FilterMethod, keyof IFilterMethods, [boolean]>(
   {
     filter: [false],
     not: [true],
@@ -42,4 +42,4 @@ export default create<DomFilterMethod, keyof IDomFilterMethods, [boolean]>(
       return inverse ? this : [];
     });
   },
-) as IDomFilterMethods;
+) as IFilterMethods;

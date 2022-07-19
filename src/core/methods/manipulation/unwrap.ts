@@ -3,7 +3,7 @@ import { validate } from '@src/validator';
 import { isMatches } from '@core/helpers/element';
 import { map } from '@core/hooks';
 
-export type DomUnwrapMethod = (selector?: string) => DomElement;
+export type UnwrapMethod = (selector?: string) => DomElement;
 
 export default (function (this: IDomElement, selector?) {
   return map.call(this, () => this.collection.reduce((acc, el) => {
@@ -30,4 +30,4 @@ export default (function (this: IDomElement, selector?) {
 
     return acc;
   }, [] as HTMLElement[]));
-} as DomUnwrapMethod);
+} as UnwrapMethod);

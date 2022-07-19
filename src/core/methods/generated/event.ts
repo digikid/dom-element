@@ -1,39 +1,39 @@
-import { DomCallback } from '@core/types';
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { type MethodCallback } from '@core/types';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
-import { handle } from '@core/helpers/events';
+import { bind, handle } from '@core/helpers/events';
 
-export interface IDomEventMethods {
-  readonly blur: DomEventMethod;
-  readonly change: DomEventMethod;
-  readonly click: DomEventMethod;
-  readonly contextmenu: DomEventMethod;
-  readonly dblclick: DomEventMethod;
-  readonly focus: DomEventMethod;
-  readonly focusin: DomEventMethod;
-  readonly focusout: DomEventMethod;
-  readonly hover: DomEventMethod;
-  readonly input: DomEventMethod;
-  readonly keydown: DomEventMethod;
-  readonly keypress: DomEventMethod;
-  readonly keyup: DomEventMethod;
-  readonly mousedown: DomEventMethod;
-  readonly mouseenter: DomEventMethod;
-  readonly mouseleave: DomEventMethod;
-  readonly mousemove: DomEventMethod;
-  readonly mouseout: DomEventMethod;
-  readonly mouseover: DomEventMethod;
-  readonly mouseup: DomEventMethod;
-  readonly select: DomEventMethod;
-  readonly resize: DomEventMethod;
-  readonly scroll: DomEventMethod;
-  readonly submit: DomEventMethod;
+export type EventMethod = (callback?: MethodCallback) => DomElement;
+
+export interface IEventMethods {
+  readonly blur: EventMethod;
+  readonly change: EventMethod;
+  readonly click: EventMethod;
+  readonly contextmenu: EventMethod;
+  readonly dblclick: EventMethod;
+  readonly focus: EventMethod;
+  readonly focusin: EventMethod;
+  readonly focusout: EventMethod;
+  readonly hover: EventMethod;
+  readonly input: EventMethod;
+  readonly keydown: EventMethod;
+  readonly keypress: EventMethod;
+  readonly keyup: EventMethod;
+  readonly mousedown: EventMethod;
+  readonly mouseenter: EventMethod;
+  readonly mouseleave: EventMethod;
+  readonly mousemove: EventMethod;
+  readonly mouseout: EventMethod;
+  readonly mouseover: EventMethod;
+  readonly mouseup: EventMethod;
+  readonly select: EventMethod;
+  readonly resize: EventMethod;
+  readonly scroll: EventMethod;
+  readonly submit: EventMethod;
 }
 
-export type DomEventMethod = (callback?: DomCallback) => DomElement;
-
-export default create<DomEventMethod, keyof IDomEventMethods>(
+export default create<EventMethod, keyof IEventMethods>(
   {
     blur: [],
     change: [],
@@ -60,13 +60,19 @@ export default create<DomEventMethod, keyof IDomEventMethods>(
     scroll: [],
     submit: [],
   },
-  (name) => function (this: IDomElement, callback?) {
-    if (validate(name, 'windowEvent')) {
-      handle(window, name, callback);
+  (event) => function (this: IDomElement, callback?) {
+    if (validate(event, 'windowEvent')) {
+      handle(window, event, callback);
+    } else if (
+      !this.length
+        && validate<string>(this.selector, 'selectorString')
+        && validate<MethodCallback>(callback, 'function')
+    ) {
+      bind(document, event, callback, this.selector);
     } else {
-      this.collection.forEach((el) => handle(el, name, callback));
+      this.collection.forEach((el) => handle(el, event, callback));
     }
 
     return new DomElement(this);
   },
-) as IDomEventMethods;
+) as IEventMethods;

@@ -1,26 +1,26 @@
 // noinspection SpellCheckingInspection
 
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 
 const positions = ['prepend', 'append', 'before', 'after'] as const;
 
-export interface IDomMoveMethods {
-  readonly after: DomMoveMethod;
-  readonly append: DomMoveMethod;
-  readonly appendTo: DomMoveMethod;
-  readonly before: DomMoveMethod;
-  readonly insertAfter: DomMoveMethod;
-  readonly insertBefore: DomMoveMethod;
-  readonly prepend: DomMoveMethod;
-  readonly prependTo: DomMoveMethod;
+export type MoveMethod = (selector: any) => DomElement;
+
+export interface IMoveMethods {
+  readonly after: MoveMethod;
+  readonly append: MoveMethod;
+  readonly appendTo: MoveMethod;
+  readonly before: MoveMethod;
+  readonly insertAfter: MoveMethod;
+  readonly insertBefore: MoveMethod;
+  readonly prepend: MoveMethod;
+  readonly prependTo: MoveMethod;
 }
 
-export type DomMoveMethod = (selector: any) => DomElement;
-
-export default create<DomMoveMethod, keyof IDomMoveMethods>(
+export default create<MoveMethod, keyof IMoveMethods>(
   {
     after: ['after'],
     append: ['append'],
@@ -72,4 +72,4 @@ export default create<DomMoveMethod, keyof IDomMoveMethods>(
 
     return new DomElement(this);
   },
-) as IDomMoveMethods;
+) as IMoveMethods;

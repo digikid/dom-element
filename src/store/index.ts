@@ -1,24 +1,24 @@
-import { DomStore } from '@store/classes/DomStore';
+import { Store } from '@store/classes/Store';
 
-export type DomStoreId = string | HTMLElement | Window | Document | EventTarget;
-export type DomStoreHandlers = 'handlers' | 'listeners';
-export type DomStoreHandlersSetup = 'setupHandlers' | 'setupListeners';
+export type StoreId = string | HTMLElement | Window | Document | EventTarget;
+export type StoreHandlers = 'handlers' | 'listeners';
+export type StoreHandlersSetup = 'setupHandlers' | 'setupListeners';
 
-export type DomStoreDataObject = Record<string, any>;
-export type DomStoreFnObject = Record<string, any>;
-export type DomStoreHandlersObject<T> = Record<string, Record<string, T[]>>;
+export type StoreDataObject = Record<string, any>;
+export type StoreFnObject = Record<string, any>;
+export type StoreHandlersObject<T> = Record<string, Record<string, T[]>>;
 
-export interface IDomStorage {
+export interface IStorage {
   initialized: boolean;
-  data: DomStoreDataObject;
-  handlers: DomStoreHandlersObject<Function>;
-  listeners: DomStoreHandlersObject<EventListener>;
-  fn: DomStoreFnObject;
+  data: StoreDataObject;
+  handlers: StoreHandlersObject<Function>;
+  listeners: StoreHandlersObject<EventListener>;
+  fn: StoreFnObject;
 }
 
 declare global {
   interface Window {
-    _domElementStore: IDomStorage;
+    _domElementStore: IStorage;
   }
 
   interface HTMLElement {
@@ -26,4 +26,4 @@ declare global {
   }
 }
 
-export const store = DomStore.getInstance();
+export const store = Store.getInstance();

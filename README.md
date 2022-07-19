@@ -41,6 +41,14 @@ $(document)
   });
 ```
 
+If you're using TypeScript, you can also import the type of created instance:
+
+```ts
+import $, { type DomElement } from 'dom-element';
+
+const $element: DomElement = $('.element');
+```
+
 <a name="selectors"></a>
 
 ### Selectors

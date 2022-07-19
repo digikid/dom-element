@@ -1,6 +1,6 @@
-import { DomValidator } from '@validator/classes/DomValidator';
+import { Validator } from '@validator/classes/Validator';
 
-const validator = DomValidator.getInstance();
+const validator = Validator.getInstance();
 
 const { every, some, validate } = validator;
 

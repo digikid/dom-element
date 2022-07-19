@@ -2,7 +2,7 @@ import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { unbind } from '@core/helpers/events';
 
-export type DomOffMethod = (eventName: string) => DomElement;
+export type OffMethod = (eventName: string) => DomElement;
 
 export default (function (this: IDomElement, eventName) {
   if (validate<string>(eventName, 'string', 'truthy')) {
@@ -14,4 +14,4 @@ export default (function (this: IDomElement, eventName) {
   }
 
   return new DomElement(this);
-} as DomOffMethod);
+} as OffMethod);

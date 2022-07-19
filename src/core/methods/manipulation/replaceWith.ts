@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { parse } from '@core/helpers/selector';
 
-export type DomReplaceWithMethod = (content: any) => DomElement;
+export type ReplaceWithMethod = (content: any) => DomElement;
 
 export default (function (this: IDomElement, content) {
   const parsed = parse(content);
@@ -11,4 +11,4 @@ export default (function (this: IDomElement, content) {
   });
 
   return new DomElement(parsed);
-} as DomReplaceWithMethod);
+} as ReplaceWithMethod);

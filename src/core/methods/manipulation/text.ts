@@ -1,9 +1,9 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { reduce } from '@core/hooks';
-import { trimSpaces } from '@core/utils/string';
+import { trimSpaces } from '@utils/string';
 
-export type DomTextMethod = (value?: string) => DomElement | string | null;
+export type TextMethod = (value?: string) => DomElement | string | null;
 
 export default (function (this: IDomElement, value?) {
   if (validate<string>(value, 'string')) {
@@ -15,4 +15,4 @@ export default (function (this: IDomElement, value?) {
   }
 
   return reduce.call(this, (el) => trimSpaces(el.textContent || ''));
-} as DomTextMethod);
+} as TextMethod);

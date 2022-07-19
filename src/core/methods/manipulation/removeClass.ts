@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomRemoveClassMethod = (...classNames: string[]) => DomElement;
+export type RemoveClassMethod = (...classNames: string[]) => DomElement;
 
 export default (function (this: IDomElement, ...classNames) {
   if (classNames.every((className) => validate<string>(className, 'string'))) {
@@ -11,4 +11,4 @@ export default (function (this: IDomElement, ...classNames) {
   }
 
   return new DomElement(this);
-} as DomRemoveClassMethod);
+} as RemoveClassMethod);

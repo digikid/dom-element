@@ -1,4 +1,4 @@
-import { DomElement } from '@core/classes/DomElement';
+import { DomElement as Instance } from '@core/classes/DomElement';
 import { store } from '@src/store';
 
 declare global {
@@ -7,14 +7,14 @@ declare global {
   }
 }
 
-export interface IDomConstructor {
+export type DomElement = InstanceType<typeof Instance>;
+
+export type DomConstructor = {
   (selector: any): DomElement;
 
   fn: Record<string, Function>;
-}
+};
 
-const $ = Object.assign((selector: any) => new DomElement(selector), {
+export default Object.assign((selector: any) => new Instance(selector), {
   fn: store.get('fn'),
-});
-
-export default $ as IDomConstructor;
+}) as DomConstructor;

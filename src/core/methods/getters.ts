@@ -1,19 +1,19 @@
-import exists, { DomExistsMethod } from '@core/methods/getters/exists';
-import get, { DomGetMethod } from '@core/methods/getters/get';
-import hasClass, { DomHasClassMethod } from '@core/methods/getters/hasClass';
-import index, { DomIndexMethod } from '@core/methods/getters/index';
-import is, { DomIsMethod } from '@core/methods/getters/is';
-import map, { DomMapMethod } from '@core/methods/getters/map';
-import raw, { DomRawMethod } from '@core/methods/getters/raw';
+import exists, { type ExistsMethod } from '@core/methods/getters/exists';
+import get, { type GetMethod } from '@core/methods/getters/get';
+import hasClass, { type HasClassMethod } from '@core/methods/getters/hasClass';
+import index, { type IndexMethod } from '@core/methods/getters/index';
+import is, { type IsMethod } from '@core/methods/getters/is';
+import map, { type MapMethod } from '@core/methods/getters/map';
+import raw, { type RawMethod } from '@core/methods/getters/raw';
 
-export interface IDomGettersMethods {
-  readonly exists: DomExistsMethod;
-  readonly get: DomGetMethod;
-  readonly hasClass: DomHasClassMethod;
-  readonly index: DomIndexMethod;
-  readonly is: DomIsMethod;
-  readonly map: DomMapMethod;
-  readonly raw: DomRawMethod;
+export interface IGettersMethods {
+  readonly exists: ExistsMethod;
+  readonly get: GetMethod;
+  readonly hasClass: HasClassMethod;
+  readonly index: IndexMethod;
+  readonly is: IsMethod;
+  readonly map: MapMethod;
+  readonly raw: RawMethod;
 }
 
 export default {
@@ -24,4 +24,4 @@ export default {
   is,
   map,
   raw,
-} as IDomGettersMethods;
+} as IGettersMethods;

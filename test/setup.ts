@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import $, { IDomConstructor } from '@src/index';
+import $, { DomConstructor } from '@src/index';
 import * as utils from './utils';
 
 const template = readFileSync('test/index.html', 'utf8').toString();
@@ -30,7 +30,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
 });
 
 declare global {
-  const $: IDomConstructor;
+  const $: DomConstructor;
   const template: string;
 }
 

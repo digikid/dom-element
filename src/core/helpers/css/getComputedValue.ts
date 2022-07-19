@@ -1,4 +1,4 @@
-import { toDashCase } from '@core/utils/string';
+import { toDashCase } from '@utils/string';
 
 const getValue = (el: HTMLElement, prop: string) => getComputedStyle(el, null).getPropertyValue(toDashCase(prop));
 

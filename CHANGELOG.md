@@ -1,5 +1,26 @@
 # Release Notes
 
+[1.4.2]: https://github.com/digikid/dom-element/releases/tag/1.4.2
+
+## [1.4.2] - 2022-07-20
+
+### Features
+
+- Added event delegation for elements that have not yet been created
+- Added exported type for DomElement instance
+- Clearing `dist` folder when running tests
+
+### Bug Fixes
+
+- Fixed a bug that caused the event handlers call to be ignored on nested elements
+- Code refactoring, minor bug fixes
+
+### Updates
+
+- Renaming types
+- Utilities moved to the top level folder
+- Updated documentation for event methods
+
 [1.4.1]: https://github.com/digikid/dom-element/releases/tag/1.4.1
 
 ## [1.4.1] - 2022-07-09

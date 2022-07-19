@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
-import { parseToCssObject } from '@core/utils/string';
+import { parseToCssObject } from '@utils/string';
 
-export type DomShowMethod = (displayValue?: string) => DomElement;
+export type ShowMethod = (displayValue?: string) => DomElement;
 
 export default (function (this: IDomElement, displayValue = 'block') {
   this.collection.forEach((el) => {
@@ -20,4 +20,4 @@ export default (function (this: IDomElement, displayValue = 'block') {
   });
 
   return new DomElement(this);
-} as DomShowMethod);
+} as ShowMethod);

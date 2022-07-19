@@ -1,15 +1,17 @@
-import getData, { DomStoreGetDataMethod } from '@store/methods/data/get';
-import setData, { DomStoreSetDataMethod } from '@store/methods/data/set';
-import setupData, { DomStoreSetupDataMethod } from '@store/methods/data/setup';
+import getData, { type StoreGetDataMethod } from '@store/methods/data/get';
+import setData, { type StoreSetDataMethod } from '@store/methods/data/set';
+import setupData, {
+  type StoreSetupDataMethod,
+} from '@store/methods/data/setup';
 import removeData, {
-  DomStoreRemoveDataMethod,
+  type StoreRemoveDataMethod,
 } from '@store/methods/data/remove';
 
-export interface IDomStoreDataMethods {
-  readonly getData: DomStoreGetDataMethod;
-  readonly setData: DomStoreSetDataMethod;
-  readonly setupData: DomStoreSetupDataMethod;
-  readonly removeData: DomStoreRemoveDataMethod;
+export interface IStoreDataMethods {
+  readonly getData: StoreGetDataMethod;
+  readonly setData: StoreSetDataMethod;
+  readonly setupData: StoreSetupDataMethod;
+  readonly removeData: StoreRemoveDataMethod;
 }
 
 export default {
@@ -17,4 +19,4 @@ export default {
   setData,
   setupData,
   removeData,
-} as IDomStoreDataMethods;
+} as IStoreDataMethods;

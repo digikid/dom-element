@@ -1,21 +1,21 @@
-import css, { IDomCssMethods } from '@core/methods/css';
-import data, { IDomDataMethods } from '@core/methods/data';
-import events, { IDomEventsMethods } from '@core/methods/events';
-import generated, { IDomGeneratedMethods } from '@core/methods/generated';
-import getters, { IDomGettersMethods } from '@core/methods/getters';
+import css, { type ICssMethods } from '@core/methods/css';
+import data, { type IDataMethods } from '@core/methods/data';
+import events, { type IEventsMethods } from '@core/methods/events';
+import generated, { type IGeneratedMethods } from '@core/methods/generated';
+import getters, { type IGettersMethods } from '@core/methods/getters';
 import manipulation, {
-  IDomManipulationMethods,
+  type IManipulationMethods,
 } from '@core/methods/manipulation';
-import traversing, { IDomTraversingMethods } from '@core/methods/traversing';
+import traversing, { type ITraversingMethods } from '@core/methods/traversing';
 
-export interface IDomMethods
-  extends IDomCssMethods,
-  IDomDataMethods,
-  IDomEventsMethods,
-  IDomGeneratedMethods,
-  IDomGettersMethods,
-  IDomManipulationMethods,
-  IDomTraversingMethods {}
+export interface IMethods
+  extends ICssMethods,
+  IDataMethods,
+  IEventsMethods,
+  IGeneratedMethods,
+  IGettersMethods,
+  IManipulationMethods,
+  ITraversingMethods {}
 
 export default {
   ...css,
@@ -25,4 +25,4 @@ export default {
   ...getters,
   ...manipulation,
   ...traversing,
-} as IDomMethods;
+} as IMethods;

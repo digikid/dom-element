@@ -1,18 +1,13 @@
-import { DomStoreHandlers } from '@src/store';
-import { IDomStore } from '@store/classes/DomStore';
+import { type StoreHandlers } from '@src/store';
+import { type IStore } from '@store/classes/Store';
 
-export type DomStoreGetAllHandlersMethod = (name: string) => Function[];
+export type StoreAllHandlers = Record<string, Function[]>;
+export type StoreGetAllHandlersMethod = (
+  name: string
+) => Record<string, Function[]>;
 
-export default (field: DomStoreHandlers) => function (this: IDomStore, name) {
+export default (field: StoreHandlers) => function (this: IStore, name) {
   const handlers = window._domElementStore[field];
 
-  if (name in handlers) {
-    return Object.values(handlers[name]).reduce((acc, functions) => {
-      acc.push(...functions);
-
-      return acc;
-    }, []);
-  }
-
-  return [];
-} as DomStoreGetAllHandlersMethod;
+  return name in handlers ? handlers[name] : {};
+} as StoreGetAllHandlersMethod;

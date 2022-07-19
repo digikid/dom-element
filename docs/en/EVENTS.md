@@ -1,40 +1,30 @@
 # Events
 
-<a name="delegation"></a>
+<a name="event-delegation"></a>
 
 ## Event delegation
 
-In jQuery, each element contains its own event handler, which can cause performance issues.
+Unlike jQuery, you can add event handlers to elements that have not yet been created.
 
-To solve this problem, in dom-element `resize` and `scroll` event handlers are delegated to `window`, while others
-events handlers are delegated to `document`.
+This allows you to avoid `$(document).on()` constructs and write more concise code.
 
-Delegation allows you to track events on multiple elements with only one handler.
-
-In addition, it becomes possible to add event handlers for non-existent elements and avoiding using
-of `$(document).on()` constructs.
-
-### jQuery
+### jQuery way
 
 ```js
 // Event handler will not be added until the element is created
 $('.element')
   .click(handler);
 
-// To add a handler, you first need to delegate it
+// To add a handler, first you need to delegate it
 $(document)
-  .on('click', '.element', handler)
+  .on('click', '.element', handler);
 
 // Adding `.element` to DOM
 $('<div class="element"></div>')
   .appendTo('body');
-
-// Event handler will be added to each element
-$('.element-1, .element-2, .element-3')
-  .click(handler);
 ```
 
-### dom-element
+### dom-element way
 
 ```js
 // Event handler will be added even though the element hasn't been created yet
@@ -44,38 +34,6 @@ $('.element')
 // Adding `.element` to DOM
 $('<div class="element"></div>')
   .appendTo('body');
-
-// All event handlers will be delegated to the document
-$('.element-1, .element-2, .element-3')
-  .click(handler);
-```
-
-<a name="event-propagation"></a>
-
-## e.stopPropagation
-
-Due to event delegation, using `e.stopPropagation` in the usual way becomes impossible.
-
-To cancel a handler call for a particular element, you must explicitly compare it to `e.target`.
-
-### jQuery
-
-```js
-$('.parent')
-  .click(handler);
-$('.children')
-  .click(e => e.stopPropagation());
-```
-
-### dom-element
-
-```js
-$('.parent')
-  .click(e => {
-    if (!e.target.classList.contains('children')) {
-      handler();
-    }
-  });
 ```
 
 <a name="event"></a>

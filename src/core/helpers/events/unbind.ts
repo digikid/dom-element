@@ -1,22 +1,39 @@
-import { DomEventTarget } from '@core/types';
+import { CustomEventTarget } from '@core/types';
 import { store } from '@src/store';
-import { validate } from '@src/validator';
+import { some } from '@src/validator';
 
-export default (el: DomEventTarget, event: string): void => {
+import { isMatches } from '@core/helpers/element';
+import { type Entries } from '@utils/object';
+
+export default (el: CustomEventTarget, event: string): void => {
   event.split(' ').forEach((event) => {
-    store.removeHandlers(el, event);
+    const storeId = store.getElementId(el);
+    const target = [document, el];
 
-    const handlers = store.getAllHandlers(event);
-    const listeners = store.getAllListeners(event);
+    const stored = {
+      handlers: store.getAllHandlers(event),
+      listeners: store.getAllListeners(event),
+    };
 
-    if (!handlers.length) {
-      const target = validate<Window>(el, 'window') ? window : document;
+    const ids = (Object.entries(stored) as Entries<typeof stored>).reduce(
+      (acc, [type, data]) => {
+        acc[type] = Object.keys(data).filter((id) => {
+          const check = storeId === id;
 
-      listeners.forEach((listener) => {
-        target.removeEventListener(event, listener as EventListener);
+          return some<Window | Document>(el, 'window', 'documentElement')
+            ? check
+            : check || isMatches(el, id);
+        });
 
-        store.removeListeners(target, event);
-      });
-    }
+        return acc;
+      },
+      {} as Record<keyof typeof stored, string[]>,
+    );
+
+    ids.handlers.forEach((id) => store.removeHandlers(id, event));
+
+    ids.listeners.forEach((id) => {
+      stored.listeners[id].forEach((listener) => target.forEach((target) => target.removeEventListener(event, listener as EventListener)));
+    });
   });
 };

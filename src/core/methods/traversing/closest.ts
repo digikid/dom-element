@@ -2,7 +2,7 @@ import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { map } from '@core/hooks';
 
-export type DomClosestMethod = (selector: string) => DomElement;
+export type ClosestMethod = (selector: string) => DomElement;
 
 export default (function (this: IDomElement, selector: string): DomElement {
   return map.call(this, () => (validate<string>(selector, 'selectorString')
@@ -16,4 +16,4 @@ export default (function (this: IDomElement, selector: string): DomElement {
       return acc;
     }, [] as HTMLElement[])
     : []));
-} as DomClosestMethod);
+} as ClosestMethod);

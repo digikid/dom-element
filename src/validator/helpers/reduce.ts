@@ -1,8 +1,8 @@
-import { capitalize } from '@core/utils/string';
+import { capitalize } from '@utils/string';
 
 import checkers from '@validator/checkers';
 
-export type DomValidatorReduceCallback = (
+export type ValidatorReduceCallback = (
   acc: boolean,
   current: boolean
 ) => boolean;
@@ -10,7 +10,7 @@ export type DomValidatorReduceCallback = (
 export type DomValidatorReduce = <T>(
   v: T,
   ids: string[],
-  cb: DomValidatorReduceCallback,
+  cb: ValidatorReduceCallback,
   initialValue?: boolean,
   required?: string[]
 ) => boolean;
@@ -18,7 +18,7 @@ export type DomValidatorReduce = <T>(
 export default (<T>(
   v: T,
   ids: string[],
-  cb: DomValidatorReduceCallback,
+  cb: ValidatorReduceCallback,
   initialValue: boolean = false,
   required: string[] = [],
 ) => {

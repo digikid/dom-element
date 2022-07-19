@@ -1,4 +1,4 @@
-export type DomPrimitive =
+export type Primitive =
   | bigint
   | boolean
   | null
@@ -7,8 +7,8 @@ export type DomPrimitive =
   | symbol
   | undefined;
 
-export type DomPlainObject = Record<string, DomPrimitive>;
-export type DomEventData = DomPlainObject | any[] | string | number | boolean;
-export type DomEventTarget = HTMLElement | Window | Document;
-export type DomCollection = HTMLElement[];
-export type DomCallback = (...args: any[]) => void;
+export type ElementsCollection = HTMLElement[];
+export type MethodCallback = (...args: any[]) => void;
+export type PlainObject = Record<string, Primitive>;
+export type CustomEventData = PlainObject | any[] | string | number | boolean;
+export type CustomEventTarget = HTMLElement | Window | Document;

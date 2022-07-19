@@ -1,9 +1,9 @@
 import { IDomElement } from '@core/classes/DomElement';
 import { reduce } from '@core/hooks';
 import { validate } from '@src/validator';
-import { parseToCssObject, toDashCase, toNumber } from '@core/utils/string';
+import { parseToCssObject, toDashCase, toNumber } from '@utils/string';
 
-export type DomStyleMethod = (
+export type StyleMethod = (
   name?: string | boolean,
   parse?: boolean
 ) => string | number | Record<string, string | number>;
@@ -49,4 +49,4 @@ export default (function (this: IDomElement, name?, parse = false) {
     },
     {},
   );
-} as DomStyleMethod);
+} as StyleMethod);

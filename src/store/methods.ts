@@ -1,21 +1,21 @@
-import dataMethods, { IDomStoreDataMethods } from '@store/methods/data';
+import dataMethods, { type IStoreDataMethods } from '@store/methods/data';
 import elementMethods, {
-  IDomStoreElementMethods,
+  type IStoreElementMethods,
 } from '@store/methods/element';
 import handlersMethods, {
-  IDomStoreHandlersMethods,
+  type IStoreHandlersMethods,
 } from '@store/methods/handlers';
-import rootMethods, { IDomStoreRootMethods } from '@store/methods/root';
+import rootMethods, { type IStoreRootMethods } from '@store/methods/root';
 
-export interface IDomStoreMethods
-  extends IDomStoreDataMethods,
-  IDomStoreElementMethods,
-  IDomStoreHandlersMethods,
-  IDomStoreRootMethods {}
+export interface IStoreMethods
+  extends IStoreDataMethods,
+  IStoreElementMethods,
+  IStoreHandlersMethods,
+  IStoreRootMethods {}
 
 export default {
   ...dataMethods,
   ...elementMethods,
   ...handlersMethods,
   ...rootMethods,
-} as IDomStoreMethods;
+} as IStoreMethods;

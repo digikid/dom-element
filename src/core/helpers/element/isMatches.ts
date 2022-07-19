@@ -1,7 +1,7 @@
 import { validate } from '@src/validator';
 
 export default (el: HTMLElement, selector: string): boolean => {
-  if (!validate<string>(selector, 'string', 'truthy')) {
+  if (!validate<string>(selector, 'selectorString')) {
     return false;
   }
 

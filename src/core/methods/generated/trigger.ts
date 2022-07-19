@@ -1,20 +1,20 @@
-import { DomEventData } from '@core/types';
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { type CustomEventData } from '@core/types';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { trigger } from '@core/helpers/events';
 
-export type IDomTriggerMethods = {
-  readonly trigger: DomTriggerMethod;
-  readonly triggerHandler: DomTriggerMethod;
-};
-
-export type DomTriggerMethod = (
+export type TriggerMethod = (
   eventName: string,
-  eventData?: DomEventData
+  eventData?: CustomEventData
 ) => DomElement;
 
-export default create<DomTriggerMethod, keyof IDomTriggerMethods>(
+export type ITriggerMethods = {
+  readonly trigger: TriggerMethod;
+  readonly triggerHandler: TriggerMethod;
+};
+
+export default create<TriggerMethod, keyof ITriggerMethods>(
   {
     trigger: [],
     triggerHandler: [true],
@@ -30,4 +30,4 @@ export default create<DomTriggerMethod, keyof IDomTriggerMethods>(
 
     return new DomElement(this);
   },
-) as IDomTriggerMethods;
+) as ITriggerMethods;

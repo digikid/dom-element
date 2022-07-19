@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomAddClassMethod = (...classNames: string[]) => DomElement;
+export type AddClassMethod = (...classNames: string[]) => DomElement;
 
 export default (function (this: IDomElement, ...classNames) {
   if (classNames.every((className) => validate<string>(className, 'string'))) {
@@ -11,4 +11,4 @@ export default (function (this: IDomElement, ...classNames) {
   }
 
   return new DomElement(this);
-} as DomAddClassMethod);
+} as AddClassMethod);

@@ -1,16 +1,16 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 
-export type IDomWrapMethods = {
-  readonly wrap: DomWrapMethod;
-  readonly wrapInner: DomWrapMethod;
+export type WrapMethod = (htmlString: string) => DomElement;
+
+export type IWrapMethods = {
+  readonly wrap: WrapMethod;
+  readonly wrapInner: WrapMethod;
 };
 
-export type DomWrapMethod = (htmlString: string) => DomElement;
-
-export default create<DomWrapMethod, keyof IDomWrapMethods, [boolean]>(
+export default create<WrapMethod, keyof IWrapMethods, [boolean]>(
   {
     wrap: [false],
     wrapInner: [true],
@@ -41,4 +41,4 @@ export default create<DomWrapMethod, keyof IDomWrapMethods, [boolean]>(
 
     return new DomElement(this);
   },
-) as IDomWrapMethods;
+) as IWrapMethods;

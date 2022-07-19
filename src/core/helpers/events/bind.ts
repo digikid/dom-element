@@ -1,28 +1,43 @@
-import { DomEventTarget, DomCallback } from '@core/types';
+import { type CustomEventTarget, type MethodCallback } from '@core/types';
 import { store } from '@src/store';
 import { validate } from '@src/validator';
-import { parse } from '@core/helpers/selector';
-import { listener } from '@core/helpers/events';
+import { isMatches } from '@core/helpers/element';
 
 export default (
-  el: DomEventTarget,
+  el: CustomEventTarget,
   event: string,
-  callback: DomCallback,
+  callback: MethodCallback,
   selector?: string,
 ): void => {
-  const target = validate<Window>(el, 'window') ? window : document;
+  const storeId = validate<string>(selector, 'selectorString') ? selector : el;
 
   event.split(' ').forEach((event) => {
-    if (!(event in store.get('handlers')) || validate<Window>(el, 'window')) {
-      target.addEventListener(event, listener, false);
+    let listener: EventListener;
 
-      store.setListeners(target, event, listener);
-    }
+    if (
+      validate<Document>(el, 'document')
+      && validate<string>(selector, 'selectorString')
+    ) {
+      listener = function (this: HTMLElement, e) {
+        for (
+          let target = e.target as HTMLElement;
+          target && target !== this;
+          target = target.parentNode as HTMLElement
+        ) {
+          if (isMatches(target, selector)) {
+            callback.call(target, e);
 
-    if (validate<string>(selector, 'selectorString')) {
-      parse(selector).forEach((el) => store.setHandlers(el, event, callback));
+            break;
+          }
+        }
+      };
     } else {
-      store.setHandlers(el, event, callback);
+      listener = callback.bind(el);
     }
+
+    el.addEventListener(event, listener);
+
+    store.setHandlers(storeId, event, callback);
+    store.setListeners(storeId, event, listener);
   });
 };

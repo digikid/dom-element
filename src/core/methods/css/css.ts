@@ -2,9 +2,9 @@ import { DomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { resolve } from '@core/helpers/methods';
 import { getComputedValue } from '@core/helpers/css';
-import { toDashCase } from '@core/utils/string';
+import { toDashCase } from '@utils/string';
 
-export type DomCssMethod = (
+export type CssMethod = (
   name: string | Record<string, string>,
   value?: string
 ) => DomElement | string;
@@ -16,4 +16,4 @@ export default resolve<string | null>(
       el.style.setProperty(toDashCase(name), value);
     }
   },
-) as DomCssMethod;
+) as CssMethod;

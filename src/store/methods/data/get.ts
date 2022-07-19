@@ -1,12 +1,12 @@
-import { IDomStore } from '@store/classes/DomStore';
+import { type IStore } from '@store/classes/Store';
 import { validate } from '@src/validator';
 
-export type DomStoreGetDataMethod = (
+export type StoreGetDataMethod = (
   idOrElement: string | HTMLElement,
   key?: string
 ) => any;
 
-export default (function (this: IDomStore, idOrElement, key?) {
+export default (function (this: IStore, idOrElement, key?) {
   const data = this.setupData(idOrElement);
 
   if (validate<string>(key, 'string', 'truthy')) {
@@ -14,4 +14,4 @@ export default (function (this: IDomStore, idOrElement, key?) {
   }
 
   return data;
-} as DomStoreGetDataMethod);
+} as StoreGetDataMethod);

@@ -1,14 +1,12 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { reduce } from '@core/hooks';
 import { some, validate } from '@src/validator';
 
-export type DomValMethodValue = null | string | number | string[];
-export type DomValMethod = (
-  value?: DomValMethodValue
-) => DomElement | string | null;
+export type ValMethodValue = null | string | number | string[];
+export type ValMethod = (value?: ValMethodValue) => DomElement | string | null;
 
 export default (function (this: IDomElement, value?) {
-  if (some<DomValMethodValue>(value, 'null', 'string', 'number', 'array')) {
+  if (some<ValMethodValue>(value, 'null', 'string', 'number', 'array')) {
     this.collection.forEach((el) => {
       if ('value' in el) {
         if (validate<string[]>(value, 'array')) {
@@ -59,4 +57,4 @@ export default (function (this: IDomElement, value?) {
 
     return 'value' in el ? (el as HTMLInputElement).value : null;
   });
-} as DomValMethod);
+} as ValMethod);

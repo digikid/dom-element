@@ -1,12 +1,12 @@
-import { DomStoreId, DomStoreHandlers } from '@src/store';
-import { IDomStore } from '@store/classes/DomStore';
+import { type StoreId, type StoreHandlers } from '@src/store';
+import { type IStore } from '@store/classes/Store';
 
-export type DomStoreSetupHandlersMethod = (
-  idOrElement: DomStoreId,
+export type StoreSetupHandlersMethod = (
+  idOrElement: StoreId,
   name: string
 ) => Function[];
 
-export default (field: DomStoreHandlers) => function (this: IDomStore, idOrElement, name) {
+export default (field: StoreHandlers) => function (this: IStore, idOrElement, name) {
   const functions = window._domElementStore[field];
   const id = this.getElementId(idOrElement);
 
@@ -19,4 +19,4 @@ export default (field: DomStoreHandlers) => function (this: IDomStore, idOrEleme
   }
 
   return functions[name][id];
-} as DomStoreSetupHandlersMethod;
+} as StoreSetupHandlersMethod;

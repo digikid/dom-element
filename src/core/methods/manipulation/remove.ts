@@ -1,7 +1,7 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomRemoveMethod = () => DomElement;
+export type RemoveMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
   this.collection.forEach((el, i) => {
@@ -15,4 +15,4 @@ export default (function (this: IDomElement) {
   });
 
   return new DomElement(this);
-} as DomRemoveMethod);
+} as RemoveMethod);

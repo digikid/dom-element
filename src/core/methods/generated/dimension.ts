@@ -1,20 +1,18 @@
 import { create } from '@core/helpers/methods';
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { reduce } from '@core/hooks';
-import { toNumber } from '@core/utils/string';
+import { toNumber } from '@utils/string';
 import { getComputedValue } from '@core/helpers/css';
 
-export type DomDimensionMethod = (
-  value?: string | number
-) => DomElement | number;
+export type DimensionMethod = (value?: string | number) => DomElement | number;
 
-export interface IDomDimensionMethods {
-  readonly height: DomDimensionMethod;
-  readonly width: DomDimensionMethod;
+export interface IDimensionMethods {
+  readonly height: DimensionMethod;
+  readonly width: DimensionMethod;
 }
 
-export default create<DomDimensionMethod, keyof IDomDimensionMethods>(
+export default create<DimensionMethod, keyof IDimensionMethods>(
   {
     height: [],
     width: [],

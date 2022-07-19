@@ -1,20 +1,20 @@
 import {
-  DomStoreId,
-  DomStoreHandlers,
-  DomStoreHandlersSetup,
+  type StoreId,
+  type StoreHandlers,
+  type StoreHandlersSetup,
 } from '@src/store';
-import { IDomStore } from '@store/classes/DomStore';
-import { capitalize } from '@core/utils/string';
+import { type IStore } from '@store/classes/Store';
+import { capitalize } from '@utils/string';
 
-export type DomStoreGetHandlersMethod = (
-  idOrElement: DomStoreId,
+export type StoreGetHandlersMethod = (
+  idOrElement: StoreId,
   name: string
 ) => Function[];
 
-export default (field: DomStoreHandlers) => {
-  const setupMethod = `setup${capitalize(field)}` as DomStoreHandlersSetup;
+export default (field: StoreHandlers) => {
+  const setupMethod = `setup${capitalize(field)}` as StoreHandlersSetup;
 
-  return function (this: IDomStore, idOrElement, name) {
+  return function (this: IStore, idOrElement, name) {
     return this[setupMethod](idOrElement, name);
-  } as DomStoreGetHandlersMethod;
+  } as StoreGetHandlersMethod;
 };

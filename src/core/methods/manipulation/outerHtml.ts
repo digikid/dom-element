@@ -1,9 +1,9 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { parse } from '@core/helpers/selector';
 import { reduce } from '@core/hooks';
 
-export type DomOuterHtmlMethod = (value?: string) => DomElement | string | null;
+export type OuterHtmlMethod = (value?: string) => DomElement | string | null;
 
 export default (function (this: IDomElement, value?) {
   if (validate<string>(value, 'string')) {
@@ -15,4 +15,4 @@ export default (function (this: IDomElement, value?) {
   }
 
   return reduce.call(this, (el) => el.outerHTML);
-} as DomOuterHtmlMethod);
+} as OuterHtmlMethod);

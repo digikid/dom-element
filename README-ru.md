@@ -41,6 +41,14 @@ $(document)
   });
 ```
 
+Если вы используете TypeScript, вы также можете импортировать тип создаваемого элемента:
+
+```ts
+import $, { type DomElement } from 'dom-element';
+
+const $element: DomElement = $('.element');
+```
+
 <a name="selectors"></a>
 
 ### Селекторы

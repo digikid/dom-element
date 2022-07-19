@@ -1,23 +1,23 @@
-import { DomCallback } from '@core/types';
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { type MethodCallback } from '@core/types';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { bind } from '@core/helpers/effects';
 
-export interface IDomEffectMethods {
-  readonly fadeIn: DomEffectMethod;
-  readonly fadeOut: DomEffectMethod;
-  readonly fadeToggle: DomEffectMethod;
-  readonly slideDown: DomEffectMethod;
-  readonly slideUp: DomEffectMethod;
-  readonly slideToggle: DomEffectMethod;
-}
-
-export type DomEffectMethod = (
+export type EffectMethod = (
   duration?: number | string | Function,
-  callback?: DomCallback
+  callback?: MethodCallback
 ) => DomElement;
 
-export default create<DomEffectMethod, keyof IDomEffectMethods>(
+export interface IEffectMethods {
+  readonly fadeIn: EffectMethod;
+  readonly fadeOut: EffectMethod;
+  readonly fadeToggle: EffectMethod;
+  readonly slideDown: EffectMethod;
+  readonly slideUp: EffectMethod;
+  readonly slideToggle: EffectMethod;
+}
+
+export default create<EffectMethod, keyof IEffectMethods>(
   {
     fadeIn: [],
     fadeOut: [],
@@ -31,4 +31,4 @@ export default create<DomEffectMethod, keyof IDomEffectMethods>(
 
     return new DomElement(this);
   },
-) as IDomEffectMethods;
+) as IEffectMethods;

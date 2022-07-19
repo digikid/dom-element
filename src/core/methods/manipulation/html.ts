@@ -1,9 +1,9 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { reduce, map } from '@core/hooks';
 import { parse } from '@core/helpers/selector';
 
-export type DomHtmlMethod = (
+export type HtmlMethod = (
   value?: string | boolean,
   replace?: boolean
 ) => DomElement | string;
@@ -32,4 +32,4 @@ export default (function (this: IDomElement, value, replace?) {
 
     return el[prop];
   });
-} as DomHtmlMethod);
+} as HtmlMethod);

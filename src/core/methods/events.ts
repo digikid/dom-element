@@ -1,15 +1,15 @@
-import off, { DomOffMethod } from '@core/methods/events/off';
-import on, { DomOnMethod } from '@core/methods/events/on';
-import ready, { DomReadyMethod } from '@core/methods/events/ready';
+import off, { type OffMethod } from '@core/methods/events/off';
+import on, { type OnMethod } from '@core/methods/events/on';
+import ready, { type ReadyMethod } from '@core/methods/events/ready';
 
-export interface IDomEventsMethods {
-  readonly off: DomOffMethod;
-  readonly on: DomOnMethod;
-  readonly ready: DomReadyMethod;
+export interface IEventsMethods {
+  readonly off: OffMethod;
+  readonly on: OnMethod;
+  readonly ready: ReadyMethod;
 }
 
 export default {
   off,
   on,
   ready,
-} as IDomEventsMethods;
+} as IEventsMethods;

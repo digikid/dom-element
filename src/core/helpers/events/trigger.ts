@@ -1,13 +1,16 @@
-import { DomEventTarget, DomEventData } from '@core/types';
+import { CustomEventTarget, CustomEventData } from '@core/types';
 import { some, validate } from '@src/validator';
 import { store } from '@src/store';
+import { isMatches } from '@core/helpers/element';
 
 export default (
-  el: DomEventTarget,
+  el: CustomEventTarget,
   event: string,
-  data?: DomEventData,
+  data?: CustomEventData,
   handlersOnly = false,
 ): void => {
+  const storeId = store.getElementId(el);
+
   const params = {
     bubbles: true,
     cancelable: true,
@@ -17,7 +20,14 @@ export default (
     let e: Event | CustomEvent;
 
     if (
-      some<DomEventData>(data, 'object', 'array', 'string', 'number', 'boolean')
+      some<CustomEventData>(
+        data,
+        'object',
+        'array',
+        'string',
+        'number',
+        'boolean',
+      )
     ) {
       if (
         validate(window.CustomEvent)
@@ -44,7 +54,19 @@ export default (
     }
 
     if (handlersOnly) {
-      store.getHandlers(el, event).forEach((handler) => handler.call(el, e));
+      const storeHandlers = store.getAllHandlers(event);
+
+      const handlers = Object.keys(storeHandlers)
+        .filter((id) => {
+          const check = storeId === id;
+
+          return some<Window | Document>(el, 'window', 'documentElement')
+            ? check
+            : check || isMatches(el, id);
+        })
+        .reduce((acc, id) => [...acc, ...storeHandlers[id]], [] as Function[]);
+
+      handlers.forEach((handler) => handler.call(el, e));
     } else {
       el.dispatchEvent(e);
     }

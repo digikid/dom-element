@@ -1,9 +1,7 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomGetMethod = (
-  index?: number
-) => HTMLElement | HTMLElement[] | null;
+export type GetMethod = (index?: number) => HTMLElement | HTMLElement[] | null;
 
 export default (function (this: IDomElement, index?) {
   if (validate<number>(index, 'number')) {
@@ -11,4 +9,4 @@ export default (function (this: IDomElement, index?) {
   }
 
   return this.collection;
-} as DomGetMethod);
+} as GetMethod);

@@ -1,6 +1,6 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 
-export type DomEmptyMethod = () => DomElement;
+export type EmptyMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
   this.collection.forEach((el) => {
@@ -10,4 +10,4 @@ export default (function (this: IDomElement) {
   });
 
   return new DomElement(this);
-} as DomEmptyMethod);
+} as EmptyMethod);

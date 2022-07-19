@@ -1,11 +1,11 @@
 import getElementId, {
-  DomStoreGetElementIdMethod,
+  type StoreGetElementIdMethod,
 } from '@store/methods/element/getId';
 
-export interface IDomStoreElementMethods {
-  getElementId: DomStoreGetElementIdMethod;
+export interface IStoreElementMethods {
+  getElementId: StoreGetElementIdMethod;
 }
 
 export default {
   getElementId,
-} as IDomStoreElementMethods;
+} as IStoreElementMethods;

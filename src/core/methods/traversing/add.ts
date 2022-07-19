@@ -3,7 +3,7 @@ import { parse } from '@core/helpers/selector';
 import { validate } from '@src/validator';
 import { map } from '@core/hooks';
 
-export type DomAddMethod = (selector: any) => DomElement;
+export type AddMethod = (selector: any) => DomElement;
 
 export default (function (this: IDomElement, selector) {
   return map.call(this, () => {
@@ -13,4 +13,4 @@ export default (function (this: IDomElement, selector) {
 
     return this;
   });
-} as DomAddMethod);
+} as AddMethod);

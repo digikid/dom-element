@@ -1,26 +1,24 @@
-import { DomCollection } from '@core/types';
+import { type ElementsCollection } from '@core/types';
 import { parse } from '@core/helpers/selector';
 import { store } from '@src/store';
 
 import polyfills from '@core/polyfills';
-import methods, { IDomMethods } from '@core/methods';
+import methods, { type IMethods } from '@core/methods';
 
-export interface IDomElement extends IDomMethods {
-  collection: DomCollection;
+export interface IDomElement extends IMethods {
+  readonly selector: any;
+  readonly collection: ElementsCollection;
 
   get length(): number;
 }
 
 export class DomElement implements IDomElement {
-  public collection: DomCollection = [];
+  public collection: ElementsCollection = [];
 
-  constructor(selector: any) {
-    if (!store.get('initialized')) {
-      Object.values(polyfills)
-        .forEach((polyfill) => polyfill());
-
-      store.set('initialized', true);
-    }
+  constructor(public selector: any) {
+    store.init(() => {
+      Object.values(polyfills).forEach((polyfill) => polyfill());
+    });
 
     this.collection = parse(selector);
   }

@@ -1,30 +1,30 @@
 import getEventMethod, {
-  DomStoreGetHandlersMethod,
+  type StoreGetHandlersMethod,
 } from '@store/methods/handlers/get';
 import getAllEventMethod, {
-  DomStoreGetAllHandlersMethod,
+  type StoreGetAllHandlersMethod,
 } from '@store/methods/handlers/getAll';
 import setupEventMethod, {
-  DomStoreSetupHandlersMethod,
+  type StoreSetupHandlersMethod,
 } from '@store/methods/handlers/setup';
 import setEventMethod, {
-  DomStoreSetHandlersMethod,
+  type StoreSetHandlersMethod,
 } from '@store/methods/handlers/set';
 import removeEventMethod, {
-  DomStoreRemoveHandlersMethod,
+  type StoreRemoveHandlersMethod,
 } from '@store/methods/handlers/remove';
 
-export interface IDomStoreHandlersMethods {
-  readonly getHandlers: DomStoreGetHandlersMethod;
-  readonly getAllHandlers: DomStoreGetAllHandlersMethod;
-  readonly setHandlers: DomStoreSetHandlersMethod;
-  readonly setupHandlers: DomStoreSetupHandlersMethod;
-  readonly removeHandlers: DomStoreRemoveHandlersMethod;
-  readonly getListeners: DomStoreGetHandlersMethod;
-  readonly getAllListeners: DomStoreGetAllHandlersMethod;
-  readonly setListeners: DomStoreSetHandlersMethod;
-  readonly setupListeners: DomStoreSetupHandlersMethod;
-  readonly removeListeners: DomStoreRemoveHandlersMethod;
+export interface IStoreHandlersMethods {
+  readonly getHandlers: StoreGetHandlersMethod;
+  readonly getAllHandlers: StoreGetAllHandlersMethod;
+  readonly setHandlers: StoreSetHandlersMethod;
+  readonly setupHandlers: StoreSetupHandlersMethod;
+  readonly removeHandlers: StoreRemoveHandlersMethod;
+  readonly getListeners: StoreGetHandlersMethod;
+  readonly getAllListeners: StoreGetAllHandlersMethod;
+  readonly setListeners: StoreSetHandlersMethod;
+  readonly setupListeners: StoreSetupHandlersMethod;
+  readonly removeListeners: StoreRemoveHandlersMethod;
 }
 
 export default {
@@ -38,4 +38,4 @@ export default {
   setListeners: setEventMethod('listeners'),
   setupListeners: setupEventMethod('listeners'),
   removeListeners: removeEventMethod('listeners'),
-} as IDomStoreHandlersMethods;
+} as IStoreHandlersMethods;

@@ -1,17 +1,17 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { reduce } from '@core/hooks';
-import { toNumber } from '@core/utils/string';
+import { toNumber } from '@utils/string';
 import { getComputedValue } from '@core/helpers/css';
 
-export type DomOuterDimensionMethod = (includeMargin?: boolean) => number;
+export type OuterDimensionMethod = (includeMargin?: boolean) => number;
 
-export interface IDomOuterDimensionMethods {
-  readonly outerHeight: DomOuterDimensionMethod;
-  readonly outerWidth: DomOuterDimensionMethod;
+export interface IOuterDimensionMethods {
+  readonly outerHeight: OuterDimensionMethod;
+  readonly outerWidth: OuterDimensionMethod;
 }
 
-export default create<DomOuterDimensionMethod, keyof IDomOuterDimensionMethods>(
+export default create<OuterDimensionMethod, keyof IOuterDimensionMethods>(
   {
     outerHeight: [],
     outerWidth: [],

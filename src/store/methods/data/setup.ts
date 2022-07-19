@@ -1,11 +1,11 @@
-import { DomStoreId } from '@src/store';
-import { IDomStore } from '@store/classes/DomStore';
+import { type StoreId } from '@src/store';
+import { type IStore } from '@store/classes/Store';
 
-export type DomStoreSetupDataMethod = (
-  idOrElement: DomStoreId
+export type StoreSetupDataMethod = (
+  idOrElement: StoreId
 ) => Record<string, any>;
 
-export default (function (this: IDomStore, idOrElement) {
+export default (function (this: IStore, idOrElement) {
   const id = this.getElementId(idOrElement);
 
   const { data } = window._domElementStore;
@@ -15,4 +15,4 @@ export default (function (this: IDomStore, idOrElement) {
   }
 
   return data[id];
-} as DomStoreSetupDataMethod);
+} as StoreSetupDataMethod);

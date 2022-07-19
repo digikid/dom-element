@@ -1,19 +1,18 @@
-import { DomCallback } from '@core/types';
+import { type MethodCallback } from '@core/types';
+import { type AnimateProps } from '@core/helpers/effects/bind';
 import { validate } from '@src/validator';
-import { DomAnimateProps } from '@core/helpers/effects/bind';
 import { getComputedValue, getDisplayValue, isPx } from '@core/helpers/css';
 
 export default (
-  props: DomAnimateProps,
+  props: AnimateProps,
   el: HTMLElement,
   duration: number,
-  callback: DomCallback | undefined,
+  callback: MethodCallback | undefined,
   inverse = false,
 ) => {
   const display = getComputedValue(el, 'display', true);
   const isHidden = getDisplayValue(el) === 'none';
-  const hasOverflow = Object.keys(props.el)
-    .some((prop) => isPx(prop));
+  const hasOverflow = Object.keys(props.el).some((prop) => isPx(prop));
 
   if ((inverse && !isHidden) || (!inverse && isHidden)) {
     return;
@@ -36,19 +35,17 @@ export default (
 
     const elapsed = timestamp - start;
 
-    Object.entries(props.step)
-      .forEach(([prop, v]) => {
-        const value = inverse ? v * elapsed : props.el[prop] - v * elapsed;
-        const stringValue = isPx(prop) ? `${value}px` : value.toString();
+    Object.entries(props.step).forEach(([prop, v]) => {
+      const value = inverse ? v * elapsed : props.el[prop] - v * elapsed;
+      const stringValue = isPx(prop) ? `${value}px` : value.toString();
 
-        el.style.setProperty(prop, stringValue);
-      });
+      el.style.setProperty(prop, stringValue);
+    });
 
     if (elapsed >= duration) {
-      Object.keys(props.step)
-        .forEach((prop) => {
-          el.style.setProperty(prop, null);
-        });
+      Object.keys(props.step).forEach((prop) => {
+        el.style.setProperty(prop, null);
+      });
 
       if (hasOverflow) {
         el.style.setProperty('overflow', null);

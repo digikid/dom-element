@@ -2,7 +2,7 @@ import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 import { map } from '@core/hooks';
 
-export type DomFindMethod = (selector: string) => DomElement;
+export type FindMethod = (selector: string) => DomElement;
 
 export default (function (this: IDomElement, selector) {
   return map.call(this, () => (validate<string>(selector, 'selectorString')
@@ -14,4 +14,4 @@ export default (function (this: IDomElement, selector) {
       return acc;
     }, [] as HTMLElement[])
     : []));
-} as DomFindMethod);
+} as FindMethod);

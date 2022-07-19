@@ -1,5 +1,7 @@
 import { validate } from '@src/validator';
 
+export type Entries<T> = { [K in keyof T]: [K, T[K]] }[keyof T][];
+
 export const isObject = (v: any) => validate<Object>(v, 'object');
 
 export const cloneDeep = (obj: Object): Object => JSON.parse(JSON.stringify(obj));

@@ -1,22 +1,22 @@
-import { IDomStore } from '@store/classes/DomStore';
+import { type IStore } from '@store/classes/Store';
 import {
-  DomStoreId,
-  DomStoreHandlers,
-  DomStoreHandlersSetup,
+  type StoreId,
+  type StoreHandlers,
+  type StoreHandlersSetup,
 } from '@src/store';
-import { capitalize } from '@core/utils/string';
+import { capitalize } from '@utils/string';
 
-export type DomStoreRemoveHandlersMethod = (
-  idOrElement: DomStoreId,
+export type StoreRemoveHandlersMethod = (
+  idOrElement: StoreId,
   name: string
 ) => void;
 
-export default (field: DomStoreHandlers) => {
-  const setupMethod = `setup${capitalize(field)}` as DomStoreHandlersSetup;
+export default (field: StoreHandlers) => {
+  const setupMethod = `setup${capitalize(field)}` as StoreHandlersSetup;
 
-  return function (this: IDomStore, idOrElement, name) {
+  return function (this: IStore, idOrElement, name) {
     // console.log(this.getElementId(idOrElement));
 
     this[setupMethod](idOrElement, name).length = 0;
-  } as DomStoreRemoveHandlersMethod;
+  } as StoreRemoveHandlersMethod;
 };

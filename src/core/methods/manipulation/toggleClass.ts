@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomToggleClassMethod = (className: string) => DomElement;
+export type ToggleClassMethod = (className: string) => DomElement;
 
 export default (function (this: IDomElement, className) {
   if (validate<string>(className, 'string', 'truthy')) {
@@ -19,4 +19,4 @@ export default (function (this: IDomElement, className) {
   }
 
   return new DomElement(this);
-} as DomToggleClassMethod);
+} as ToggleClassMethod);

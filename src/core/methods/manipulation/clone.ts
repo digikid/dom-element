@@ -1,7 +1,7 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { map } from '@core/hooks';
 
-export type DomCloneMethod = () => DomElement;
+export type CloneMethod = () => DomElement;
 
 export default (function (this: IDomElement) {
   return map.call(this, () => this.collection.reduce((acc, el) => {
@@ -11,4 +11,4 @@ export default (function (this: IDomElement) {
 
     return acc;
   }, [] as HTMLElement[]));
-} as DomCloneMethod);
+} as CloneMethod);

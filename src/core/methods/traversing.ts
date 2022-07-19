@@ -1,25 +1,29 @@
-import add, { DomAddMethod } from '@core/methods/traversing/add';
-import children, { DomChildrenMethod } from '@core/methods/traversing/children';
-import closest, { DomClosestMethod } from '@core/methods/traversing/closest';
-import eq, { DomEqMethod } from '@core/methods/traversing/eq';
-import find, { DomFindMethod } from '@core/methods/traversing/find';
-import has, { DomHasMethod } from '@core/methods/traversing/has';
-import next, { DomNextMethod } from '@core/methods/traversing/next';
-import parent, { DomParentMethod } from '@core/methods/traversing/parent';
-import prev, { DomPrevMethod } from '@core/methods/traversing/prev';
-import siblings, { DomSiblingsMethod } from '@core/methods/traversing/siblings';
+import add, { type AddMethod } from '@core/methods/traversing/add';
+import children, {
+  type ChildrenMethod,
+} from '@core/methods/traversing/children';
+import closest, { type ClosestMethod } from '@core/methods/traversing/closest';
+import eq, { type EqMethod } from '@core/methods/traversing/eq';
+import find, { type FindMethod } from '@core/methods/traversing/find';
+import has, { type HasMethod } from '@core/methods/traversing/has';
+import next, { type NextMethod } from '@core/methods/traversing/next';
+import parent, { type ParentMethod } from '@core/methods/traversing/parent';
+import prev, { type PrevMethod } from '@core/methods/traversing/prev';
+import siblings, {
+  type SiblingsMethod,
+} from '@core/methods/traversing/siblings';
 
-export interface IDomTraversingMethods {
-  readonly add: DomAddMethod;
-  readonly children: DomChildrenMethod;
-  readonly closest: DomClosestMethod;
-  readonly eq: DomEqMethod;
-  readonly find: DomFindMethod;
-  readonly has: DomHasMethod;
-  readonly next: DomNextMethod;
-  readonly parent: DomParentMethod;
-  readonly prev: DomPrevMethod;
-  readonly siblings: DomSiblingsMethod;
+export interface ITraversingMethods {
+  readonly add: AddMethod;
+  readonly children: ChildrenMethod;
+  readonly closest: ClosestMethod;
+  readonly eq: EqMethod;
+  readonly find: FindMethod;
+  readonly has: HasMethod;
+  readonly next: NextMethod;
+  readonly parent: ParentMethod;
+  readonly prev: PrevMethod;
+  readonly siblings: SiblingsMethod;
 }
 
 export default {
@@ -33,4 +37,4 @@ export default {
   parent,
   prev,
   siblings,
-} as IDomTraversingMethods;
+} as ITraversingMethods;

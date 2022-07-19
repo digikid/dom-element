@@ -1,18 +1,18 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { create } from '@core/helpers/methods';
 import { getIndex } from '@core/helpers/element';
 import { map } from '@core/hooks';
 
-export interface IDomOrderingMethods {
-  readonly even: DomOrderingMethod;
-  readonly first: DomOrderingMethod;
-  readonly last: DomOrderingMethod;
-  readonly odd: DomOrderingMethod;
+export type OrderingMethod = () => DomElement;
+
+export interface IOrderingMethods {
+  readonly even: OrderingMethod;
+  readonly first: OrderingMethod;
+  readonly last: OrderingMethod;
+  readonly odd: OrderingMethod;
 }
 
-export type DomOrderingMethod = () => DomElement;
-
-export default create<DomOrderingMethod, keyof IDomOrderingMethods>(
+export default create<OrderingMethod, keyof IOrderingMethods>(
   {
     even: [],
     first: [],

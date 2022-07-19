@@ -1,15 +1,17 @@
-import methods, { IDomStoreMethods } from '@store/methods';
+import methods, { type IStoreMethods } from '@store/methods';
 
-export interface IDomStore extends IDomStoreMethods {}
+export interface IStore extends IStoreMethods {
+}
 
-export class DomStore implements IDomStore {
-  private static instance: DomStore;
+export class Store implements IStore {
+  private static instance: Store;
 
-  private constructor() {}
+  private constructor() {
+  }
 
-  public static getInstance(): DomStore {
-    if (!DomStore.instance) {
-      DomStore.instance = new DomStore();
+  public static getInstance(): Store {
+    if (!Store.instance) {
+      Store.instance = new Store();
 
       if (!window._domElementStore) {
         window._domElementStore = {
@@ -22,10 +24,12 @@ export class DomStore implements IDomStore {
       }
     }
 
-    return DomStore.instance;
+    return Store.instance;
   }
 
   public readonly get = methods.get;
+
+  public readonly init = methods.init;
 
   public readonly set = methods.set;
 

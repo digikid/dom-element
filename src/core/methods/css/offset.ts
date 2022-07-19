@@ -1,8 +1,8 @@
 import { IDomElement } from '@core/classes/DomElement';
 import { reduce } from '@core/hooks';
 
-export type DomOffsetKeys = 'top' | 'left';
-export type DomOffsetMethod = () => Record<DomOffsetKeys, number>;
+export type OffsetKeys = 'top' | 'left';
+export type OffsetMethod = () => Record<OffsetKeys, number>;
 
 export default (function (this: IDomElement) {
   return reduce.call(
@@ -20,4 +20,4 @@ export default (function (this: IDomElement) {
       left: null,
     },
   );
-} as DomOffsetMethod);
+} as OffsetMethod);

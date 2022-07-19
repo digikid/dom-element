@@ -1,19 +1,19 @@
-import { IDomElement } from '@core/classes/DomElement';
+import { type IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type DomReduceHookCallback = (el: HTMLElement) => any;
+export type ReduceHookCallback = (el: HTMLElement) => any;
 
-export type DomReduceHook = (
-  callback?: DomReduceHookCallback,
+export type ReduceHook = (
+  callback?: ReduceHookCallback,
   defaultValue?: any
-) => ReturnType<DomReduceHookCallback> | typeof defaultValue;
+) => ReturnType<ReduceHookCallback> | typeof defaultValue;
 
 export default (function (this: IDomElement, callback?, defaultValue = null) {
   if (!this.length) {
     return defaultValue;
   }
 
-  return validate<DomReduceHookCallback>(callback, 'function')
+  return validate<ReduceHookCallback>(callback, 'function')
     ? callback(this.collection[0])
     : defaultValue;
-} as DomReduceHook);
+} as ReduceHook);

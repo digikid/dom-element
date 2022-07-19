@@ -1,11 +1,11 @@
-import { DomElement, IDomElement } from '@core/classes/DomElement';
+import { DomElement, type IDomElement } from '@core/classes/DomElement';
 import { filter } from '@core/helpers/collection';
 import { validate } from '@src/validator';
 
-export type DomMapHookCallback = () => HTMLElement[] | IDomElement;
+export type MapHookCallback = () => HTMLElement[] | IDomElement;
 
-export type DomMapHook = (
-  callback: DomMapHookCallback,
+export type MapHook = (
+  callback: MapHookCallback,
   selector?: string
 ) => DomElement;
 
@@ -17,4 +17,4 @@ export default (function (this: IDomElement, callback, selector?) {
   }
 
   return new DomElement(result);
-} as DomMapHook);
+} as MapHook);
