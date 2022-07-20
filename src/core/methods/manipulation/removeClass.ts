@@ -12,7 +12,7 @@ export default (function (this: IDomElement, ...classNames) {
   );
 
   this.collection.forEach((el) => {
-    el.classList.remove(...classes);
+    classes.forEach((className) => el.classList.remove(className));
   });
 
   return new DomElement(this);

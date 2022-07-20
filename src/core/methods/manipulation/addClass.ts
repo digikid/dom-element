@@ -12,7 +12,7 @@ export default (function (this: IDomElement, ...classNames) {
   );
 
   this.collection.forEach((el) => {
-    el.classList.add(...classes);
+    classes.forEach((className) => el.classList.add(className));
   });
 
   return new DomElement(this);
