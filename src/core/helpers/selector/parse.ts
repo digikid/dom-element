@@ -17,7 +17,9 @@ export default (selector: any): HTMLElement[] => {
     const html = new DOMParser().parseFromString(selector, 'text/html');
     const nodes = html.body.childNodes;
 
-    collection.push(...(<HTMLElement[]>Array.from(nodes)));
+    if (nodes) {
+      collection.push(...(<HTMLElement[]>Array.from(nodes)));
+    }
   }
 
   if (validate<HTMLCollection | NodeList>(selector, 'htmlCollection')) {

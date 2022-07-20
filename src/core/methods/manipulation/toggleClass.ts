@@ -1,12 +1,12 @@
 import { DomElement, IDomElement } from '@core/classes/DomElement';
 import { validate } from '@src/validator';
 
-export type ToggleClassMethod = (className: string) => DomElement;
+export type ToggleClassMethod = (classNames: string) => DomElement;
 
-export default (function (this: IDomElement, className) {
-  if (validate<string>(className, 'string', 'truthy')) {
+export default (function (this: IDomElement, classNames) {
+  if (validate<string>(classNames, 'string', 'truthy')) {
     this.collection.forEach((el) => {
-      const classes = className.split(' ');
+      const classes = classNames.split(' ');
 
       classes.forEach((className) => {
         if (el.classList.contains(className)) {

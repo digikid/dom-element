@@ -1,5 +1,15 @@
 # Release Notes
 
+[1.4.3]: https://github.com/digikid/dom-element/releases/tag/1.4.3
+
+## [1.4.3] - 2022-07-21
+
+### Bug Fixes
+
+- Fixed bug causing incorrect selector parsing
+- Fixed a bug in the `addClass` and `removeClass` methods that occurred when passing multiple classes as a string
+- Code refactoring, minor bug fixes
+
 [1.4.2]: https://github.com/digikid/dom-element/releases/tag/1.4.2
 
 ## [1.4.2] - 2022-07-20
