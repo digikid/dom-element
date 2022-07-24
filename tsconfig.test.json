@@ -1,10 +1,4 @@
 {
-  "include": [
-    "./test/**/*"
-  ],
-  "files": [
-    "./test/setup/*.ts"
-  ],
   "compilerOptions": {
     "esModuleInterop": true,
     "baseUrl": "src",
@@ -25,5 +19,14 @@
         "utils/*"
       ]
     }
-  }
+  },
+  "include": [
+    "./test/**/*"
+  ],
+  "files": [
+    "./test/setup/*.ts"
+  ],
+  "typeRoots": [
+    "src/global.d.ts"
+  ]
 }

@@ -1,5 +1,22 @@
 # Release Notes
 
+[1.4.4]: https://github.com/digikid/dom-element/releases/tag/1.4.4
+
+## [1.4.4] - 2022-07-24
+
+### Features
+
+- Global types moved to `global.d.ts` file
+
+### Bug Fixes
+
+- Minor bug fixes in test scripts
+
+### Updates
+
+- Main development task renamed with `dev`
+- Update documentation files
+
 [1.4.3]: https://github.com/digikid/dom-element/releases/tag/1.4.3
 
 ## [1.4.3] - 2022-07-21

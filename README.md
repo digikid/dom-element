@@ -5,17 +5,17 @@
 <div align="center">
   <h1>DOM Element</h1>
   <p>A set of methods for convenient manipulation of DOM elements.<br>Lightweight alternative to jQuery with similar method names.</p>
+  <p>
+    <b>English</b> | <a href="https://github.com/digikid/dom-element/blob/main/README.ru-RU.md">Русский</a></p>
   <img src="https://img.shields.io/github/release/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="Release version">
   <img src="https://img.shields.io/github/languages/top/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="TypeScript">
   <img src="https://img.shields.io/github/license/digikid/dom-element.svg?style=flat-square&logo=appveyor" alt="MIT License">
-  <p>
-    <a href="https://github.com/digikid/dom-element/blob/main/README.md">en</a> | <a href="https://github.com/digikid/dom-element/blob/main/README-ru.md">ru</a></p>
 </div>
 
-## Why
+## Features
 
 - Minimalistic set of commonly used methods for DOM manipulating
-- Lightweight and highly performant through the give up of legacy browsers support (IE10+)
+- Lightweight and highly performant through the give up of legacy browsers support
 - No additional dependencies
 - Written in TypeScript
 
@@ -75,13 +75,13 @@ This library does not support Sizzle selectors (`:checked`, `:hover` etc).
 
 ### Methods
 
-- [Traversing](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#traversing)
-- [Manipulations](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#manipulation)
-- [Styles](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#css)
-- [Events](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#events)
-- [Effects](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#effects)
-- [Getters](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#getters)
-- [Data management](https://github.com/digikid/dom-element/blob/main/docs/en/METHODS.md#data)
+- [Traversing](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#traversing)
+- [Manipulations](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#manipulation)
+- [Styles](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#css)
+- [Events](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#events)
+- [Effects](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#effects)
+- [Getters](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#getters)
+- [Data management](https://github.com/digikid/dom-element/blob/main/docs/en-US/METHODS.md#data)
 
 ### Functions store
 

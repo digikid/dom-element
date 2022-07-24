@@ -240,7 +240,8 @@ $('.element')
 
 Filter elements using the passed selector or function, excluding matching elements from the collection.
 
-This method is the opposite of [filter](https://github.com/digikid/dom-element/blob/main/docs/en/TRAVERSING.md#filter).
+This method is the opposite
+of [filter](https://github.com/digikid/dom-element/blob/main/docs/en-US/TRAVERSING.md#filter).
 
 Method works similar to [jQuery.not](https://api.jquery.com.not/).
 

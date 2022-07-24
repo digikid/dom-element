@@ -1,6 +1,6 @@
 {
   "name": "dom-element",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A set of methods for convenient manipulation of DOM elements",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
   "scripts": {
     "prepare": "ts-patch install -s && tsc",
     "build": "tsc",
-    "start": "tsc-watch --onFirstSuccess 'webpack serve'",
+    "dev": "tsc-watch --onFirstSuccess 'webpack serve'",
     "test": "rm -rf dist && tsc && npx jest --watch"
   },
   "repository": {

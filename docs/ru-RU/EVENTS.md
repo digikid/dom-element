@@ -102,7 +102,7 @@ $('.element')
 ## off
 
 Удаляет с выбранных элементов все обработчики событий, установленные с помощью
-метода [on](https://github.com/digikid/dom-element/blob/main/docs/ru/EVENTS.md#on).
+метода [on](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/EVENTS.md#on).
 
 Метод работает аналогично [jQuery.off](https://api.jquery.com/off/).
 

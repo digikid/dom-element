@@ -8,9 +8,9 @@
 
 ### Параметры
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -244,7 +244,8 @@ $('.element')
 Фильтрует коллекцию элементов с использованием переданного селектора либо функции, исключая из коллекции соответствующие
 элементы.
 
-Работает противоположно методу [filter](https://github.com/digikid/dom-element/blob/main/docs/ru/TRAVERSING.md#filter).
+Работает противоположно
+методу [filter](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/TRAVERSING.md#filter).
 
 Метод работает аналогично [jQuery.not](https://api.jquery.com.not/).
 

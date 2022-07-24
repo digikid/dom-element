@@ -102,7 +102,7 @@ $('.element')
 ## off
 
 Removes all event handlers that were added
-using [on](https://github.com/digikid/dom-element/blob/main/docs/en/EVENTS.md#on) method from selected elements.
+using [on](https://github.com/digikid/dom-element/blob/main/docs/en-US/EVENTS.md#on) method from selected elements.
 
 Method works similar to [jQuery.off](https://api.jquery.com/off/).
 

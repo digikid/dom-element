@@ -143,7 +143,7 @@ const ids = $('.checkbox')
 
 :warning: **Обратите внимание**  
 Если вам нужно получить массив из всех выбранных элементов, воспользуйтесь
-методом [get](https://github.com/digikid/dom-element/blob/main/docs/ru/GETTERS.md#get).
+методом [get](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/GETTERS.md#get).
 
 ### Использование
 

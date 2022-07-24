@@ -28,9 +28,9 @@ $('.element')
 
 Метод работает аналогично [jQuery.after](https://api.jquery.com/after/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -46,9 +46,9 @@ $('.first')
 
 Метод работает аналогично [jQuery.append](https://api.jquery.com/append/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -62,16 +62,16 @@ $('.outer')
 
 Вставляет заданное содержимое в конец выбранных элементов.
 
-В отличие от метода [append](https://github.com/digikid/dom-element/blob/main/docs/ru/MANIPULATION.md#append), в
+В отличие от метода [append](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/MANIPULATION.md#append), в
 качестве
 параметра
 передается селектор родительского элемента.
 
 Метод работает аналогично [jQuery.appendTo](https://api.jquery.com/appendTo/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -119,9 +119,9 @@ $('.input')
 
 Метод работает аналогично [jQuery.before](https://api.jquery.com/before/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -261,9 +261,9 @@ $('.element')
 
 Метод работает аналогично [jQuery.insertAfter](https://api.jquery.com/insertAfter/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -279,9 +279,9 @@ $('.second')
 
 Метод работает аналогично [jQuery.insertBefore](https://api.jquery.com/insertBefore/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -321,9 +321,9 @@ $('.element')
 
 Метод работает аналогично [jQuery.prepend](https://api.jquery.com/prepend/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -337,16 +337,16 @@ $('.outer')
 
 Вставляет заданное содержимое в начало выбранных элементов.
 
-В отличие от метода [prepend](https://github.com/digikid/dom-element/blob/main/docs/ru/MANIPULATION.md#prepend), в
+В отличие от метода [prepend](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/MANIPULATION.md#prepend), в
 качестве
 параметра
 передается селектор родительского элемента.
 
 Метод работает аналогично [jQuery.prependTo](https://api.jquery.com/prependTo/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 
@@ -471,9 +471,9 @@ $('.input')
 
 Метод работает аналогично [jQuery.replaceWith](https://api.jquery.com/replaceWith/).
 
-| Параметры | Тип                                                                                 | Возвращаемое значение |
-|-----------|-------------------------------------------------------------------------------------|-----------------------|
-| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README-ru.md#selectors) | DomElement            |
+| Параметры | Тип                                                                                    | Возвращаемое значение |
+|-----------|----------------------------------------------------------------------------------------|-----------------------|
+| selector  | [Селектор](https://github.com/digikid/dom-element/blob/main/README.ru-RU.md#selectors) | DomElement            |
 
 ### Использование
 

@@ -16,14 +16,4 @@ export interface IStorage {
   fn: StoreFnObject;
 }
 
-declare global {
-  interface Window {
-    _domElementStore: IStorage;
-  }
-
-  interface HTMLElement {
-    _domElementId: string;
-  }
-}
-
 export const store = Store.getInstance();

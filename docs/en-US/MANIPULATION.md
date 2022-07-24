@@ -62,7 +62,7 @@ $('.outer')
 
 Inserts the specified content at the end of selected elements.
 
-Unlike [append](https://github.com/digikid/dom-element/blob/main/docs/en/MANIPULATION.md#append) method, the parent
+Unlike [append](https://github.com/digikid/dom-element/blob/main/docs/en-US/MANIPULATION.md#append) method, the parent
 element selector is passed as a parameter.
 
 Method works similar to [jQuery.appendTo](https://api.jquery.com/appendTo/).
@@ -335,7 +335,7 @@ $('.outer')
 
 Inserts the specified content at the beginning of selected elements.
 
-Unlike the [prepend](https://github.com/digikid/dom-element/blob/main/docs/ru/MANIPULATION.md#prepend) method, the
+Unlike the [prepend](https://github.com/digikid/dom-element/blob/main/docs/ru-RU/MANIPULATION.md#prepend) method, the
 parent element selector is passed as a parameter.
 
 Method works similar to [jQuery.prependTo](https://api.jquery.com/prependTo/).

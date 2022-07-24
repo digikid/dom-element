@@ -1,6 +1,6 @@
 describe('parse', () => {
   test('parse empty selector', () => {
-    expect($().get()).toHaveLength(0);
+    expect($([]).get()).toHaveLength(0);
   });
 
   test('parse non-valid selector', () => {

@@ -142,7 +142,7 @@ Similar to a call `.get(0)`.
 
 :warning: **Important note**  
 If you need to get an array of all selected elements,
-use [get](https://github.com/digikid/dom-element/blob/main/docs/en/GETTERS.md#get)
+use [get](https://github.com/digikid/dom-element/blob/main/docs/en-US/GETTERS.md#get)
 method.
 
 ### Usage

@@ -1,12 +1,6 @@
 {
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./src/**/*.test.ts"
-  ],
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
@@ -43,5 +37,14 @@
         "afterDeclarations": true
       }
     ]
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.test.ts"
+  ],
+  "typeRoots": [
+    "src/global.d.ts"
+  ]
 }
