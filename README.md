@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
+  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.svg" height="117" />
 </div>
 
 <div align="center">
@@ -70,7 +70,7 @@ The following types of selectors are supported:
 - **Window** (event handling)
 - **DOM Element Instance**
 
-:warning: **Important note**  
+:warning: **Important note**
 This library does not support Sizzle selectors (`:checked`, `:hover` etc).
 
 ### Methods

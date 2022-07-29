@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.png" height="117" />
+  <img alt="DOM Element" src="https://github.com/digikid/dom-element/raw/main/logo.svg" height="117" />
 </div>
 
 <div align="center">
@@ -70,7 +70,7 @@ const $element: DomElement = $('.element');
 - **Window** (обработка событий)
 - **Экземпляр DOM Element**
 
-:warning: **Обратите внимание**  
+:warning: **Обратите внимание**
 Эта библиотека не поддерживает Sizzle селекторы (`:checked`, `:hover` и т.п).
 
 ### Методы
